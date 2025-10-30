@@ -4,6 +4,9 @@ export default defineConfig({
   title: 'Medical Imaging Primer',
   description: 'An Open Primer on Medical Imaging: From Physics to Deep Learning',
 
+  // GitHub Pages 部署路径（仓库名）
+  base: '/med-imaging-primer/',
+
   // 路径重写：将 en/ 目录映射到根路径
   rewrites: {
     'en/:rest*': ':rest*'
