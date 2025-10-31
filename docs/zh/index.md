@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: 开始阅读
-      link: /zh/guide/ch01/01-modalities/01-ct
+      link: /zh/guide
     - theme: alt
       text: GitHub 仓库
       link: https://github.com/1985312383/med-imaging-primer

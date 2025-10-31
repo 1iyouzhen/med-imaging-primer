@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /guide/ch01/01-modalities/01-ct
+      link: /guide
     - theme: alt
       text: GitHub Repository
       link: https://github.com/1985312383/med-imaging-primer

@@ -1,6 +1,10 @@
 # Medical Imaging Primer
 
+<div align="center">
+
 **English | [简体中文](README.zh.md)**
+
+</div>
 
 An open-source tutorial on medical imaging processing, providing a systematic guide from physical imaging principles, reconstruction algorithms to deep learning post-processing.
 
