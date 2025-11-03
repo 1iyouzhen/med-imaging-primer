@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { figure } from '@mdit/plugin-figure'
 
 export default defineConfig({
   title: 'Medical Imaging Primer',
@@ -39,7 +40,16 @@ export default defineConfig({
               text: 'Chapter 1: Medical Imaging Basics',
               collapsed: true,
               items: [
-                { text: '1.1 Common Imaging Modality Principles', link: '/guide/ch01/01-modalities' },
+                {
+                  text: '1.1 Common Imaging Modality Principles',
+                  collapsed: false,
+                  items: [
+                    { text: '1.1.1 CT (Computed Tomography)', link: '/guide/ch01/01-modalities/01-ct' },
+                    { text: '1.1.2 MRI (Magnetic Resonance Imaging)', link: '/guide/ch01/01-modalities/02-mri' },
+                    { text: '1.1.3 X-ray Imaging', link: '/guide/ch01/01-modalities/03-xray' },
+                    { text: '1.1.4 PET & Ultrasound', link: '/guide/ch01/01-modalities/04-pet-us' }
+                  ]
+                },
                 { text: '1.2 Data Format Standards', link: '/guide/ch01/02-data-formats' },
                 { text: '1.3 Common Open-Source Tools', link: '/guide/ch01/03-tools' },
                 { text: '1.4 Image Quality and Typical Artifacts', link: '/guide/ch01/04-artifacts' }
@@ -130,7 +140,16 @@ export default defineConfig({
               text: '第1章 医学影像基础',
               collapsed: true,
               items: [
-                { text: '1.1 常见成像模态原理与特点', link: '/zh/guide/ch01/01-modalities' },
+                {
+                  text: '1.1 常见成像模态原理与特点',
+                  collapsed: false,
+                  items: [
+                    { text: '1.1.1 CT（计算机断层扫描）', link: '/zh/guide/ch01/01-modalities/01-ct' },
+                    { text: '1.1.2 MRI（磁共振成像）', link: '/zh/guide/ch01/01-modalities/02-mri' },
+                    { text: '1.1.3 X射线成像', link: '/zh/guide/ch01/01-modalities/03-xray' },
+                    { text: '1.1.4 PET与超声', link: '/zh/guide/ch01/01-modalities/04-pet-us' }
+                  ]
+                },
                 { text: '1.2 数据格式标准', link: '/zh/guide/ch01/02-data-formats' },
                 { text: '1.3 常用开源工具', link: '/zh/guide/ch01/03-tools' },
                 { text: '1.4 图像质量与典型伪影', link: '/zh/guide/ch01/04-artifacts' }
@@ -204,6 +223,10 @@ export default defineConfig({
       light: 'github-light',
       dark: 'github-dark'
     },
-    lineNumbers: true
+    lineNumbers: true,
+    config: (md) => {
+      md.use(figure)
+    },
+    math: true
   }
 })
