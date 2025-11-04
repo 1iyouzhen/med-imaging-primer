@@ -97,7 +97,7 @@ PET images alone only show functional information, lacking anatomical detail. **
 
 **In the 2010s**, **PET-MRI** began clinical application, combining MRI's excellent soft tissue contrast with PET's functional imaging capability, particularly suitable for brain and pelvic imaging.
 
-![PET-CT Scanner](/images/ch01/pet-ct-scanner.jpg)
+![PET-CT Scanner](../../../../public/images/ch01/pet-ct-scanner.jpg)
 *Modern PET-CT scanner, perfectly integrating functional and anatomical imaging*
 
 ### Evolution of PET Technology
@@ -208,7 +208,7 @@ The core of an ultrasound transducer is a **piezoelectric crystal** (such as lea
 
 The same crystal serves as both transmitter and receiver, alternately emitting and receiving ultrasound.
 
-![Ultrasound Probe](/images/ch01/ultrasound-probe.jpg)
+![Ultrasound Probe](../../../../public/images/ch01/ultrasound-probe.jpg)
 *Medical ultrasound linear array probe, containing multiple piezoelectric crystal arrays*
 
 #### Ultrasound Interactions with Tissue

@@ -45,7 +45,7 @@ description: 了解MRI的发明历史、成像原理和技术演进
 
 **2003年诺贝尔生理学或医学奖**授予了Paul Lauterbur和Peter Mansfield，以表彰他们在MRI领域的开创性贡献。
 
-![现代3T MRI扫描仪](/images/ch01/modern-3t-mri-scanner.jpg)
+![现代3T MRI扫描仪](../../../../public/images/ch01/modern-3t-mri-scanner.jpg)
 *现代3T（3特斯拉）MRI扫描仪，磁场强度是地球磁场的6万倍*
 
 ::: warning ⚠️ 一个有趣的争议

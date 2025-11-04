@@ -12,7 +12,7 @@ On the evening of November 8, 1895, German physicist Wilhelm Röntgen was studyi
 
 Röntgen named these unknown rays "X-rays." On December 22, 1895, he took the first medical image in human history—an X-ray of his wife Anna Bertha's hand. When Anna saw the X-ray showing her hand bones and wedding ring, she exclaimed in shock: "I have seen my death!" This photograph marked the beginning of a new era in medical diagnosis.
 
-![Anna Bertha's Hand X-ray](/images/Anna-hand.jpg)
+![Anna Bertha's Hand X-ray](../../../docs\public\images\Anna-hand.jpg)
 
 ::: tip 🏆 Nobel Prize Glory
 Röntgen received the first Nobel Prize in Physics in 1901 for his discovery of X-rays. He refused to patent this discovery, believing it should belong to all humanity. This decision allowed X-ray technology to spread rapidly, saving countless lives.
