@@ -29,11 +29,17 @@ Visit the tutorial online: **[https://1985312383.github.io/med-imaging-primer/](
 **Chapter 1: Medical Imaging Basics**
 - 1.1 Common Imaging Modality Principles
 
+**Chapter 5: Medical Image Post-processing with Deep Learning**
+- 5.1 Preprocessing (Modality-Specific Considerations)
+- 5.2 U-Net and its Variants
+- 5.3 Classification and Detection
+- 5.4 Image Augmentation and Recovery
+
+
 **Coming Soon**
 - Chapter 2: Modality-Specific Preprocessing
 - Chapter 3: Image Reconstruction by Modality
 - Chapter 4: Reconstruction Practice with Multi-Modality Examples
-- Chapter 5: Medical Image Post-processing with Deep Learning
 
 ## 🤝 Contributing
 
