@@ -1,0 +1,54 @@
+%% Title: 任务驱动的模型选择
+%% Description: 根据数据类型选择合适的分类或检测模型
+%% File: 05-classification-detection-zh.mmd
+
+flowchart TD
+    A["<b>医学图像分析任务</b><br><i>Medical Image Analysis Task</i>"] --> B{"<b>数据类型？</b><br><i>Data Type?</i>"}
+
+    B -->|<font color='#3498db'><b>2D图像</b></font>| C{"<b>任务类型？</b><br><i>Task Type?</i>"}
+
+    C -->|<font color='#e74c3c'><b>分类</b></font>| D["<b>ResNet</b><br><i>残差网络</i>"]
+    D --> E["<b> DenseNet</b><br><i>密集连接网络</i>"]
+    E --> F["<b> EfficientNet</b><br><i>高效网络</i>"]
+
+    C -->|<font color='#27ae60'><b>检测</b></font>| G["<b>YOLO</b><br><i>实时检测</i>"]
+    G --> H["<b>Faster R-CNN</b><br><i>两阶段检测</i>"]
+    H --> I["<b>SSD</b><br><i>单次检测</i>"]
+
+    B -->|<font color='#f39c12'><b>3D体积数据</b></font>| J{"<b>任务类型？</b><br><i>Task Type?</i>"}
+
+    J -->|<font color='#e74c3c'><b>分类</b></font>| K["<b>3D ResNet</b><br><i>3D残差网络</i>"]
+    K --> L["<b>MedicalNet</b><br><i>医学预训练</i>"]
+
+    J -->|<font color='#27ae60'><b>检测</b></font>| M["<b>3D U-Net</b><br><i>体积分割</i>"]
+    M --> N["<b>V-Net</b><br><i>3D卷积</i>"]
+    N --> O["<b>nnU-Net</b><br><i>自适应</i>"]
+
+    F --> P["<b>模型部署</b><br><i>Model Deployment</i>"]
+    I --> P
+    L --> P
+    O --> P
+
+    %% Styling
+    style A fill:#e8f5e8,stroke:#27ae60,stroke-width:3px,color:#2c3e50
+    style B fill:#fef5e7,stroke:#f39c12,stroke-width:3px,color:#2c3e50
+    style C fill:#fef5e7,stroke:#f39c12,stroke-width:3px,color:#2c3e50
+    style J fill:#fef5e7,stroke:#f39c12,stroke-width:3px,color:#2c3e50
+    style P fill:#fadbd8,stroke:#e74c3c,stroke-width:3px,color:#2c3e50
+
+    style D fill:#fadbd8,stroke:#e74c3c,stroke-width:2px,color:#2c3e50
+    style E fill:#fadbd8,stroke:#e74c3c,stroke-width:2px,color:#2c3e50
+    style F fill:#fadbd8,stroke:#e74c3c,stroke-width:2px,color:#2c3e50
+
+    style G fill:#d5f4e6,stroke:#27ae60,stroke-width:2px,color:#2c3e50
+    style H fill:#d5f4e6,stroke:#27ae60,stroke-width:2px,color:#2c3e50
+    style I fill:#d5f4e6,stroke:#27ae60,stroke-width:2px,color:#2c3e50
+
+    style K fill:#fadbd8,stroke:#e74c3c,stroke-width:2px,color:#2c3e50
+    style L fill:#fadbd8,stroke:#e74c3c,stroke-width:2px,color:#2c3e50
+
+    style M fill:#d5f4e6,stroke:#27ae60,stroke-width:2px,color:#2c3e50
+    style N fill:#d5f4e6,stroke:#27ae60,stroke-width:2px,color:#2c3e50
+    style O fill:#d5f4e6,stroke:#27ae60,stroke-width:2px,color:#2c3e50
+
+    %% Font settings - Using system fonts for compatibility

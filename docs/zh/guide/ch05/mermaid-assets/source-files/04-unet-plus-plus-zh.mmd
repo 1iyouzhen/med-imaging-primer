@@ -1,0 +1,47 @@
+%% Title: U-Net++密集跳跃连接
+%% Description: 展示U-Net++的密集跳跃连接结构
+%% File: 04-unet-plus-plus-zh.mmd
+
+graph TD
+    A["<b>输入</b><br><i>Input</b>"] --> B["<b>编码器L1</b><br><i>Encoder L1</i>"]
+    B --> C["<b>编码器L2</b><br><i>Encoder L2</i>"]
+    C --> D["<b>编码器L3</b><br><i>Encoder L3</i>"]
+    D --> E["<b>编码器L4</b><br><i>Encoder L4</i>"]
+
+    E --> F["<b>解码器L4</b><br><i>Decoder L4</i>"]
+    D --> F
+    C --> F
+    B --> F
+
+    F --> G["<b>解码器L3</b><br><i>Decoder L3</i>"]
+    D --> G
+    C --> G
+    B --> G
+
+    G --> H["<b>解码器L2</b><br><i>Decoder L2</i>"]
+    C --> H
+    B --> H
+
+    H --> I["<b>解码器L1</b><br><i>Decoder L1</i>"]
+    B --> I
+
+    I --> J["<b>输出</b><br><i>Output</b>"]
+
+    %% Styling
+    style A fill:#e8f5e8,stroke:#27ae60,stroke-width:3px,color:#2c3e50
+    style J fill:#fadbd8,stroke:#e74c3c,stroke-width:3px,color:#2c3e50
+
+    style B fill:#ebf3fd,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style C fill:#ebf3fd,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style D fill:#ebf3fd,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style E fill:#ebf3fd,stroke:#3498db,stroke-width:2px,color:#2c3e50
+
+    style F fill:#d5f4e6,stroke:#27ae60,stroke-width:2px,color:#2c3e50
+    style G fill:#d5f4e6,stroke:#27ae60,stroke-width:2px,color:#2c3e50
+    style H fill:#d5f4e6,stroke:#27ae60,stroke-width:2px,color:#2c3e50
+    style I fill:#d5f4e6,stroke:#27ae60,stroke-width:2px,color:#2c3e50
+
+    %% Dense connections styling
+    classDef dense stroke:#e74c3c,stroke-width:3px,color:#e74c3c;
+
+    %% Font settings - Using system fonts for compatibility

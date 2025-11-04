@@ -1,0 +1,40 @@
+%% Title: 医学影像预处理层次结构
+%% Description: 展示医学影像预处理的三个层次：基础预处理、模态特异性预处理、任务导向预处理
+%% File: 01-preprocessing-hierarchy-zh.mmd
+
+graph TD
+    A["<b>原始医学影像</b><br><i>Raw Medical Images</i>"] --> B["<b>基础预处理</b><br><i>Basic Preprocessing</i>"]
+    B --> C["<b>模态特异性预处理</b><br><i>Modality-Specific Preprocessing</i>"]
+    C --> D["<b>任务导向预处理</b><br><i>Task-Oriented Preprocessing</i>"]
+
+    B --> B1["<font color='#3498db'>重采样</font><br><i>Resampling</i>"]
+    B --> B2["<font color='#3498db'>方向标准化</font><br><i>Orientation Standardization</i>"]
+    B --> B3["<font color='#3498db'>尺寸调整</font><br><i>Size Adjustment</i>"]
+
+    C --> C1["<font color='#e74c3c'><b>CT:</b> 窗宽窗位</font><br><i>Windowing</i>"]
+    C --> C2["<font color='#27ae60'><b>MRI:</b> 偏场校正</font><br><i>Bias Correction</i>"]
+    C --> C3["<font color='#f39c12'><b>X-ray:</b> 对比度增强</font><br><i>Contrast Enhancement</i>"]
+
+    D --> D1["<font color='#9b59b6'>数据增强</font><br><i>Data Augmentation</i>"]
+    D --> D2["<font color='#9b59b6'>归一化</font><br><i>Normalization</i>"]
+    D --> D3["<font color='#9b59b6'>批次平衡</font><br><i>Batch Balancing</i>"]
+
+    %% Styling
+    style A fill:#e8f5e8,stroke:#27ae60,stroke-width:3px,color:#2c3e50
+    style B fill:#e8f4fd,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style C fill:#fef5e7,stroke:#f39c12,stroke-width:2px,color:#2c3e50
+    style D fill:#fdedec,stroke:#e74c3c,stroke-width:2px,color:#2c3e50
+
+    style B1 fill:#ebf3fd,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style B2 fill:#ebf3fd,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style B3 fill:#ebf3fd,stroke:#3498db,stroke-width:2px,color:#2c3e50
+
+    style C1 fill:#fadbd8,stroke:#e74c3c,stroke-width:2px,color:#2c3e50
+    style C2 fill:#d5f4e6,stroke:#27ae60,stroke-width:2px,color:#2c3e50
+    style C3 fill:#fdebd0,stroke:#f39c12,stroke-width:2px,color:#2c3e50
+
+    style D1 fill:#ebdef0,stroke:#9b59b6,stroke-width:2px,color:#2c3e50
+    style D2 fill:#ebdef0,stroke:#9b59b6,stroke-width:2px,color:#2c3e50
+    style D3 fill:#ebdef0,stroke:#9b59b6,stroke-width:2px,color:#2c3e50
+
+    %% Font settings - Using system fonts for compatibility
