@@ -1,0 +1,89 @@
+%% Title: U-Net Architecture Deep Dive
+%% Description: Encoder-decoder structure with skip connections
+%% File: 03-unet-architecture-en.mmd
+
+graph TD
+    subgraph "Encoder Path (Contracting Path)"
+        A["<b>Input: 512×512×1</b>"] --> B["<font color='#3498db'>Conv3×3+ReLU ×2</font>"]
+        B --> C["<b>64 channels</b>"]
+        C --> D["<font color='#e74c3c'>MaxPool2×2</font>"]
+        D --> E["<font color='#3498db'>Conv3×3+ReLU ×2</font>"]
+        E --> F["<b>128 channels</b>"]
+        F --> G["<font color='#e74c3c'>MaxPool2×2</font>"]
+        G --> H["<font color='#3498db'>Conv3×3+ReLU ×2</font>"]
+        H --> I["<b>256 channels</b>"]
+        I --> J["<font color='#e74c3c'>MaxPool2×2</font>"]
+        J --> K["<font color='#3498db'>Conv3×3+ReLU ×2</font>"]
+        K --> L["<b>512 channels</b>"]
+        L --> M["<font color='#e74c3c'>MaxPool2×2</font>"]
+        M --> N["<font color='#3498db'>Conv3×3+ReLU ×2</font>"]
+        N --> O["<b>1024 channels</b>"]
+    end
+
+    subgraph "Decoder Path (Expanding Path)"
+        O --> P["<font color='#27ae60'>Up-Conv2×2</font>"]
+        L --> P
+        P --> Q["<b>Concat: 1024+512=1536</b>"]
+        Q --> R["<font color='#3498db'>Conv3×3+ReLU ×2</font>"]
+        R --> S["<b>512 channels</b>"]
+        S --> T["<font color='#27ae60'>Up-Conv2×2</font>"]
+        I --> T
+        T --> U["<b>Concat: 512+256=768</b>"]
+        U --> V["<font color='#3498db'>Conv3×3+ReLU ×2</font>"]
+        V --> W["<b>256 channels</b>"]
+        W --> X["<font color='#27ae60'>Up-Conv2×2</font>"]
+        F --> X
+        X --> Y["<b>Concat: 256+128=384</b>"]
+        Y --> Z["<font color='#3498db'>Conv3×3+ReLU ×2</font>"]
+        Z --> AA["<b>128 channels</b>"]
+        AA --> AB["<font color='#27ae60'>Up-Conv2×2</font>"]
+        C --> AB
+        AB --> AC["<b>Concat: 128+64=192</b>"]
+        AC --> AD["<font color='#3498db'>Conv3×3+ReLU ×2</font>"]
+        AD --> AE["<b>64 channels</b>"]
+        AE --> AF["<font color='#9b59b6'>Conv1×1</font>"]
+        AF --> AG["<b>Output: Segmentation Map</b>"]
+    end
+
+    %% Styling
+    style A fill:#e8f5e8,stroke:#27ae60,stroke-width:3px,color:#2c3e50
+    style AG fill:#fadbd8,stroke:#e74c3c,stroke-width:3px,color:#2c3e50
+
+    %% Skip connections styling
+    classDef skip fill:#f9f,stroke:#333,stroke-width:2px,color:#2c3e50;
+
+    %% Style nodes
+    style B fill:#ebf3fd,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style C fill:#f0f3ff,stroke:#6c5ce7,stroke-width:2px,color:#2c3e50
+    style D fill:#fadbd8,stroke:#e74c3c,stroke-width:2px,color:#2c3e50
+    style E fill:#ebf3fd,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style F fill:#f0f3ff,stroke:#6c5ce7,stroke-width:2px,color:#2c3e50
+    style G fill:#fadbd8,stroke:#e74c3c,stroke-width:2px,color:#2c3e50
+    style H fill:#ebf3fd,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style I fill:#f0f3ff,stroke:#6c5ce7,stroke-width:2px,color:#2c3e50
+    style J fill:#fadbd8,stroke:#e74c3c,stroke-width:2px,color:#2c3e50
+    style K fill:#ebf3fd,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style L fill:#f0f3ff,stroke:#6c5ce7,stroke-width:2px,color:#2c3e50
+    style M fill:#fadbd8,stroke:#e74c3c,stroke-width:2px,color:#2c3e50
+    style N fill:#ebf3fd,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style O fill:#f0f3ff,stroke:#6c5ce7,stroke-width:2px,color:#2c3e50
+
+    style P fill:#d5f4e6,stroke:#27ae60,stroke-width:2px,color:#2c3e50
+    style Q fill:#f0f3ff,stroke:#6c5ce7,stroke-width:2px,color:#2c3e50
+    style R fill:#ebf3fd,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style S fill:#f0f3ff,stroke:#6c5ce7,stroke-width:2px,color:#2c3e50
+    style T fill:#d5f4e6,stroke:#27ae60,stroke-width:2px,color:#2c3e50
+    style U fill:#f0f3ff,stroke:#6c5ce7,stroke-width:2px,color:#2c3e50
+    style V fill:#ebf3fd,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style W fill:#f0f3ff,stroke:#6c5ce7,stroke-width:2px,color:#2c3e50
+    style X fill:#d5f4e6,stroke:#27ae60,stroke-width:2px,color:#2c3e50
+    style Y fill:#f0f3ff,stroke:#6c5ce7,stroke-width:2px,color:#2c3e50
+    style Z fill:#ebf3fd,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style AA fill:#f0f3ff,stroke:#6c5ce7,stroke-width:2px,color:#2c3e50
+    style AB fill:#d5f4e6,stroke:#27ae60,stroke-width:2px,color:#2c3e50
+    style AC fill:#f0f3ff,stroke:#6c5ce7,stroke-width:2px,color:#2c3e50
+    style AD fill:#ebf3fd,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style AE fill:#f0f3ff,stroke:#6c5ce7,stroke-width:2px,color:#2c3e50
+    style AF fill:#ebdef0,stroke:#9b59b6,stroke-width:2px,color:#2c3e50
+
+    %% Font settings - Using system fonts for compatibility

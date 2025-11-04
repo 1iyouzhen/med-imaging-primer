@@ -1,0 +1,25 @@
+{
+  "configuration": {
+    "image_size": [
+      224,
+      224
+    ],
+    "num_classes": 2,
+    "device": "cpu"
+  },
+  "dataset_info": {
+    "total_samples": 50,
+    "train_samples": 40,
+    "test_samples": 10,
+    "normal_samples": 29,
+    "abnormal_samples": 21
+  },
+  "performance_metrics": {
+    "accuracy": 0.9,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1_score": 0,
+    "auc_roc": 0.11111111111111116
+  },
+  "model_parameters": 11308354
+}

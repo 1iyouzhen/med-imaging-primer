@@ -1,0 +1,40 @@
+%% Title: Medical Image Preprocessing Hierarchy
+%% Description: Three levels of medical image preprocessing: Basic, Modality-Specific, and Task-Oriented
+%% File: 01-preprocessing-hierarchy-en.mmd
+
+graph TD
+    A["<b>Raw Medical Images</b>"] --> B["<b>Basic Preprocessing</b>"]
+    B --> C["<b>Modality-Specific Preprocessing</b>"]
+    C --> D["<b>Task-Oriented Preprocessing</b>"]
+
+    B --> B1["<font color='#3498db'>Resampling</font>"]
+    B --> B2["<font color='#3498db'>Orientation Standardization</font>"]
+    B --> B3["<font color='#3498db'>Size Adjustment</font>"]
+
+    C --> C1["<font color='#e74c3c'><b>CT:</b> Windowing</font>"]
+    C --> C2["<font color='#27ae60'><b>MRI:</b> Bias Correction</font>"]
+    C --> C3["<font color='#f39c12'><b>X-ray:</b> Contrast Enhancement</font>"]
+
+    D --> D1["<font color='#9b59b6'>Data Augmentation</font>"]
+    D --> D2["<font color='#9b59b6'>Normalization</font>"]
+    D --> D3["<font color='#9b59b6'>Batch Balancing</font>"]
+
+    %% Styling
+    style A fill:#e8f5e8,stroke:#27ae60,stroke-width:3px,color:#2c3e50
+    style B fill:#e8f4fd,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style C fill:#fef5e7,stroke:#f39c12,stroke-width:2px,color:#2c3e50
+    style D fill:#fdedec,stroke:#e74c3c,stroke-width:2px,color:#2c3e50
+
+    style B1 fill:#ebf3fd,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style B2 fill:#ebf3fd,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style B3 fill:#ebf3fd,stroke:#3498db,stroke-width:2px,color:#2c3e50
+
+    style C1 fill:#fadbd8,stroke:#e74c3c,stroke-width:2px,color:#2c3e50
+    style C2 fill:#d5f4e6,stroke:#27ae60,stroke-width:2px,color:#2c3e50
+    style C3 fill:#fdebd0,stroke:#f39c12,stroke-width:2px,color:#2c3e50
+
+    style D1 fill:#ebdef0,stroke:#9b59b6,stroke-width:2px,color:#2c3e50
+    style D2 fill:#ebdef0,stroke:#9b59b6,stroke-width:2px,color:#2c3e50
+    style D3 fill:#ebdef0,stroke:#9b59b6,stroke-width:2px,color:#2c3e50
+
+    %% Font settings - Using system fonts for compatibility
