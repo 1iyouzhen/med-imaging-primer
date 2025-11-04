@@ -387,8 +387,8 @@
 /* 表格样式 */
 th,
 td {
-  white-space: nowrap !important;
+  /* white-space: nowrap !important; */
   /* 不让th，td内容换行显示 */
-  width: 1%;
+  width: 10%;
   /* 强制均匀分配宽度 */
 }

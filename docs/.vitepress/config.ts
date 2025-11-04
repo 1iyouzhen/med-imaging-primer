@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress'
 import { figure } from '@mdit/plugin-figure'
+import { MermaidPlugin } from './theme/plugins/mermaid'
 
 export default defineConfig({
   title: 'Medical Imaging Primer',
@@ -226,7 +227,14 @@ export default defineConfig({
     lineNumbers: true,
     config: (md) => {
       md.use(figure)
+      md.use(MermaidPlugin)
     },
     math: true
+  },
+  themeConfig: {
+    search: {
+      provider: 'local'
+    }
   }
 })
+
