@@ -183,7 +183,7 @@ Patient（患者）
             └─ Instance（实例/图像）
 ```
 
-![DICOM层次结构](\images/ch01/dicom-hierarchy.svg)
+![DICOM层次结构](/images/ch01/dicom-hierarchy.svg)
 *DICOM四层层次结构的UML模型*
 
 **各层次的含义：**
