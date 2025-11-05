@@ -183,7 +183,7 @@ Patient（患者）
             └─ Instance（实例/图像）
 ```
 
-![DICOM层次结构](../../../public\images/ch01/dicom-hierarchy.svg)
+![DICOM层次结构](\images/ch01/dicom-hierarchy.svg)
 *DICOM四层层次结构的UML模型*
 
 **各层次的含义：**
@@ -525,7 +525,7 @@ DICOM不仅定义了文件格式，还定义了网络传输协议，使得医学
 
 **PACS**（Picture Archiving and Communication System）是医院影像归档与通信系统，是现代医院数字化影像管理的核心。
 
-![PACS系统架构](../../../public/images/ch01/pacs-architecture.gif)
+![PACS系统架构](/images/ch01/pacs-architecture.gif)
 *典型PACS系统的架构组成*
 
 #### PACS的组成
