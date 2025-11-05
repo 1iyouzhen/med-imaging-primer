@@ -42,7 +42,7 @@ description: 探索不同医学影像模态的深度学习预处理技术，包�
 医学影像预处理可以分为三个层次：
 
 ![医学影像预处理层次结构](/images/ch05/01-preprocessing-hierarchy-zh.png)
-*图：医学影像预处理的三个层次结构，从基础预处理到模态特异性预处理，再到任务导向预处理的递进关系。*[📄 [Mermaid源文件](/images/ch05/01-preprocessing-hierarchy-zh.mmd)]
+*图：医学影像预处理的三个层次结构，从基础预处理到模态特异性预处理，再到任务导向预处理的递进关系。*
 
 <details>
 <summary>📖 查看原始Mermaid代码</summary>
@@ -823,7 +823,7 @@ def elastic_transform_3d(image, alpha, sigma, order=1):
 #### 任务驱动的预处理策略
 
 ![任务驱动的预处理策略](/images/ch05/02-preprocessing-strategy-zh.png)
-*图：根据不同成像模态（CT、MRI、X-ray）选择相应的预处理策略的决策流程。*[📄 [Mermaid源文件](/images/ch05/02-preprocessing-strategy-zh.mmd)]
+*图：根据不同成像模态（CT、MRI、X-ray）选择相应的预处理策略的决策流程。*
 
 <details>
 <summary>📖 查看原始Mermaid代码</summary>

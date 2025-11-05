@@ -1282,7 +1282,7 @@ def calculate_map(detections, ground_truths, iou_threshold=0.5):
 #### 任务驱动的模型选择
 
 ![医学图像分析模型选择指南](/images/ch05/05-model-selection-zh.png)
-*图：根据医学图像的数据类型（2D X线、3D CT/MRI、全幻灯片图像）和任务类型选择合适的深度学习模型。*[📄 [Mermaid源文件](/images/ch05/05-model-selection-zh.mmd)]
+*图：根据医学图像的数据类型（2D X线、3D CT/MRI、全幻灯片图像）和任务类型选择合适的深度学习模型。*
 
 <details>
 <summary>📖 查看原始Mermaid代码</summary>

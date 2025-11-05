@@ -42,7 +42,7 @@ The core task of medical image preprocessing is to convert original physical mea
 Medical image preprocessing can be divided into three levels:
 
 ![Medical Image Preprocessing Hierarchy](/images/ch05/01-preprocessing-hierarchy-en.png)
-*Figure: Three levels of medical image preprocessing from basic to modality-specific to task-oriented.*[📄 [Mermaid Source](/images/ch05/01-preprocessing-hierarchy-en.mmd)]
+*Figure: Three levels of medical image preprocessing from basic to modality-specific to task-oriented.*
 
 <details>
 <summary>📖 View Original Mermaid Code</summary>
@@ -655,7 +655,7 @@ def elastic_transform_3d(image, alpha, sigma, order=1):
 #### Task-driven Preprocessing Strategy
 
 ![Task-driven Preprocessing Strategy](/images/ch05/02-preprocessing-strategy-en.png)
-*Figure: Decision flow for selecting appropriate preprocessing strategies based on imaging modality.*[📄 [Mermaid Source](/images/ch05/02-preprocessing-strategy-en.mmd)]
+*Figure: Decision flow for selecting appropriate preprocessing strategies based on imaging modality.*
 
 <details>
 <summary>📖 View Original Mermaid Code</summary>
