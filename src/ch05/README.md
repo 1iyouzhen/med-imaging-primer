@@ -255,7 +255,7 @@
 ### 快速开始 / Quick Start
 ```bash
 # 运行偏场场可视化（中英文）
-cd docs/ch05-code-examples/visualize_bias_field
+cd src/ch05/visualize_bias_field
 python main.py
 
 # 运行U-Net肺野分割（中英文）
@@ -269,7 +269,7 @@ python main.py
 
 ### 输出文件位置 / Output File Locations
 ```
-docs/ch05-code-examples/
+src/ch05/
 ├── visualize_bias_field/output/
 │   ├── bias_field_visualization_division.png  # 中英文标题
 │   └── bias_field_methods_comparison.png

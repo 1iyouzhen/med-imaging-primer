@@ -1,6 +1,6 @@
 /* 全局图片样式设置 */
 .vp-doc img {
-  max-height: 40vh;
+  max-height: 50vh;
   /* 最大高度为视口高度的40% */
   width: auto;
   /* 保持宽高比 */

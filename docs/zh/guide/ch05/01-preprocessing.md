@@ -241,7 +241,7 @@ def visualize_bias_field_correction(original_slice, corrected_slice,
 
 **运行结果分析：**
 
-![MRI偏场场可视化分析](https://raw.githubusercontent.com/1985312383/med-imaging-primer/main/docs/ch05-code-examples/visualize_bias_field/output/bias_field_visualization_division.png)
+![MRI偏场场可视化分析](https://raw.githubusercontent.com/1985312383/med-imaging-primer/main/src/ch05/visualize_bias_field/output/bias_field_visualization_division.png)
 
 *MRI偏场场校正效果可视化：上排从左到右分别显示原始图像（含偏场场）、估计的偏场场、校正后图像；下排显示偏场场对数尺度、强度分布对比、水平剖面线对比*
 
@@ -330,7 +330,7 @@ class N4ITKBiasCorrector:
 
 **运行结果分析：**
 
-![N4ITK偏场校正效果](https://raw.githubusercontent.com/1985312383/med-imaging-primer/main/docs/ch05-code-examples/n4itk_bias_correction/output/n4itk_correction_result.png)
+![N4ITK偏场校正效果](https://raw.githubusercontent.com/1985312383/med-imaging-primer/main/src/ch05/n4itk_bias_correction/output/n4itk_correction_result.png)
 
 *N4ITK偏场校正效果：上排显示原始图像（含偏场场）、估计的偏场场、N4ITK校正后图像；下排显示偏场场对数尺度、强度分布对比、剖面线对比*
 

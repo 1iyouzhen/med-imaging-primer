@@ -268,7 +268,7 @@ class LungSegmentationNet(nn.Module):
 
 **运行结果分析：**
 
-![U-Net肺野分割结果展示](https://raw.githubusercontent.com/1985312383/med-imaging-primer/main/docs/ch05-code-examples/lung_segmentation_network/output/lung_segmentation_result_1.png)
+![U-Net肺野分割结果展示](https://raw.githubusercontent.com/1985312383/med-imaging-primer/main/src/ch05/lung_segmentation_network/output/lung_segmentation_result_1.png)
 
 *U-Net肺野分割结果：上排从左到右分别显示原始CT图像、真实肺部掩模、预测肺部掩模；下排显示分割对比、重叠显示、肺部归一化图像。左侧显示分割指标，包括Dice系数、IoU、敏感性等评估结果*
 

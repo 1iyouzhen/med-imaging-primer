@@ -136,7 +136,7 @@ Each algorithm folder contains:
 
 ```bash
 # Navigate to specific algorithm folder
-cd docs/ch05-code-examples/[algorithm_name]/
+cd src/ch05/[algorithm_name]/
 
 # Run main algorithm
 python main.py
