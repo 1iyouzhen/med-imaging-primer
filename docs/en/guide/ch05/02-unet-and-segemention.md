@@ -45,8 +45,8 @@ U-Net's success stems from three core design principles:
 
 Let's deeply understand U-Net's network structure and data flow:
 
-![U-Net Architecture Deep Dive](./mermaid-assets/rendered-images/03-unet-architecture-en.png)
-*Figure: U-Net's encoder-decoder structure showing how skip connections transfer shallow features to deep layers to preserve spatial details.*[📄 [Mermaid Source](./mermaid-assets/source-files/03-unet-architecture-en.mmd)]
+![U-Net Architecture Deep Dive](/images/ch05/03-unet-architecture-en.png)
+*Figure: U-Net's encoder-decoder structure showing how skip connections transfer shallow features to deep layers to preserve spatial details.*[📄 [Mermaid Source](/images/ch05/03-unet-architecture-en.mmd)]
 
 <details>
 <summary>📖 View Original Mermaid Code</summary>

@@ -41,8 +41,8 @@ description: 探索不同医学影像模态的深度学习预处理技术，包�
 
 医学影像预处理可以分为三个层次：
 
-![医学影像预处理层次结构](./mermaid-assets/rendered-images/01-preprocessing-hierarchy-zh.png)
-*图：医学影像预处理的三个层次结构，从基础预处理到模态特异性预处理，再到任务导向预处理的递进关系。*[📄 [Mermaid源文件](./mermaid-assets/source-files/01-preprocessing-hierarchy-zh.mmd)]
+![医学影像预处理层次结构](/images/ch05/01-preprocessing-hierarchy-zh.png)
+*图：医学影像预处理的三个层次结构，从基础预处理到模态特异性预处理，再到任务导向预处理的递进关系。*[📄 [Mermaid源文件](/images/ch05/01-preprocessing-hierarchy-zh.mmd)]
 
 <details>
 <summary>📖 查看原始Mermaid代码</summary>
@@ -136,7 +136,7 @@ def clip_hu_values(image, min_hu=-1000, max_hu=1000):
     return processed_image
 ```
 
-[📖 **完整代码示例**: `clip_hu_values/`](../../../ch05-code-examples/clip_hu_values/) - 包含完整的HU值截断实现、测试用例和可视化演示]
+[📖 **完整代码示例**: `clip_hu_values/`](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/clip_hu_values/) - 包含完整的HU值截断实现、测试用例和可视化演示]
 
 **常用截断范围：**
 - **软组织范围**：[-200, 400] HU（排除空气和致密骨）
@@ -167,7 +167,7 @@ def detect_metal_artifacts(image, threshold=3000):
     return significant_metal
 ```
 
-[📖 **完整代码示例**: `detect_metal_artifacts/`](../../../ch05-code-examples/detect_metal_artifacts/) - 包含完整的金属伪影检测算法、连通性分析和可视化功能]
+[📖 **完整代码示例**: `detect_metal_artifacts/`](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/detect_metal_artifacts/) - 包含完整的金属伪影检测算法、连通性分析和可视化功能]
 
 ### 实际案例：肺癌筛查的预处理
 
@@ -262,7 +262,7 @@ def visualize_bias_field_correction(original_slice, corrected_slice,
 
 **算法分析：** MRI偏场场可视化通过多种方法估计和显示偏场场。除法方法直接计算原始图像与校正图像的比值，对数差分方法在对数域计算差值，滤波方法通过低通滤波估计缓慢变化的偏场场。运行结果显示，原始图像的变异系数为1.277，校正后降至0.972，减少了23.9%，表明偏场场校正有效改善了图像的强度均匀性。偏场场的均值接近1.0，符合理论预期。水平剖面线对比清楚显示了偏场场在空间上的变化模式以及校正后的改善效果。
 
-[📖 **完整代码示例**: `visualize_bias_field/`](../../../ch05-code-examples/visualize_bias_field/) - 包含MRI偏场场估计、多种可视化方法和定量分析功能]
+[📖 **完整代码示例**: `visualize_bias_field/`](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/visualize_bias_field/) - 包含MRI偏场场估计、多种可视化方法和定量分析功能]
 
 ### N4ITK偏场校正算法
 
@@ -363,12 +363,12 @@ N4ITK偏场校正参数设置:
 
 **算法分析：** N4ITK算法是多尺度迭代的偏场场校正方法。运行结果显示算法在20次迭代后收敛到收敛阈值0.001以下。原始图像的变异系数为1.871，校正后降至1.493，改善了20.2%，表明偏场场校正显著提升了图像强度均匀性。B样条网格分辨率(4,4,4)提供了足够的空间自由度来建模复杂的偏场场模式，同时保持了计算效率。降采样因子2加速了处理过程，通过多尺度策略确保了校正精度。
 
-[📖 **完整代码示例**: `n4itk_bias_correction/`](../../../ch05-code-examples/n4itk_bias_correction/) - 包含完整的N4ITK偏场校正实现、测试用例、合成数据生成和可视化功能]
+[📖 **完整代码示例**: `n4itk_bias_correction/`](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/n4itk_bias_correction/) - 包含完整的N4ITK偏场校正实现、测试用例、合成数据生成和可视化功能]
   校正图像 - 均值: 0.247, 标准差: 0.076, CV: 0.308
   CV减少: 15.2%, 标准差减少: 14.6%
 ```
 
-![N4ITK偏场校正结果](../../../ch05-code-examples/n4itk_bias_correction/output/bias_field_visualization_division.png)
+![N4ITK偏场校正结果](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/n4itk_bias_correction/output/bias_field_visualization_division.png)
 *N4ITK偏场校正效果：左图为原始图像（含偏场场），中图为估计的偏场场，右图为校正后的图像。校正后图像强度更加均匀，同质组织的强度一致性显著提高。*
 
 **算法分析：** N4ITK算法通过B样条基函数建模偏场场，使用迭代优化方法最小化能量函数。从运行结果可以看出，经过28次迭代后算法收敛，变异系数(CV)从0.363降低到0.308，减少了15.2%，有效改善了MRI图像的强度不均匀性。
@@ -402,7 +402,7 @@ class WhiteStripeNormalizer:
         return normalized
 ```
 
-[📖 **完整代码示例**: `white_stripe_normalization/`](../../../ch05-code-examples/white_stripe_normalization/) - 包含完整的White Stripe标准化实现、测试用例和可视化功能]
+[📖 **完整代码示例**: `white_stripe_normalization/`](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/white_stripe_normalization/) - 包含完整的White Stripe标准化实现、测试用例和可视化功能]
 
 **运行结果分析：**
 
@@ -418,7 +418,7 @@ White Stripe标准化开始 (方法: T1)
   标准化范围: [0.000, 1.000]
 ```
 
-![White Stripe标准化结果](../../../ch05-code-examples/white_stripe_normalization/output/white_stripe_t1_normalization.png)
+![White Stripe标准化结果](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/white_stripe_normalization/output/white_stripe_t1_normalization.png)
 *White Stripe标准化效果：左上图为原始T1图像，右上图为标准化结果，左下图为差异对比，右下图为统计分析。标准化后图像强度范围统一到[0,1]，不同扫描间的强度一致性显著改善。*
 
 **算法分析：** White Stripe算法利用脑部MRI中白质信号相对稳定的特性，通过直方图分析自动识别白质强度范围。从运行结果可以看出，算法在第2次迭代后即收敛，识别出白质均值为0.444。标准化后，不同MRI扫描的图像强度被映射到统一的[0,1]范围，为后续的深度学习模型提供了标准化的输入。
@@ -458,7 +458,7 @@ class MultisequenceFusion:
         return fused_image
 ```
 
-[📖 **完整代码示例**: `multisequence_fusion_channels/`](../../../ch05-code-examples/multisequence_fusion_channels/) - 包含完整的多序列融合实现、重采样算法和可视化功能]
+[📖 **完整代码示例**: `multisequence_fusion_channels/`](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/multisequence_fusion_channels/) - 包含完整的多序列融合实现、重采样算法和可视化功能]
 
 **运行结果分析：**
 
@@ -486,7 +486,7 @@ class MultisequenceFusion:
   融合统计: 均值=0.000, 标准差=1.000
 ```
 
-![多序列MRI融合结果](../../../ch05-code-examples/multisequence_fusion_channels/output/multisequence_fusion_result.png)
+![多序列MRI融合结果](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/multisequence_fusion_channels/output/multisequence_fusion_result.png)
 *多序列MRI融合效果：展示了T1、T2、FLAIR和DWI四种序列的融合结果。不同序列提供互补的组织信息，融合后的图像包含了更丰富的诊断信息。*
 
 **算法分析：** 多序列融合通过将不同MRI序列的信息整合，提高了诊断的准确性。从运行结果可以看出，四种序列（T1、T2、FLAIR、DWI）被成功融合为一个4通道的图像。每个序列都经过Z-score标准化，确保强度范围的统一。融合后的图像保留了各个序列的互补信息，为深度学习模型提供了更全面的输入特征。
@@ -586,7 +586,7 @@ def adaptive_clahe_parameters(image):
     return clip_limit, tile_size
 ```
 
-[📖 **完整代码示例**: `clahe_enhancement/`](../../../ch05-code-examples/clahe_enhancement/) - 包含CLAHE算法实现、自适应参数调整和定量评估功能]
+[📖 **完整代码示例**: `clahe_enhancement/`](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/clahe_enhancement/) - 包含CLAHE算法实现、自适应参数调整和定量评估功能]
 
 ### 肺野分割与归一化
 
@@ -822,8 +822,8 @@ def elastic_transform_3d(image, alpha, sigma, order=1):
 
 #### 任务驱动的预处理策略
 
-![任务驱动的预处理策略](./mermaid-assets/rendered-images/02-preprocessing-strategy-zh.png)
-*图：根据不同成像模态（CT、MRI、X-ray）选择相应的预处理策略的决策流程。*[📄 [Mermaid源文件](./mermaid-assets/source-files/02-preprocessing-strategy-zh.mmd)]
+![任务驱动的预处理策略](/images/ch05/02-preprocessing-strategy-zh.png)
+*图：根据不同成像模态（CT、MRI、X-ray）选择相应的预处理策略的决策流程。*[📄 [Mermaid源文件](/images/ch05/02-preprocessing-strategy-zh.mmd)]
 
 <details>
 <summary>📖 查看原始Mermaid代码</summary>
@@ -913,11 +913,11 @@ def validate_preprocessing(original_image, processed_image, roi_mask=None):
 
 ## 🖼️ 算法实例展示
 
-以下展示我们实现的预处理算法在实际数据上的效果。所有代码示例都可以在 [`ch05-code-examples`](../../../ch05-code-examples/) 目录中找到并运行。
+以下展示我们实现的预处理算法在实际数据上的效果。所有代码示例都可以在 [`ch05-code-examples`](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/) 目录中找到并运行。
 
 ### MRI偏场场可视化与校正
 
-![MRI偏场场可视化](../../../ch05-code-examples/visualize_bias_field/output/bias_field_visualization_division.png)
+![MRI偏场场可视化](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/visualize_bias_field/output/bias_field_visualization_division.png)
 *MRI偏场场可视化：左图为原始图像，中图为估计的偏场场，右图为校正后图像*
 
 **偏场场校正效果对比：**
@@ -925,12 +925,12 @@ def validate_preprocessing(original_image, processed_image, roi_mask=None):
 - 同态方法：MSE=0.1984, PSNR=7.0dB, SSIM=0.149
 - 多项式方法：MSE=0.0663, PSNR=11.8dB, SSIM=0.545
 
-![多种偏场场校正方法对比](../../../ch05-code-examples/visualize_bias_field/output/bias_field_methods_comparison.png)
+![多种偏场场校正方法对比](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/visualize_bias_field/output/bias_field_methods_comparison.png)
 *不同偏场场校正方法的性能对比，显示多项式方法在此例中表现最佳*
 
 ### White Stripe强度标准化
 
-![White Stripe标准化结果](../../../ch05-code-examples/white_stripe_normalization/output/white_stripe_t1_normalization.png)
+![White Stripe标准化结果](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/white_stripe_normalization/output/white_stripe_t1_normalization.png)
 *White Stripe强度标准化：展示了原始图像、标准化结果、差异对比和统计分析*
 
 **不同MRI序列的标准化效果：**
@@ -938,12 +938,12 @@ def validate_preprocessing(original_image, processed_image, roi_mask=None):
 - T2序列：白质像素6个，标准化后均值0.886
 - FLAIR序列：白质像素10个，标准化后均值0.888
 
-![多模态MRI标准化对比](../../../ch05-code-examples/white_stripe_normalization/output/white_stripe_modality_comparison.png)
+![多模态MRI标准化对比](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/white_stripe_normalization/output/white_stripe_modality_comparison.png)
 *不同MRI序列的White Stripe标准化效果对比，显示各序列的强度分布和标准化结果*
 
 ### CLAHE对比度增强
 
-![CLAHE参数对比](../../../ch05-code-examples/clahe_enhancement/output/clahe_parameter_comparison.png)
+![CLAHE参数对比](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/clahe_enhancement/output/clahe_parameter_comparison.png)
 *不同CLAHE参数的效果对比，从弱增强到最强增强的渐进效果*
 
 **CLAHE增强效果定量评估：**
@@ -953,12 +953,12 @@ def validate_preprocessing(original_image, processed_image, roi_mask=None):
 - 边缘强度提升倍数：18.19
 - PSNR：28.05 dB，SSIM：0.566
 
-![CLAHE详细分析](../../../ch05-code-examples/clahe_enhancement/output/clahe_detailed_analysis.png)
+![CLAHE详细分析](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/clahe_enhancement/output/clahe_detailed_analysis.png)
 *CLAHE增强的详细分析，包括边缘检测、强度分布和增强效果评估*
 
 ### CT HU值截断处理
 
-![HU值截断对比](../../../ch05-code-examples/clip_hu_values/output/hu_clipping_软组织范围.png)
+![HU值截断对比](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/clip_hu_values/output/hu_clipping_软组织范围.png)
 *CT HU值截断：展示软组织范围(-200, 400 HU)的截断效果*
 
 **不同截断策略的效果：**
@@ -969,7 +969,7 @@ def validate_preprocessing(original_image, processed_image, roi_mask=None):
 
 ### 金属伪影检测
 
-![金属伪影检测结果](../../../ch05-code-examples/detect_metal_artifacts/output/metal_artifact_detection.png)
+![金属伪影检测结果](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/detect_metal_artifacts/output/metal_artifact_detection.png)
 *CT金属伪影检测结果：自动检测金属区域并评估伪影严重程度*
 
 **不同阈值的检测效果：**
@@ -979,7 +979,7 @@ def validate_preprocessing(original_image, processed_image, roi_mask=None):
 | 3000 | 2 | 165 | 0.02% | 轻微 |
 | 4000 | 2 | 133 | 0.01% | 轻微 |
 
-![金属伪影阈值对比](../../../ch05-code-examples/detect_metal_artifacts/output/metal_threshold_comparison.png)
+![金属伪影阈值对比](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/detect_metal_artifacts/output/metal_threshold_comparison.png)
 *不同HU阈值对金属伪影检测效果的影响对比*
 
 ### 实际应用建议

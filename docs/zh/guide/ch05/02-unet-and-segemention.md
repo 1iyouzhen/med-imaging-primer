@@ -45,8 +45,8 @@ U-Net的成功源于三个核心设计原则：
 
 让我们深入理解U-Net的网络结构和数据流：
 
-![U-Net架构深度解析](./mermaid-assets/rendered-images/03-unet-architecture-zh.png)
-*图：U-Net的编码器-解码器结构，展示跳跃连接如何将浅层特征传递到深层，保持空间细节信息。*[📄 [Mermaid源文件](./mermaid-assets/source-files/03-unet-architecture-zh.mmd)]
+![U-Net架构深度解析](/images/ch05/03-unet-architecture-zh.png)
+*图：U-Net的编码器-解码器结构，展示跳跃连接如何将浅层特征传递到深层，保持空间细节信息。*[📄 [Mermaid源文件](/images/ch05/03-unet-architecture-zh.mmd)]
 
 <details>
 <summary>📖 查看原始Mermaid代码</summary>
@@ -202,7 +202,7 @@ def visualize_skip_connections():
 
 ### U-Net肺野分割实现
 
-[📖 **完整代码示例**: `lung_segmentation_network/`](../../../ch05-code-examples/lung_segmentation_network/) - 完整的U-Net肺野分割实现，包含数据预处理、模型训练和结果可视化]
+[📖 **完整代码示例**: `lung_segmentation_network/`](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/lung_segmentation_network/) - 完整的U-Net肺野分割实现，包含数据预处理、模型训练和结果可视化]
 
 ```python
 class LungSegmentationNet(nn.Module):
@@ -360,8 +360,8 @@ class ResidualBlock(nn.Module):
 
 **密集跳跃连接**：在不同深度的解码器层之间建立连接
 
-![U-Net++密集跳跃连接](./mermaid-assets/rendered-images/04-unet-plus-plus-zh.png)
-*图：U-Net++的密集跳跃连接结构，红色连接显示了不同深度编码器和解码器之间的密集连接模式。*[📄 [Mermaid源文件](./mermaid-assets/source-files/04-unet-plus-plus-zh.mmd)]
+![U-Net++密集跳跃连接](/images/ch05/04-unet-plus-plus-zh.png)
+*图：U-Net++的密集跳跃连接结构，红色连接显示了不同深度编码器和解码器之间的密集连接模式。*[📄 [Mermaid源文件](/images/ch05/04-unet-plus-plus-zh.mmd)]
 
 <details>
 <summary>📖 查看原始Mermaid代码</summary>

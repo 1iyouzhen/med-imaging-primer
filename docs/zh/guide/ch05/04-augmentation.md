@@ -46,7 +46,7 @@ class MedicalAugmentation:
         return enhanced_image
 ```
 
-[📖 **完整代码示例**: `data_augmentation/`](../../../ch05-code-examples/) - 包含完整的医学图像增强实现、2D/3D变换和模态适配功能]
+[📖 **完整代码示例**: `data_augmentation/`](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/) - 包含完整的医学图像增强实现、2D/3D变换和模态适配功能]
 
 **运行结果分析：**
 
@@ -84,27 +84,40 @@ class MedicalAugmentation:
 2. **病理保持**：不改变或掩盖关键的病理特征
 3. **模态特性**：针对不同成像模态调整增强策略
 4. **临床相关性**：增强效果应具有实际的临床意义
-                    scale=(0.95, 1.05),  # 小幅度缩放
-                    shear=5,  # 小幅度剪切
-                    fill=0  # 填充为黑色
-                ),
-                transforms.RandomHorizontalFlip(p=0.5),  # 水平翻转（对某些部位有效）
-            ])
-        else:
-            # 更激进的变换（仅用于研究目的）
-            transforms_list.extend([
-                transforms.RandomAffine(
-                    degrees=30,
-                    translate=(0.15, 0.15),
-                    scale=(0.8, 1.2),
-                    shear=15,
-                    fill=0
-                ),
-                transforms.RandomHorizontalFlip(p=0.5),
-                transforms.RandomVerticalFlip(p=0.3),
-            ])
 
-        return transforms.Compose(transforms_list)
+```python
+class MedicalAugmentation:
+    """医学图像增强工具"""
+
+    def __init__(self, image_size=(256, 256), modality='CT'):
+        self.image_size = image_size
+        self.modality = modality
+        self._setup_modality_parameters()
+
+    def _setup_modality_parameters(self):
+        if self.modality == 'CT':
+            self.transforms = self._ct_augmentation()
+                scale=(0.95, 1.05),  # 小幅度缩放
+                shear=5,  # 小幅度剪切
+                fill=0  # 填充为黑色
+            ),
+            transforms.RandomHorizontalFlip(p=0.5),  # 水平翻转（对某些部位有效）
+        ])
+    else:
+        # 更激进的变换（仅用于研究目的）
+        transforms_list.extend([
+            transforms.RandomAffine(
+                degrees=30,
+                translate=(0.15, 0.15),
+                scale=(0.8, 1.2),
+                shear=15,
+                fill=0
+            ),
+            transforms.RandomHorizontalFlip(p=0.5),
+            transforms.RandomVerticalFlip(p=0.3),
+        ])
+
+    return transforms.Compose(transforms_list)
 ```
 
 ### 高级增强技术

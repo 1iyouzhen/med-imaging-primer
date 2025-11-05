@@ -49,8 +49,8 @@ mermaid-assets/
 ### Reference in Markdown
 
 ```markdown
-![Diagram Name](./mermaid-assets/rendered-images/01-preprocessing-hierarchy-en.png)
-*Figure: Diagram description*[📄 [Mermaid Source](./mermaid-assets/source-files/01-preprocessing-hierarchy-en.mmd)]
+![Diagram Name](/images/ch05/01-preprocessing-hierarchy-en.png)
+*Figure: Diagram description*[📄 [Mermaid Source](/images/ch05/01-preprocessing-hierarchy-en.mmd)]
 ```
 
 ### Render New Images

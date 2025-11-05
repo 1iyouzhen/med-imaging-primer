@@ -41,8 +41,8 @@ The core task of medical image preprocessing is to convert original physical mea
 
 Medical image preprocessing can be divided into three levels:
 
-![Medical Image Preprocessing Hierarchy](./mermaid-assets/rendered-images/01-preprocessing-hierarchy-en.png)
-*Figure: Three levels of medical image preprocessing from basic to modality-specific to task-oriented.*[📄 [Mermaid Source](./mermaid-assets/source-files/01-preprocessing-hierarchy-en.mmd)]
+![Medical Image Preprocessing Hierarchy](/images/ch05/01-preprocessing-hierarchy-en.png)
+*Figure: Three levels of medical image preprocessing from basic to modality-specific to task-oriented.*[📄 [Mermaid Source](/images/ch05/01-preprocessing-hierarchy-en.mmd)]
 
 <details>
 <summary>📖 View Original Mermaid Code</summary>
@@ -289,7 +289,7 @@ class N4ITKBiasCorrector:
 2. **Extract white matter intensity range**: Find the dominant mode of white matter through statistical analysis
 3. **Linear mapping**: Map white matter range to standard interval (e.g., [0, 1])
 
-[📖 **Complete Code Example**: `white_stripe_normalization/`](../../../ch05-code-examples/) - Full White Stripe normalization implementation with multi-modality support]
+[📖 **Complete Code Example**: `white_stripe_normalization/`](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/) - Full White Stripe normalization implementation with multi-modality support]
 
 **Execution Results Analysis:**
 
@@ -322,7 +322,7 @@ Different MRI sequences provide complementary tissue information:
 
 #### Multi-sequence Fusion Methods
 
-[📖 **Complete Code Example**: `multisequence_fusion/`](../../../ch05-code-examples/) - Multi-sequence MRI fusion implementation with different strategies]
+[📖 **Complete Code Example**: `multisequence_fusion/`](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/) - Multi-sequence MRI fusion implementation with different strategies]
 
 **Execution Results Analysis:**
 
@@ -654,8 +654,8 @@ def elastic_transform_3d(image, alpha, sigma, order=1):
 
 #### Task-driven Preprocessing Strategy
 
-![Task-driven Preprocessing Strategy](./mermaid-assets/rendered-images/02-preprocessing-strategy-en.png)
-*Figure: Decision flow for selecting appropriate preprocessing strategies based on imaging modality.*[📄 [Mermaid Source](./mermaid-assets/source-files/02-preprocessing-strategy-en.mmd)]
+![Task-driven Preprocessing Strategy](/images/ch05/02-preprocessing-strategy-en.png)
+*Figure: Decision flow for selecting appropriate preprocessing strategies based on imaging modality.*[📄 [Mermaid Source](/images/ch05/02-preprocessing-strategy-en.mmd)]
 
 <details>
 <summary>📖 View Original Mermaid Code</summary>
@@ -745,11 +745,11 @@ def validate_preprocessing(original_image, processed_image, roi_mask=None):
 
 ## 🖼️ Algorithm Demonstrations
 
-Below we showcase the practical effects of our implemented preprocessing algorithms on real data. All code examples can be found and run in the [`ch05-code-examples`](../../../ch05-code-examples/) directory.
+Below we showcase the practical effects of our implemented preprocessing algorithms on real data. All code examples can be found and run in the [`ch05-code-examples`](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/) directory.
 
 ### MRI Bias Field Visualization and Correction
 
-![MRI Bias Field Visualization](../../../ch05-code-examples/visualize_bias_field/output/bias_field_visualization_division.png)
+![MRI Bias Field Visualization](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/visualize_bias_field/output/bias_field_visualization_division.png)
 *MRI bias field visualization: left - original image, center - estimated bias field, right - corrected image*
 
 **Bias field correction performance comparison:**
@@ -757,12 +757,12 @@ Below we showcase the practical effects of our implemented preprocessing algorit
 - Homomorphic method: MSE=0.1984, PSNR=7.0dB, SSIM=0.149
 - Polynomial method: MSE=0.0663, PSNR=11.8dB, SSIM=0.545
 
-![Multiple Bias Field Correction Methods Comparison](../../../ch05-code-examples/visualize_bias_field/output/bias_field_methods_comparison.png)
+![Multiple Bias Field Correction Methods Comparison](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/visualize_bias_field/output/bias_field_methods_comparison.png)
 *Performance comparison of different bias field correction methods, showing polynomial method performs best in this example*
 
 ### White Stripe Intensity Normalization
 
-![White Stripe Normalization Results](../../../ch05-code-examples/white_stripe_normalization/output/white_stripe_t1_normalization.png)
+![White Stripe Normalization Results](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/white_stripe_normalization/output/white_stripe_t1_normalization.png)
 *White Stripe intensity normalization: showing original image, normalized result, difference comparison, and statistical analysis*
 
 **Normalization effects for different MRI sequences:**
@@ -770,12 +770,12 @@ Below we showcase the practical effects of our implemented preprocessing algorit
 - T2 sequence: 6 white matter pixels, normalized mean 0.886
 - FLAIR sequence: 10 white matter pixels, normalized mean 0.888
 
-![Multi-modality MRI Normalization Comparison](../../../ch05-code-examples/white_stripe_normalization/output/white_stripe_modality_comparison.png)
+![Multi-modality MRI Normalization Comparison](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/white_stripe_normalization/output/white_stripe_modality_comparison.png)
 *White Stripe normalization effects for different MRI sequences, showing intensity distributions and normalization results*
 
 ### CLAHE Contrast Enhancement
 
-![CLAHE Parameter Comparison](../../../ch05-code-examples/clahe_enhancement/output/clahe_parameter_comparison.png)
+![CLAHE Parameter Comparison](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/clahe_enhancement/output/clahe_parameter_comparison.png)
 *Effects of different CLAHE parameters, showing progressive enhancement from weak to strongest*
 
 **CLAHE enhancement quantitative evaluation:**
@@ -785,12 +785,12 @@ Below we showcase the practical effects of our implemented preprocessing algorit
 - Edge strength improvement factor: 18.19
 - PSNR: 28.05 dB, SSIM: 0.566
 
-![CLAHE Detailed Analysis](../../../ch05-code-examples/clahe_enhancement/output/clahe_detailed_analysis.png)
+![CLAHE Detailed Analysis](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/clahe_enhancement/output/clahe_detailed_analysis.png)
 *Detailed CLAHE enhancement analysis, including edge detection, intensity distribution, and enhancement effect evaluation*
 
 ### CT HU Value Clipping
 
-![HU Value Clipping Comparison](../../../ch05-code-examples/clip_hu_values/output/hu_clipping_软组织范围.png)
+![HU Value Clipping Comparison](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/clip_hu_values/output/hu_clipping_软组织范围.png)
 *CT HU value clipping: showing soft tissue range (-200, 400 HU) clipping effect*
 
 **Effects of different clipping strategies:**
@@ -801,7 +801,7 @@ Below we showcase the practical effects of our implemented preprocessing algorit
 
 ### Metal Artifact Detection
 
-![Metal Artifact Detection Results](../../../ch05-code-examples/detect_metal_artifacts/output/metal_artifact_detection.png)
+![Metal Artifact Detection Results](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/detect_metal_artifacts/output/metal_artifact_detection.png)
 *CT metal artifact detection: automatic detection of metal regions and artifact severity assessment*
 
 **Detection effects of different thresholds:**
@@ -811,7 +811,7 @@ Below we showcase the practical effects of our implemented preprocessing algorit
 | 3000 | 2 | 165 | 0.02% | Slight |
 | 4000 | 2 | 133 | 0.01% | Slight |
 
-![Metal Artifact Threshold Comparison](../../../ch05-code-examples/detect_metal_artifacts/output/metal_threshold_comparison.png)
+![Metal Artifact Threshold Comparison](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/detect_metal_artifacts/output/metal_threshold_comparison.png)
 *Comparison of metal artifact detection effects for different HU thresholds*
 
 ### Practical Application Recommendations

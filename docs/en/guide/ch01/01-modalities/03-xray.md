@@ -17,7 +17,7 @@ Röntgen completely wrapped the cathode ray tube in black cardboard, ensuring no
 
 This couldn't be cathode rays—cathode rays can only travel a few centimeters in air. It must be some unknown ray that penetrated the black cardboard. Röntgen named this mysterious ray "X-rays," with X representing "unknown."
 
-![Wilhelm Conrad Röntgen](../../../../public/images/ch01/roentgen-portrait.jpg)
+![Wilhelm Conrad Röntgen](/images/ch01/roentgen-portrait.jpg)
 *Wilhelm Conrad Röntgen, discoverer of X-rays*
 
 ::: tip 💡 Why Called "X"-rays?

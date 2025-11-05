@@ -97,7 +97,7 @@ PET扫描仪使用**符合探测**（coincidence detection）技术：
 
 **2010年代**，**PET-MRI**开始应用于临床，结合了MRI的优秀软组织对比度和PET的功能成像能力，特别适合脑部和盆腔成像。
 
-![PET-CT扫描仪](../../../../public\images/ch01/pet-ct-scanner.jpg)
+![PET-CT扫描仪](\images/ch01/pet-ct-scanner.jpg)
 *现代PET-CT扫描仪，将功能成像与解剖成像完美融合*
 
 ### PET技术的发展历程
@@ -210,7 +210,7 @@ PET扫描仪使用**符合探测**（coincidence detection）技术：
 
 同一个晶体既是发射器又是接收器，交替发射和接收超声波。
 
-![超声探头](../../../../public\images/ch01/ultrasound-probe.jpg)
+![超声探头](\images/ch01/ultrasound-probe.jpg)
 *医用超声线性阵列探头，内部包含多个压电晶体阵列*
 
 #### 超声波与组织的相互作用

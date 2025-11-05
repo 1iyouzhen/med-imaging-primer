@@ -49,8 +49,8 @@ mermaid-assets/
 ### 在 Markdown 中引用
 
 ```markdown
-![图表名称](./mermaid-assets/rendered-images/01-preprocessing-hierarchy-zh.png)
-*图：图表描述*[📄 [Mermaid源文件](./mermaid-assets/source-files/01-preprocessing-hierarchy-zh.mmd)]
+![图表名称](/images/ch05/01-preprocessing-hierarchy-zh.png)
+*图：图表描述*[📄 [Mermaid源文件](/images/ch05/01-preprocessing-hierarchy-zh.mmd)]
 ```
 
 ### 渲染新图片
