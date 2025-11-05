@@ -45,7 +45,7 @@ For the next 20+ years, NMR was mainly used by chemists to analyze molecular str
 
 The **2003 Nobel Prize in Physiology or Medicine** was awarded to Paul Lauterbur and Peter Mansfield in recognition of their pioneering contributions to MRI.
 
-![Modern 3T MRI Scanner](/images/ch01/modern-3t-mri-scanner.jpg)
+![Modern 3T MRI Scanner](../../../../public/images/ch01/modern-3t-mri-scanner.jpg)
 *Modern 3T (3 Tesla) MRI scanner, with magnetic field strength 60,000 times that of Earth's magnetic field*
 
 ::: warning ⚠️ An Interesting Controversy

@@ -1,0 +1,182 @@
+{
+  "configuration": {
+    "target_spacing": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "interpolation_method": "linear",
+    "anti_aliasing": true,
+    "preserve_intensity": true
+  },
+  "results": [
+    {
+      "modality": "ct",
+      "original_shape": [
+        128,
+        128,
+        64
+      ],
+      "resampled_shape": [
+        90,
+        90,
+        160
+      ],
+      "original_spacing": [
+        0.7,
+        0.7,
+        2.5
+      ],
+      "resampled_spacing": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "quality_metrics": {
+        "intensity_preservation": {
+          "correlation": 0.9846306619892848,
+          "original_stats": {
+            "mean": -36.49715464440058,
+            "std": 92.69316951966411,
+            "min": -432.6019540733135,
+            "max": 135.80195109092332
+          },
+          "resampled_stats": {
+            "mean": -36.60512471614409,
+            "std": 90.57828639842333,
+            "min": -411.27687152568154,
+            "max": 111.99925561191361
+          },
+          "mean_change_percent": 0.29583147718199043
+        },
+        "spatial_resolution": {
+          "voxel_size_change": 0.816326530612245,
+          "resolution_change_factors": [
+            0.7,
+            0.7,
+            2.5
+          ],
+          "isotropic_degree": 0.0
+        },
+        "image_quality": {
+          "snr": 63.53044734191194,
+          "dynamic_range": 523.2761271375952,
+          "contrast": -2.47447009470835
+        }
+      },
+      "volume_change": 0.8090864197530864
+    },
+    {
+      "modality": "mri",
+      "original_shape": [
+        128,
+        128,
+        64
+      ],
+      "resampled_shape": [
+        128,
+        128,
+        192
+      ],
+      "original_spacing": [
+        1.0,
+        1.0,
+        3.0
+      ],
+      "resampled_spacing": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "quality_metrics": {
+        "intensity_preservation": {
+          "correlation": 0.9994080507956951,
+          "original_stats": {
+            "mean": 0.11205215007066727,
+            "std": 0.2200109213590622,
+            "min": 0.0,
+            "max": 0.8999861478805542
+          },
+          "resampled_stats": {
+            "mean": 0.11324092000722885,
+            "std": 0.21863235533237457,
+            "min": 0.0,
+            "max": 0.8997961282730103
+          },
+          "mean_change_percent": 1.0609076485556994
+        },
+        "spatial_resolution": {
+          "voxel_size_change": 0.3333333333333333,
+          "resolution_change_factors": [
+            1.0,
+            1.0,
+            3.0
+          ],
+          "isotropic_degree": 0.0
+        },
+        "image_quality": {
+          "snr": 88.97219237578051,
+          "dynamic_range": 0.8997961282730103,
+          "contrast": 1.9306831489146015
+        }
+      },
+      "volume_change": 0.3333333333333333
+    },
+    {
+      "modality": "pet",
+      "original_shape": [
+        64,
+        64,
+        32
+      ],
+      "resampled_shape": [
+        128,
+        128,
+        96
+      ],
+      "original_spacing": [
+        2.0,
+        2.0,
+        3.0
+      ],
+      "resampled_spacing": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "quality_metrics": {
+        "intensity_preservation": {
+          "correlation": 0.9937097989608978,
+          "original_stats": {
+            "mean": 0.5615030527114868,
+            "std": 0.1505325883626938,
+            "min": 0.5000021457672119,
+            "max": 4.199999809265137
+          },
+          "resampled_stats": {
+            "mean": 0.561948835849762,
+            "std": 0.14445075392723083,
+            "min": 0.500344455242157,
+            "max": 4.146627902984619
+          },
+          "mean_change_percent": 0.07939104305548553
+        },
+        "spatial_resolution": {
+          "voxel_size_change": 0.08333333333333333,
+          "resolution_change_factors": [
+            2.0,
+            2.0,
+            3.0
+          ],
+          "isotropic_degree": 0.0
+        },
+        "image_quality": {
+          "snr": 28.03202935823041,
+          "dynamic_range": 3.6462833881378174,
+          "contrast": 0.2570532086578037
+        }
+      },
+      "volume_change": 0.08333333333333333
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "config": {
+    "image_size": [
+      256,
+      256
+    ],
+    "in_channels": 1,
+    "num_classes": 1,
+    "device": "cpu"
+  },
+  "performance": {
+    "num_samples": 3,
+    "average_metrics": {
+      "dice": 0.3132869767061752,
+      "iou": 0.1857383738327035,
+      "sensitivity": 0.49813879287390445,
+      "specificity": 0.4988711082942845,
+      "precision": 0.22849587715126105
+    },
+    "individual_metrics": [
+      {
+        "sample_id": 0,
+        "metrics": {
+          "dice": 0.3142803480873319,
+          "iou": 0.1864369011364019,
+          "sensitivity": 0.5005317734641714,
+          "specificity": 0.49803929335330394,
+          "precision": 0.229049429657725,
+          "surface_distance": 30.740936168198875,
+          "tp": 7530.0,
+          "fp": 25345.0,
+          "fn": 7514.0,
+          "tn": 25147.0
+        }
+      },
+      {
+        "sample_id": 1,
+        "metrics": {
+          "dice": 0.3129394040843001,
+          "iou": 0.18549387309614887,
+          "sensitivity": 0.4970752459448969,
+          "specificity": 0.4995246771764835,
+          "precision": 0.22834982288987773,
+          "surface_distance": 30.695708086854708,
+          "tp": 7478.0,
+          "fp": 25270.0,
+          "fn": 7566.0,
+          "tn": 25222.0
+        }
+      },
+      {
+        "sample_id": 2,
+        "metrics": {
+          "dice": 0.31264117794689356,
+          "iou": 0.1852843472655597,
+          "sensitivity": 0.496809359212645,
+          "specificity": 0.499049354353066,
+          "precision": 0.22808837890618042,
+          "surface_distance": 30.703643674708164,
+          "tp": 7474.0,
+          "fp": 25294.0,
+          "fn": 7570.0,
+          "tn": 25198.0
+        }
+      }
+    ]
+  },
+  "lung_statistics": {
+    "average_lung_volume": 32797.0,
+    "average_lung_percentage": 50.04425048828125,
+    "average_lung_hu_mean": -190.10937599665192
+  }
+}

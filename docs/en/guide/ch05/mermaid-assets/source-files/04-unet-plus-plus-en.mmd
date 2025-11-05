@@ -1,0 +1,47 @@
+%% Title: U-Net++ Dense Skip Connections
+%% Description: Dense skip connections architecture of U-Net++
+%% File: 04-unet-plus-plus-en.mmd
+
+graph TD
+    A["<b>Input</b>"] --> B["<b>Encoder L1</b>"]
+    B --> C["<b>Encoder L2</b>"]
+    C --> D["<b>Encoder L3</b>"]
+    D --> E["<b>Encoder L4</b>"]
+
+    E --> F["<b>Decoder L4</b>"]
+    D --> F
+    C --> F
+    B --> F
+
+    F --> G["<b>Decoder L3</b>"]
+    D --> G
+    C --> G
+    B --> G
+
+    G --> H["<b>Decoder L2</b>"]
+    C --> H
+    B --> H
+
+    H --> I["<b>Decoder L1</b>"]
+    B --> I
+
+    I --> J["<b>Output</b>"]
+
+    %% Styling
+    style A fill:#e8f5e8,stroke:#27ae60,stroke-width:3px,color:#2c3e50
+    style J fill:#fadbd8,stroke:#e74c3c,stroke-width:3px,color:#2c3e50
+
+    style B fill:#ebf3fd,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style C fill:#ebf3fd,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style D fill:#ebf3fd,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style E fill:#ebf3fd,stroke:#3498db,stroke-width:2px,color:#2c3e50
+
+    style F fill:#d5f4e6,stroke:#27ae60,stroke-width:2px,color:#2c3e50
+    style G fill:#d5f4e6,stroke:#27ae60,stroke-width:2px,color:#2c3e50
+    style H fill:#d5f4e6,stroke:#27ae60,stroke-width:2px,color:#2c3e50
+    style I fill:#d5f4e6,stroke:#27ae60,stroke-width:2px,color:#2c3e50
+
+    %% Dense connections styling
+    classDef dense stroke:#e74c3c,stroke-width:3px,color:#e74c3c;
+
+    %% Font settings - Using system fonts for compatibility

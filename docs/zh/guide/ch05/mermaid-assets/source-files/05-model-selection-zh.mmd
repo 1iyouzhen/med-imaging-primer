@@ -1,0 +1,53 @@
+%% Title: 医学图像分析模型选择指南
+%% Description: 根据数据类型和任务类型选择合适的深度学习模型
+%% File: 05-model-selection-zh.mmd
+
+flowchart TD
+    A["<b>医学图像分析任务</b><br><i>Medical Image Analysis Task</i>"] --> B{"<b>数据类型？</b><br><i>Data Type?</i>"}
+
+    B -->|<font color='#3498db'><b>2D X线</b></font>| C{"<b>任务类型？</b><br><i>Task Type?</i>"}
+    B -->|<font color='#27ae60'><b>3D CT/MRI</b></font>| D{"<b>任务类型？</b><br><i>Task Type?</i>"}
+    B -->|<font color='#f39c12'><b>全幻灯片图像</b><br><i>WSI</i></font>| E{"<b>任务类型？</b><br><i>Task Type?</i>"}
+
+    C -->|<font color='#e74c3c'><b>分类</b></font>| F["<b>ResNet/DenseNet</b><br><i>+ 迁移学习</i>"]
+    C -->|<font color='#9b59b6'><b>检测</b></font>| G["<b>Faster R-CNN/YOLO</b><br><i>+ Anchor调整</i>"]
+
+    D -->|<font color='#e74c3c'><b>分类</b></font>| H["<b>3D ResNet/3D DenseNet</b><br><i>+ 基于Patch的训练</i>"]
+    D -->|<font color='#27ae60'><b>分割</b></font>| I["<b>3D U-Net/V-Net</b><br><i>+ 跳跃连接</i>"]
+
+    E -->|<font color='#e74c3c'><b>分类</b></font>| J["<b>注意力MIL</b><br><i>+ 组织过滤</i>"]
+    E -->|<font color='#9b59b6'><b>检测</b></font>| K["<b>Patch级检测</b><br><i>+ 聚合</i>"]
+
+    F --> L["<b>最佳实践</b><br><i>Best Practices</i>"]
+    G --> L
+    H --> L
+    I --> L
+    J --> L
+    K --> L
+
+    L --> M["<b>类别不平衡处理</b><br><i>Class Imbalance</i>"]
+    L --> N["<b>数据增强</b><br><i>Data Augmentation</i>"]
+    L --> O["<b>集成方法</b><br><i>Ensemble Methods</i>"]
+    L --> P["<b>交叉验证</b><br><i>Cross Validation</i>"]
+
+    %% Styling
+    style A fill:#e8f5e8,stroke:#27ae60,stroke-width:3px,color:#2c3e50
+    style B fill:#fef5e7,stroke:#f39c12,stroke-width:3px,color:#2c3e50
+    style C fill:#fef5e7,stroke:#f39c12,stroke-width:2px,color:#2c3e50
+    style D fill:#fef5e7,stroke:#f39c12,stroke-width:2px,color:#2c3e50
+    style E fill:#fef5e7,stroke:#f39c12,stroke-width:2px,color:#2c3e50
+    style L fill:#fadbd8,stroke:#e74c3c,stroke-width:3px,color:#2c3e50
+
+    style F fill:#fadbd8,stroke:#e74c3c,stroke-width:2px,color:#2c3e50
+    style G fill:#ebdef0,stroke:#9b59b6,stroke-width:2px,color:#2c3e50
+    style H fill:#fadbd8,stroke:#e74c3c,stroke-width:2px,color:#2c3e50
+    style I fill:#d5f4e6,stroke:#27ae60,stroke-width:2px,color:#2c3e50
+    style J fill:#fadbd8,stroke:#e74c3c,stroke-width:2px,color:#2c3e50
+    style K fill:#ebdef0,stroke:#9b59b6,stroke-width:2px,color:#2c3e50
+
+    style M fill:#ebf4fb,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style N fill:#ebf4fb,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style O fill:#ebf4fb,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style P fill:#ebf4fb,stroke:#3498db,stroke-width:2px,color:#2c3e50
+
+    %% Font settings - Using system fonts for compatibility

@@ -1,0 +1,66 @@
+# Medical Image Processing Chapter 05 - Complete Requirements
+# 医学影像处理第五章 - 完整依赖包列表
+#
+# This file includes all dependencies required for Chapter 05 algorithms
+# 本文件包含第五章所有算法所需的依赖包
+
+# Core Scientific Computing / 核心科学计算库
+numpy>=1.21.0,<2.0.0
+scipy>=1.7.0
+matplotlib>=3.5.0
+
+# Image Processing / 图像处理库
+scikit-image>=0.19.0
+opencv-python>=4.5.0
+
+# Machine Learning / 机器学习库
+scikit-learn>=1.0.0,<1.4.0
+
+# Medical Image Formats / 医学影像格式支持
+pydicom>=2.3.0
+nibabel>=3.2.0
+SimpleITK>=2.1.0
+
+# System Utilities / 系统工具
+pathlib2>=2.3.0; python_version<"3.4"
+
+# Visualization / 可视化库
+seaborn>=0.11.0
+
+# Deep Learning Frameworks / 深度学习框架
+# Choose ONE of the following PyTorch options based on your system:
+# 请根据您的系统选择以下PyTorch选项之一：
+
+# Option 1: CPU-only PyTorch (for systems without NVIDIA GPUs)
+# 选项1: 仅CPU版本PyTorch（适用于无NVIDIA GPU的系统）
+# torch>=1.9.0
+# torchvision>=0.10.0
+
+# Option 2: NVIDIA GPU PyTorch (for systems with CUDA-compatible NVIDIA GPUs)
+# 选项2: NVIDIA GPU版本PyTorch（适用于有兼容CUDA的NVIDIA GPU的系统）
+# Visit https://pytorch.org/get-started/locally/ to get the correct command for your CUDA version
+# 访问 https://pytorch.org/get-started/locally/ 获取适用于您CUDA版本的正确安装命令
+
+# For CUDA 11.8:
+pip install torch==2.1.0 torchvision==0.16.0 --index-url https://download.pytorch.org/whl/cu118
+
+# For CUDA 12.1:
+pip install torch==2.1.0 torchvision==0.16.0 --index-url https://download.pytorch.org/whl/cu121
+
+# Alternative installation commands:
+# 备选安装命令：
+
+# CPU Installation:
+# CPU版本安装：
+# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+
+# GPU Installation (automatic CUDA detection):
+# GPU版本安装（自动检测CUDA）：
+# pip install torch torchvision torchaudio
+
+# Development and Testing / 开发和测试工具
+# Uncomment the following if you need them for development:
+# 如果需要开发和测试工具，请取消以下注释：
+# pytest>=6.0.0
+# jupyter>=1.0.0
+# notebook>=6.0.0

@@ -1,0 +1,51 @@
+%% Title: Task-driven Preprocessing Strategy
+%% Description: Choose appropriate preprocessing strategy based on imaging modality
+%% File: 02-preprocessing-strategy-en.mmd
+
+flowchart TD
+    A["<b>Medical Image Preprocessing Task</b>"] --> B{"<b>Determine Imaging Modality</b>"}
+
+    B -->|<font color='#e74c3c'><b>CT</b></font>| C["<b>HU Value Calibration</b>"]
+    C --> D["<b>Window Level Adjustment</b>"]
+    D --> E["<b>Outlier Processing</b>"]
+
+    B -->|<font color='#27ae60'><b>MRI</b></font>| F["<b>Bias Field Correction</b>"]
+    F --> G["<b>Intensity Standardization</b>"]
+    G --> H["<b>Multi-sequence Fusion</b>"]
+
+    B -->|<font color='#f39c12'><b>X-ray</b></font>| I["<b>Contrast Enhancement</b>"]
+    I --> J["<b>Anatomical Region Segmentation</b>"]
+    J --> K["<b>Local Normalization</b>"]
+
+    E --> L["<b>Universal Preprocessing</b>"]
+    H --> L
+    K --> L
+
+    L --> M["<b>Resampling</b>"]
+    M --> N["<b>Size Standardization</b>"]
+    N --> O["<b>Data Augmentation</b>"]
+    O --> P["<b>Final Normalization</b>"]
+
+    %% Styling
+    style A fill:#e8f5e8,stroke:#27ae60,stroke-width:3px,color:#2c3e50
+    style B fill:#fef5e7,stroke:#f39c12,stroke-width:3px,color:#2c3e50
+
+    style C fill:#fadbd8,stroke:#e74c3c,stroke-width:2px,color:#2c3e50
+    style D fill:#fadbd8,stroke:#e74c3c,stroke-width:2px,color:#2c3e50
+    style E fill:#fadbd8,stroke:#e74c3c,stroke-width:2px,color:#2c3e50
+
+    style F fill:#d5f4e6,stroke:#27ae60,stroke-width:2px,color:#2c3e50
+    style G fill:#d5f4e6,stroke:#27ae60,stroke-width:2px,color:#2c3e50
+    style H fill:#d5f4e6,stroke:#27ae60,stroke-width:2px,color:#2c3e50
+
+    style I fill:#fdebd0,stroke:#f39c12,stroke-width:2px,color:#2c3e50
+    style J fill:#fdebd0,stroke:#f39c12,stroke-width:2px,color:#2c3e50
+    style K fill:#fdebd0,stroke:#f39c12,stroke-width:2px,color:#2c3e50
+
+    style L fill:#ebf4fb,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style M fill:#ebf4fb,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style N fill:#ebf4fb,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style O fill:#ebf4fb,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style P fill:#fef9e7,stroke:#f1c40f,stroke-width:2px,color:#2c3e50
+
+    %% Font settings - Using system fonts for compatibility

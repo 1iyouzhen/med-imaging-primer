@@ -1,0 +1,51 @@
+%% Title: 任务驱动的预处理策略
+%% Description: 根据不同成像模态选择相应的预处理策略
+%% File: 02-preprocessing-strategy-zh.mmd
+
+flowchart TD
+    A["<b>医学影像预处理任务</b><br><i>Medical Image Preprocessing Task</i>"] --> B{"<b>确定成像模态</b><br><i>Determine Imaging Modality</i>"}
+
+    B -->|<font color='#e74c3c'><b>CT</b></font>| C["<b>HU值校准</b><br><i>HU Value Calibration</i>"]
+    C --> D["<b>窗宽窗位调整</b><br><i>Window Level Adjustment</i>"]
+    D --> E["<b>异常值处理</b><br><i>Outlier Processing</i>"]
+
+    B -->|<font color='#27ae60'><b>MRI</b></font>| F["<b>偏场校正</b><br><i>Bias Field Correction</i>"]
+    F --> G["<b>强度标准化</b><br><i>Intensity Standardization</i>"]
+    G --> H["<b>多序列融合</b><br><i>Multi-sequence Fusion</i>"]
+
+    B -->|<font color='#f39c12'><b>X-ray</b></font>| I["<b>对比度增强</b><br><i>Contrast Enhancement</i>"]
+    I --> J["<b>解剖区域分割</b><br><i>Anatomical Region Segmentation</i>"]
+    J --> K["<b>局部归一化</b><br><i>Local Normalization</i>"]
+
+    E --> L["<b>通用预处理</b><br><i>Universal Preprocessing</i>"]
+    H --> L
+    K --> L
+
+    L --> M["<b>重采样</b><br><i>Resampling</i>"]
+    M --> N["<b>尺寸标准化</b><br><i>Size Standardization</i>"]
+    N --> O["<b>数据增强</b><br><i>Data Augmentation</i>"]
+    O --> P["<b>最终归一化</b><br><i>Final Normalization</i>"]
+
+    %% Styling
+    style A fill:#e8f5e8,stroke:#27ae60,stroke-width:3px,color:#2c3e50
+    style B fill:#fef5e7,stroke:#f39c12,stroke-width:3px,color:#2c3e50
+
+    style C fill:#fadbd8,stroke:#e74c3c,stroke-width:2px,color:#2c3e50
+    style D fill:#fadbd8,stroke:#e74c3c,stroke-width:2px,color:#2c3e50
+    style E fill:#fadbd8,stroke:#e74c3c,stroke-width:2px,color:#2c3e50
+
+    style F fill:#d5f4e6,stroke:#27ae60,stroke-width:2px,color:#2c3e50
+    style G fill:#d5f4e6,stroke:#27ae60,stroke-width:2px,color:#2c3e50
+    style H fill:#d5f4e6,stroke:#27ae60,stroke-width:2px,color:#2c3e50
+
+    style I fill:#fdebd0,stroke:#f39c12,stroke-width:2px,color:#2c3e50
+    style J fill:#fdebd0,stroke:#f39c12,stroke-width:2px,color:#2c3e50
+    style K fill:#fdebd0,stroke:#f39c12,stroke-width:2px,color:#2c3e50
+
+    style L fill:#ebf4fb,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style M fill:#ebf4fb,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style N fill:#ebf4fb,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style O fill:#ebf4fb,stroke:#3498db,stroke-width:2px,color:#2c3e50
+    style P fill:#fef9e7,stroke:#f1c40f,stroke-width:2px,color:#2c3e50
+
+    %% Font settings - Using system fonts for compatibility
