@@ -8,6 +8,26 @@
 
 An open-source tutorial on medical imaging processing, providing a systematic guide from physical imaging principles, reconstruction algorithms to deep learning post-processing.
 
+> [!IMPORTANT]
+> **Content Source and Copyright Notice**
+>
+> All images and content in this tutorial are sourced from publicly available internet resources or published academic materials. This tutorial does not contain any trade secrets from medical device manufacturers, nor does it include any unpublished proprietary methods or technologies. If there are any copyright concerns, please feel free to contact us for removal.
+
+> [!NOTE]
+> **Intended Audience and Value**
+>
+> This tutorial aims to provide value to three groups of readers:
+> - **Medical Students**: We hope to help you understand the physical principles and technical foundations of medical imaging, though this tutorial does not cover clinical diagnosis.
+> - **Biomedical Engineering Students**: We attempt to provide systematic knowledge from physical principles to algorithm implementation.
+> - **Computer Science/AI Researchers**: We hope this resource may help you understand the characteristics and preprocessing methods of medical imaging data.
+>
+> Please note: This is a learning resource and cannot replace systematic professional education.
+
+> [!TIP]
+> **Update Timeliness and Accuracy**
+>
+> For the most up-to-date and accurate content, please refer to the [Chinese version (简体中文)](README.zh.md) as the primary reference.
+
 ## 📖 About
 
 This tutorial aims to help beginners systematically learn medical imaging processing technology. No medical or imaging background is required - we start from the basics of CT/MRI and gradually progress to advanced topics including reconstruction algorithms and AI-powered post-processing.
@@ -26,18 +46,29 @@ Visit the tutorial online: **[https://1985312383.github.io/med-imaging-primer/](
 
 ## 📚 Content Outline
 
+### ✅ Completed Chapters
+
 **Chapter 1: Medical Imaging Basics**
-- 1.1 Common Imaging Modality Principles
+- 1.1 Common Imaging Modality Principles (CT, MRI, X-ray, PET, Ultrasound)
+- 1.2 Data Format Standards (DICOM, NIfTI, and others)
+- 1.3 Common Open Source Tools (ITK, VTK, SimpleITK, MONAI, etc.)
+- 1.4 Artifacts in Medical Imaging (CT, MRI, X-ray, Ultrasound artifacts)
+
+**Chapter 2: Modality-Specific Preprocessing**
+- 2.1 CT: From Detector Signal to Corrected Projection ✨ **NEW**
+  - Detector types and photon acquisition
+  - Lambert-Beer law and projection value calculation
+  - Calibration procedures (dark current, gain, air, beam hardening, scatter, ring artifact)
 
 **Chapter 5: Medical Image Post-processing with Deep Learning**
 - 5.1 Preprocessing (Modality-Specific Considerations)
-- 5.2 U-Net and its Variants
+- 5.2 U-Net and Image Segmentation
 - 5.3 Classification and Detection
-- 5.4 Image Augmentation and Recovery
+- 5.4 Image Enhancement and Recovery
 
-
-**Coming Soon**
-- Chapter 2: Modality-Specific Preprocessing
+### 🚀 Coming Soon
+- Chapter 2.2 MRI k-space Preprocessing
+- Chapter 2.3 X-ray Direct Imaging Correction
 - Chapter 3: Image Reconstruction by Modality
 - Chapter 4: Reconstruction Practice with Multi-Modality Examples
 
