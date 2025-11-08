@@ -1,0 +1,264 @@
+name: "内容改进建议 / Content Improvement Suggestion"
+description: "对教程内容、结构、示例等提出改进建议 / Suggest improvements to tutorial content, structure, examples, etc."
+title: "[Improvement] "
+labels: ["enhancement", "content-improvement"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 感谢您的改进建议！/ Thank you for your improvement suggestions!
+        
+        您的建议将帮助我们不断完善教程质量。无论是新增内容、修改现有内容，还是结构调整，我们都非常欢迎！
+        Your suggestions will help us continuously improve the tutorial quality. Whether it's adding new content, modifying existing content, or structural adjustments, we welcome them all!
+        
+        **建议类型示例 / Suggestion Type Examples:**
+        - 📝 新增章节或主题
+        - ✏️ 改进现有内容的表述
+        - 🔄 调整章节结构或顺序
+        - 💻 添加代码示例或实践案例
+        - 📊 增加图表或可视化内容
+        - 🔗 补充参考资料或外部链接
+        
+        - 📝 Add new chapters or topics
+        - ✏️ Improve the expression of existing content
+        - 🔄 Adjust chapter structure or order
+        - 💻 Add code examples or practical cases
+        - 📊 Add charts or visualization content
+        - 🔗 Supplement references or external links
+
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: "前置检查 / Prerequisites"
+      description: "在提交之前，请确认以下事项 / Before submitting, please confirm the following"
+      options:
+        - label: "我已搜索现有的 Issues，确认这不是重复建议 / I have searched existing Issues to ensure this is not a duplicate suggestion"
+          required: true
+        - label: "我已阅读相关章节的内容（如果适用）/ I have read the content of the relevant chapter (if applicable)"
+          required: true
+
+  - type: dropdown
+    id: suggestion-type
+    attributes:
+      label: "建议类型 / Suggestion Type"
+      description: "请选择最符合您建议的类型 / Please select the type that best matches your suggestion"
+      options:
+        - "新增内容 / Add New Content"
+        - "修改现有内容 / Modify Existing Content"
+        - "结构调整 / Structure Adjustment"
+        - "添加示例 / Add Examples"
+        - "改进可视化 / Improve Visualization"
+        - "补充参考资料 / Add References"
+        - "翻译改进 / Translation Improvement"
+        - "其他 / Other"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: related-chapter
+    attributes:
+      label: "相关章节 / Related Chapter (如适用 / If Applicable)"
+      description: "您的建议涉及哪个章节？/ Which chapter does your suggestion relate to?"
+      options:
+        - "第1章 医学影像基础 / Chapter 1: Medical Imaging Basics"
+        - "第2章 模态特定的预处理 / Chapter 2: Modality-Specific Preprocessing"
+        - "第3章 图像重建算法 / Chapter 3: Image Reconstruction Algorithms"
+        - "第4章 重建实践 / Chapter 4: Reconstruction Practice"
+        - "第5章 深度学习后处理 / Chapter 5: Deep Learning Post-processing"
+        - "整体结构 / Overall Structure"
+        - "新章节建议 / New Chapter Suggestion"
+        - "其他 / Other"
+
+  - type: textarea
+    id: specific-location
+    attributes:
+      label: "具体位置 / Specific Location (如适用 / If Applicable)"
+      description: "如果建议涉及特定章节或段落，请提供具体位置 / If the suggestion relates to a specific section or paragraph, please provide the location"
+      placeholder: |
+        例如 / Example:
+        - 第2.1章 > 2.1.3节 > "探测器类型"部分
+        - Chapter 2.1 > Section 2.1.3 > "Detector Types" section
+        - 链接 / Link: https://1985312383.github.io/med-imaging-primer/...
+
+  - type: textarea
+    id: suggestion-description
+    attributes:
+      label: "具体建议描述 / Detailed Suggestion Description"
+      description: "请详细描述您的改进建议 / Please describe your improvement suggestion in detail"
+      placeholder: |
+        请尽可能详细地描述您的建议，例如：
+        Please describe your suggestion as detailed as possible, for example:
+        
+        对于"新增内容"：
+        - 建议新增什么主题或章节
+        - 应该包含哪些具体内容
+        - 建议的章节位置
+        
+        For "Add New Content":
+        - What topic or chapter to add
+        - What specific content should be included
+        - Suggested chapter location
+        
+        对于"修改现有内容"：
+        - 当前内容有什么问题
+        - 建议如何修改
+        - 修改后的预期效果
+        
+        For "Modify Existing Content":
+        - What's the problem with current content
+        - How to modify it
+        - Expected effect after modification
+        
+        例如 / Example:
+        "建议在第2.1章增加一个关于'光子计数探测器'的小节。
+        当前教程只介绍了闪烁体和直接转换探测器，但光子计数探测器是最新的技术发展方向，
+        建议增加其工作原理、优势和临床应用前景的介绍。"
+    validations:
+      required: true
+
+  - type: textarea
+    id: improvement-rationale
+    attributes:
+      label: "改进理由 / Improvement Rationale"
+      description: "请说明为什么需要这个改进，它将如何提升教程质量 / Please explain why this improvement is needed and how it will enhance the tutorial quality"
+      placeholder: |
+        例如 / Example:
+        
+        这个改进的价值：
+        - 填补了当前教程的知识空白
+        - 帮助读者更好地理解相关概念
+        - 与实际应用场景更贴近
+        - 符合当前技术发展趋势
+        
+        The value of this improvement:
+        - Fills a knowledge gap in the current tutorial
+        - Helps readers better understand related concepts
+        - Closer to practical application scenarios
+        - Aligns with current technology trends
+        
+        例如 / Example:
+        "光子计数CT是近年来的重要技术突破，Siemens等厂商已推出商用产品。
+        增加这部分内容可以让读者了解CT技术的最新发展，
+        对于从事医学影像研究或临床工作的读者具有重要参考价值。"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: "优先级建议 / Priority Suggestion (可选 / Optional)"
+      description: "您认为这个改进的优先级如何？/ What do you think is the priority of this improvement?"
+      options:
+        - "高（重要且紧急）/ High (Important and Urgent)"
+        - "中（重要但不紧急）/ Medium (Important but Not Urgent)"
+        - "低（可以慢慢完善）/ Low (Can be improved gradually)"
+        - "不确定 / Not Sure"
+
+  - type: textarea
+    id: implementation-proposal
+    attributes:
+      label: "实现方案 / Implementation Proposal (可选 / Optional)"
+      description: "如果您有具体的实现想法，请分享 / If you have specific implementation ideas, please share"
+      placeholder: |
+        例如 / Example:
+        
+        建议的实现方式：
+        1. 在第2.1章后新增2.1.4节"光子计数探测器"
+        2. 内容结构：
+           - 工作原理（约500字）
+           - 技术优势（约300字）
+           - 临床应用（约200字）
+        3. 配图建议：
+           - 光子计数探测器结构示意图
+           - 与传统探测器的性能对比图
+        
+        Suggested implementation:
+        1. Add Section 2.1.4 "Photon Counting Detectors" after Chapter 2.1
+        2. Content structure:
+           - Working principle (~500 words)
+           - Technical advantages (~300 words)
+           - Clinical applications (~200 words)
+        3. Illustration suggestions:
+           - Photon counting detector structure diagram
+           - Performance comparison chart with traditional detectors
+
+  - type: textarea
+    id: reference-materials
+    attributes:
+      label: "参考资料 / Reference Materials (可选 / Optional)"
+      description: "如果有相关的参考资料、文献或示例，请提供 / If you have relevant reference materials, literature, or examples, please provide"
+      placeholder: |
+        例如 / Example:
+        
+        参考文献：
+        1. Willemink, M. J., et al. (2018). "Photon-counting CT: Technical Principles and Clinical Prospects". Radiology, 289(2), 293-312.
+        2. https://www.siemens-healthineers.com/photon-counting-ct
+        
+        类似教程示例：
+        - Stanford University Medical Imaging Course: https://...
+        
+        References:
+        1. Willemink, M. J., et al. (2018). "Photon-counting CT: Technical Principles and Clinical Prospects". Radiology, 289(2), 293-312.
+        2. https://www.siemens-healthineers.com/photon-counting-ct
+        
+        Similar tutorial examples:
+        - Stanford University Medical Imaging Course: https://...
+
+  - type: textarea
+    id: example-content
+    attributes:
+      label: "示例内容 / Example Content (可选 / Optional)"
+      description: "如果您愿意，可以提供一些示例内容或草稿 / If you would like, you can provide some example content or draft"
+      placeholder: |
+        您可以提供：
+        - 文字内容草稿
+        - 代码示例
+        - 图表设计思路
+        - Markdown格式的内容片段
+        
+        You can provide:
+        - Text content draft
+        - Code examples
+        - Chart design ideas
+        - Content snippets in Markdown format
+
+  - type: checkboxes
+    id: contribution-willingness
+    attributes:
+      label: "贡献意愿 / Contribution Willingness (可选 / Optional)"
+      description: "您是否愿意参与实现这个改进？/ Are you willing to participate in implementing this improvement?"
+      options:
+        - label: "我愿意提交 Pull Request 来实现这个改进 / I am willing to submit a Pull Request to implement this improvement"
+        - label: "我可以提供更多的参考资料或建议 / I can provide more reference materials or suggestions"
+        - label: "我可以帮助审阅相关内容 / I can help review related content"
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: "其他补充信息 / Additional Context (可选 / Optional)"
+      description: "任何其他有助于理解或实现这个建议的信息 / Any other information that helps understand or implement this suggestion"
+
+  - type: checkboxes
+    id: code-of-conduct
+    attributes:
+      label: "行为准则 / Code of Conduct"
+      description: "提交此 Issue 即表示您同意遵守我们的行为准则 / By submitting this issue, you agree to follow our Code of Conduct"
+      options:
+        - label: "我同意遵守本项目的行为准则，以建设性的方式参与讨论 / I agree to follow this project's Code of Conduct and participate in discussions in a constructive manner"
+          required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        **🎉 感谢您的贡献！/ Thank you for your contribution!**
+        
+        您的建议对改进教程质量非常重要。我们会认真考虑每一个建议，并在可能的情况下实施。
+        Your suggestions are very important for improving the tutorial quality. We will carefully consider each suggestion and implement it when possible.
+        
+        如果您愿意直接贡献内容，欢迎查看我们的[贡献指南](https://github.com/1985312383/med-imaging-primer#-contributing)！
+        If you would like to contribute content directly, please check our [Contributing Guide](https://github.com/1985312383/med-imaging-primer#-contributing)!
+

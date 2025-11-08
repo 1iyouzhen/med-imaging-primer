@@ -1,0 +1,139 @@
+name: "争议或错误内容报告 / Content Dispute or Error Report"
+description: "报告教程中存在争议、错误或不准确的技术内容 / Report disputed, erroneous, or inaccurate technical content in the tutorial"
+title: "[Content Error] "
+labels: ["bug", "content-error"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 感谢您帮助改进教程质量！/ Thank you for helping improve the tutorial quality!
+        
+        请详细描述您发现的内容问题，这将帮助我们提供更准确的教学资源。
+        Please describe the content issue in detail to help us provide more accurate educational resources.
+
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: "前置检查 / Prerequisites"
+      description: "在提交之前，请确认以下事项 / Before submitting, please confirm the following"
+      options:
+        - label: "我已搜索现有的 Issues，确认这不是重复报告 / I have searched existing Issues to ensure this is not a duplicate"
+          required: true
+        - label: "我已阅读相关章节的完整内容 / I have read the complete content of the relevant chapter"
+          required: true
+
+  - type: dropdown
+    id: chapter
+    attributes:
+      label: "问题所在章节 / Chapter with Issue"
+      description: "请选择问题所在的章节 / Please select the chapter where the issue is located"
+      options:
+        - "第1章 医学影像基础 / Chapter 1: Medical Imaging Basics"
+        - "第2章 模态特定的预处理 / Chapter 2: Modality-Specific Preprocessing"
+        - "第3章 图像重建算法 / Chapter 3: Image Reconstruction Algorithms"
+        - "第4章 重建实践 / Chapter 4: Reconstruction Practice"
+        - "第5章 深度学习后处理 / Chapter 5: Deep Learning Post-processing"
+        - "其他 / Other"
+    validations:
+      required: true
+
+  - type: textarea
+    id: location
+    attributes:
+      label: "具体位置 / Specific Location"
+      description: "请提供具体的章节号、小节号或页面链接 / Please provide specific section number, subsection number, or page link"
+      placeholder: |
+        例如：第2.1章 > 2.1.3节 > "探测器类型"部分
+        Example: Chapter 2.1 > Section 2.1.3 > "Detector Types" section
+        
+        或提供在线文档链接：https://1985312383.github.io/med-imaging-primer/...
+        Or provide online documentation link: https://1985312383.github.io/med-imaging-primer/...
+    validations:
+      required: true
+
+  - type: textarea
+    id: content-description
+    attributes:
+      label: "问题内容描述 / Content Description"
+      description: "请引用或描述存在问题的具体内容 / Please quote or describe the specific content with issues"
+      placeholder: |
+        请尽可能引用原文，例如：
+        Please quote the original text if possible, for example:
+        
+        "教程中写道：'闪烁体探测器的能量分辨率约为1-2%'，但这个数值..."
+        "The tutorial states: 'The energy resolution of scintillator detectors is about 1-2%', but this value..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: error-explanation
+    attributes:
+      label: "错误原因说明 / Error Explanation"
+      description: "请说明为什么这个内容是错误的或存在争议 / Please explain why this content is incorrect or disputed"
+      placeholder: |
+        例如：
+        - 与已发表的学术文献不符
+        - 物理原理解释有误
+        - 数值范围不准确
+        - 术语使用不当
+        
+        Example:
+        - Inconsistent with published academic literature
+        - Incorrect explanation of physical principles
+        - Inaccurate numerical range
+        - Improper use of terminology
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggested-correction
+    attributes:
+      label: "建议修改方案 / Suggested Correction"
+      description: "请提供您认为正确的内容或修改建议 / Please provide what you believe is the correct content or modification suggestion"
+      placeholder: |
+        例如：
+        建议修改为："闪烁体探测器的能量分辨率约为15-20%，而直接转换探测器的能量分辨率约为5-10%"
+        
+        Example:
+        Suggested revision: "The energy resolution of scintillator detectors is about 15-20%, while direct conversion detectors have an energy resolution of about 5-10%"
+    validations:
+      required: true
+
+  - type: textarea
+    id: references
+    attributes:
+      label: "参考文献 / References (可选 / Optional)"
+      description: "如有相关学术文献或权威资料，请提供 / If you have relevant academic literature or authoritative sources, please provide"
+      placeholder: |
+        例如：
+        1. Smith, J. et al. (2020). "CT Detector Technology Review". Medical Physics, 47(5), 2345-2356.
+        2. https://www.ncbi.nlm.nih.gov/pmc/articles/...
+        
+        Example:
+        1. Smith, J. et al. (2020). "CT Detector Technology Review". Medical Physics, 47(5), 2345-2356.
+        2. https://www.ncbi.nlm.nih.gov/pmc/articles/...
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "截图或附加材料 / Screenshots or Additional Materials (可选 / Optional)"
+      description: "如有必要，可以上传截图或其他支持材料 / If necessary, you can upload screenshots or other supporting materials"
+      placeholder: "拖拽图片到此处或粘贴 / Drag and drop images here or paste"
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: "其他补充信息 / Additional Context (可选 / Optional)"
+      description: "任何其他有助于理解问题的信息 / Any other information that helps understand the issue"
+
+  - type: checkboxes
+    id: code-of-conduct
+    attributes:
+      label: "行为准则 / Code of Conduct"
+      description: "提交此 Issue 即表示您同意遵守我们的行为准则 / By submitting this issue, you agree to follow our Code of Conduct"
+      options:
+        - label: "我同意遵守本项目的行为准则，以尊重和建设性的方式参与讨论 / I agree to follow this project's Code of Conduct and participate in discussions in a respectful and constructive manner"
+          required: true
+

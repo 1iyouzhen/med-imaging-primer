@@ -1,0 +1,206 @@
+name: "知识提问 / Knowledge Question"
+description: "针对教程内容提出学习相关的问题 / Ask learning-related questions about the tutorial content"
+title: "[Question] "
+labels: ["question", "help-wanted"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 欢迎提问！/ Welcome to Ask Questions!
+        
+        我们鼓励您提出关于教程内容的问题。好的问题能帮助我们改进教程，也能帮助其他学习者。
+        We encourage you to ask questions about the tutorial content. Good questions help us improve the tutorial and help other learners.
+        
+        **提问建议 / Tips for Asking Questions:**
+        - 📖 先仔细阅读相关章节
+        - 🔍 搜索现有 Issues，看是否已有类似问题
+        - 💡 描述您已经尝试的理解或解决方法
+        - 🎯 问题越具体，越容易得到有价值的回答
+        
+        - 📖 Read the relevant chapter carefully first
+        - 🔍 Search existing Issues to see if similar questions exist
+        - 💡 Describe what you have already tried to understand or solve
+        - 🎯 The more specific the question, the easier it is to get valuable answers
+
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: "前置检查 / Prerequisites"
+      description: "在提交之前，请确认以下事项 / Before submitting, please confirm the following"
+      options:
+        - label: "我已仔细阅读相关章节的内容 / I have carefully read the content of the relevant chapter"
+          required: true
+        - label: "我已搜索现有的 Issues，没有找到相同的问题 / I have searched existing Issues and did not find the same question"
+          required: true
+        - label: "我已尝试自己理解或查找资料 / I have tried to understand or research on my own"
+          required: true
+
+  - type: dropdown
+    id: chapter
+    attributes:
+      label: "相关章节 / Related Chapter"
+      description: "您的问题涉及哪个章节？/ Which chapter does your question relate to?"
+      options:
+        - "第1章 医学影像基础 / Chapter 1: Medical Imaging Basics"
+        - "第2章 模态特定的预处理 / Chapter 2: Modality-Specific Preprocessing"
+        - "第3章 图像重建算法 / Chapter 3: Image Reconstruction Algorithms"
+        - "第4章 重建实践 / Chapter 4: Reconstruction Practice"
+        - "第5章 深度学习后处理 / Chapter 5: Deep Learning Post-processing"
+        - "跨章节问题 / Cross-chapter question"
+        - "其他 / Other"
+    validations:
+      required: true
+
+  - type: textarea
+    id: specific-section
+    attributes:
+      label: "具体位置 / Specific Location (可选 / Optional)"
+      description: "如果问题涉及特定章节或段落，请提供具体位置 / If the question relates to a specific section or paragraph, please provide the location"
+      placeholder: |
+        例如 / Example:
+        - 第2.1章 > 2.1.3节 > "探测器类型"部分
+        - Chapter 2.1 > Section 2.1.3 > "Detector Types" section
+        - 链接 / Link: https://1985312383.github.io/med-imaging-primer/...
+
+  - type: dropdown
+    id: question-type
+    attributes:
+      label: "问题类型 / Question Type"
+      description: "请选择最符合您问题的类型 / Please select the type that best matches your question"
+      options:
+        - "概念理解 / Conceptual Understanding"
+        - "数学公式推导 / Mathematical Formula Derivation"
+        - "物理原理解释 / Physical Principle Explanation"
+        - "算法实现细节 / Algorithm Implementation Details"
+        - "工具使用方法 / Tool Usage Method"
+        - "实际应用场景 / Practical Application Scenario"
+        - "其他 / Other"
+    validations:
+      required: true
+
+  - type: textarea
+    id: question-description
+    attributes:
+      label: "问题描述 / Question Description"
+      description: "请详细描述您的问题 / Please describe your question in detail"
+      placeholder: |
+        请尽可能具体地描述您的问题，例如：
+        Please describe your question as specifically as possible, for example:
+        
+        - 您不理解的具体概念或内容
+        - 您感到困惑的地方
+        - 您希望了解的更多细节
+        
+        - The specific concept or content you don't understand
+        - Where you feel confused
+        - More details you would like to know
+        
+        例如 / Example:
+        "在第2.1章中提到'Lambert-Beer定律'，我理解这是描述X射线衰减的公式。
+        但我不明白为什么公式中使用的是指数函数而不是线性函数？
+        这与X射线的物理特性有什么关系？"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-understanding
+    attributes:
+      label: "您当前的理解 / Your Current Understanding"
+      description: "请描述您目前对这个问题的理解或已经尝试的解决方法 / Please describe your current understanding of this issue or solutions you have already tried"
+      placeholder: |
+        例如 / Example:
+        
+        我目前的理解是：
+        - X射线在穿过物质时会被吸收
+        - 吸收程度与物质的密度和厚度有关
+        
+        我已经尝试：
+        - 查阅了维基百科关于Beer-Lambert定律的解释
+        - 观看了相关的YouTube视频
+        - 但仍然不理解为什么要用指数形式
+        
+        My current understanding is:
+        - X-rays are absorbed when passing through matter
+        - The degree of absorption is related to the density and thickness of the material
+        
+        I have tried:
+        - Consulted Wikipedia's explanation of the Beer-Lambert law
+        - Watched related YouTube videos
+        - But still don't understand why the exponential form is used
+    validations:
+      required: true
+
+  - type: dropdown
+    id: background-level
+    attributes:
+      label: "背景知识水平 / Background Knowledge Level (可选 / Optional)"
+      description: "您在相关领域的背景知识水平如何？这有助于我们提供更合适的解答 / What is your background knowledge level in the relevant field? This helps us provide more appropriate answers"
+      options:
+        - "初学者（无相关背景）/ Beginner (no relevant background)"
+        - "有基础物理/数学知识 / Have basic physics/mathematics knowledge"
+        - "医学影像相关专业学生 / Medical imaging related major student"
+        - "医学影像从业者 / Medical imaging practitioner"
+        - "研究人员 / Researcher"
+        - "其他 / Other"
+
+  - type: dropdown
+    id: answer-depth
+    attributes:
+      label: "期望的解答深度 / Expected Answer Depth (可选 / Optional)"
+      description: "您希望得到什么深度的解答？/ What depth of answer do you expect?"
+      options:
+        - "简单通俗的解释 / Simple and easy-to-understand explanation"
+        - "中等深度（包含一些数学推导）/ Medium depth (including some mathematical derivation)"
+        - "深入详细（包含完整的理论推导和参考文献）/ In-depth and detailed (including complete theoretical derivation and references)"
+        - "实用导向（重点关注如何应用）/ Practical-oriented (focus on how to apply)"
+
+  - type: textarea
+    id: related-materials
+    attributes:
+      label: "相关资料 / Related Materials (可选 / Optional)"
+      description: "如果您在其他地方找到了相关资料但仍有疑问，可以分享链接 / If you found related materials elsewhere but still have questions, you can share the links"
+      placeholder: |
+        例如 / Example:
+        - 我看了这篇文章：https://...
+        - 但其中关于...的部分我还是不理解
+        
+        - I read this article: https://...
+        - But I still don't understand the part about...
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "截图或示意图 / Screenshots or Diagrams (可选 / Optional)"
+      description: "如果有助于说明问题，可以上传截图或手绘示意图 / If it helps explain the question, you can upload screenshots or hand-drawn diagrams"
+      placeholder: "拖拽图片到此处或粘贴 / Drag and drop images here or paste"
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: "其他补充信息 / Additional Context (可选 / Optional)"
+      description: "任何其他有助于回答问题的信息 / Any other information that helps answer the question"
+
+  - type: checkboxes
+    id: code-of-conduct
+    attributes:
+      label: "行为准则 / Code of Conduct"
+      description: "提交此 Issue 即表示您同意遵守我们的行为准则 / By submitting this issue, you agree to follow our Code of Conduct"
+      options:
+        - label: "我同意以尊重和开放的态度参与讨论，并感谢社区成员的帮助 / I agree to participate in discussions with respect and openness, and appreciate the help of community members"
+          required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        **💡 提示 / Tips:**
+        
+        - 好的问题会得到更好的回答！/ Good questions get better answers!
+        - 如果您的问题得到了解答，请考虑关闭 Issue 或标记为已解决 / If your question is answered, please consider closing the Issue or marking it as resolved
+        - 您的问题可能也会帮助其他学习者！/ Your question may also help other learners!
+        
+        感谢您的提问，祝学习愉快！/ Thank you for your question, happy learning!
+

@@ -1,0 +1,193 @@
+name: "图文版权问题 / Image/Content Copyright Issue"
+description: "报告教程中使用的图片、图表或其他内容的版权问题 / Report copyright issues with images, diagrams, or other content used in the tutorial"
+title: "[Copyright] "
+labels: ["copyright", "legal"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 版权问题报告 / Copyright Issue Report
+        
+        我们尊重所有内容创作者的版权。如果您发现教程中使用的内容侵犯了您的版权，请填写此表单。
+        We respect the copyright of all content creators. If you find that content used in the tutorial infringes your copyright, please fill out this form.
+        
+        **重要提示 / Important Notice:**
+        - 本教程中的所有内容均来自公开资源或已发表的学术资料
+        - 如有版权问题，我们将立即处理并删除相关内容
+        - All content in this tutorial is from public resources or published academic materials
+        - If there are copyright issues, we will immediately handle and remove the relevant content
+
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: "前置确认 / Prerequisites"
+      description: "在提交之前，请确认以下事项 / Before submitting, please confirm the following"
+      options:
+        - label: "我已搜索现有的 Issues，确认这不是重复报告 / I have searched existing Issues to ensure this is not a duplicate"
+          required: true
+        - label: "我是版权所有者或其授权代表 / I am the copyright owner or their authorized representative"
+          required: true
+
+  - type: dropdown
+    id: content-type
+    attributes:
+      label: "内容类型 / Content Type"
+      description: "请选择涉及版权的内容类型 / Please select the type of copyrighted content"
+      options:
+        - "图片/照片 / Image/Photo"
+        - "图表/示意图 / Diagram/Illustration"
+        - "代码示例 / Code Example"
+        - "文字内容 / Text Content"
+        - "视频/动画 / Video/Animation"
+        - "其他 / Other"
+    validations:
+      required: true
+
+  - type: textarea
+    id: content-location
+    attributes:
+      label: "内容位置 / Content Location"
+      description: "请提供涉及版权问题的内容在教程中的具体位置 / Please provide the specific location of the copyrighted content in the tutorial"
+      placeholder: |
+        请提供：
+        1. 章节号和页面链接
+        2. 图片文件名或内容描述
+        3. 在线文档的直接链接
+        
+        Please provide:
+        1. Chapter number and page link
+        2. Image filename or content description
+        3. Direct link to online documentation
+        
+        例如 / Example:
+        - 章节：第2.1章 / Chapter: 2.1
+        - 链接：https://1985312383.github.io/med-imaging-primer/zh/guide/ch02/01-ct-preprocessing.html
+        - 图片：CT探测器结构示意图（第3张图） / Image: CT detector structure diagram (3rd image)
+    validations:
+      required: true
+
+  - type: textarea
+    id: copyright-owner
+    attributes:
+      label: "版权所有者信息 / Copyright Owner Information"
+      description: "请提供版权所有者的详细信息 / Please provide detailed information about the copyright owner"
+      placeholder: |
+        请包含：
+        - 版权所有者姓名/机构名称
+        - 原始内容来源（如论文、书籍、网站等）
+        - 版权声明或许可信息
+        
+        Please include:
+        - Copyright owner name/organization name
+        - Original content source (e.g., paper, book, website)
+        - Copyright notice or license information
+        
+        例如 / Example:
+        版权所有者：Dr. John Smith / Medical Imaging Institute
+        原始来源：Smith, J. (2020). "Advanced CT Imaging". Publisher XYZ.
+        版权声明：© 2020 All Rights Reserved
+    validations:
+      required: true
+
+  - type: textarea
+    id: issue-description
+    attributes:
+      label: "问题说明 / Issue Description"
+      description: "请详细说明版权问题 / Please describe the copyright issue in detail"
+      placeholder: |
+        请说明：
+        1. 该内容如何侵犯了您的版权
+        2. 您拥有该内容版权的依据
+        3. 您希望我们采取的行动（删除、标注来源、获取授权等）
+        
+        Please explain:
+        1. How this content infringes your copyright
+        2. The basis for your copyright ownership
+        3. The action you would like us to take (remove, cite source, obtain authorization, etc.)
+        
+        例如 / Example:
+        该图片是我在2020年发表的论文中的原创插图，未经授权被使用。
+        我希望该图片被删除，或者在使用时明确标注来源并获得我的书面授权。
+    validations:
+      required: true
+
+  - type: textarea
+    id: proof-of-ownership
+    attributes:
+      label: "版权证明材料 / Proof of Copyright Ownership (可选但推荐 / Optional but Recommended)"
+      description: "请提供证明您拥有该内容版权的材料 / Please provide materials proving your copyright ownership"
+      placeholder: |
+        可以包括：
+        - 原始文件或出版物的链接
+        - 版权注册证书
+        - 出版协议
+        - 其他证明材料
+        
+        May include:
+        - Link to original file or publication
+        - Copyright registration certificate
+        - Publication agreement
+        - Other supporting materials
+        
+        您可以上传文件或提供链接 / You can upload files or provide links
+
+  - type: textarea
+    id: contact-information
+    attributes:
+      label: "联系方式 / Contact Information (可选 / Optional)"
+      description: "如果您希望我们直接联系您处理此问题，请提供联系方式 / If you would like us to contact you directly to handle this issue, please provide contact information"
+      placeholder: |
+        例如 / Example:
+        - 电子邮件 / Email: example@example.com
+        - 电话 / Phone: +1-234-567-8900
+        - 其他联系方式 / Other contact methods
+        
+        注意：此信息将公开显示在 Issue 中
+        Note: This information will be publicly visible in the Issue
+
+  - type: dropdown
+    id: preferred-resolution
+    attributes:
+      label: "期望的解决方案 / Preferred Resolution"
+      description: "您希望我们如何处理此问题？/ How would you like us to handle this issue?"
+      options:
+        - "立即删除该内容 / Immediately remove the content"
+        - "添加适当的版权声明和来源标注 / Add appropriate copyright notice and source citation"
+        - "联系我获取使用授权 / Contact me to obtain usage authorization"
+        - "替换为其他内容 / Replace with alternative content"
+        - "其他（请在下方说明）/ Other (please specify below)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-information
+    attributes:
+      label: "其他信息 / Additional Information (可选 / Optional)"
+      description: "任何其他有助于处理此问题的信息 / Any other information that helps resolve this issue"
+
+  - type: checkboxes
+    id: legal-statement
+    attributes:
+      label: "法律声明 / Legal Statement"
+      description: "请确认以下声明 / Please confirm the following statements"
+      options:
+        - label: "我声明以上信息真实准确，并愿意为虚假陈述承担法律责任 / I declare that the above information is true and accurate, and I am willing to bear legal responsibility for false statements"
+          required: true
+        - label: "我理解提交虚假版权声明可能导致法律后果 / I understand that submitting false copyright claims may result in legal consequences"
+          required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        **处理流程说明 / Processing Procedure:**
+        
+        1. 我们将在 **24-48 小时内**审核您的报告 / We will review your report within **24-48 hours**
+        2. 如果版权问题确认，我们将立即采取相应措施 / If the copyright issue is confirmed, we will immediately take appropriate action
+        3. 我们会通过此 Issue 或您提供的联系方式通知处理结果 / We will notify you of the resolution through this Issue or your provided contact information
+        
+        感谢您的理解与配合！/ Thank you for your understanding and cooperation!
+
