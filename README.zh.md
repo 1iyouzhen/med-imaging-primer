@@ -29,7 +29,13 @@
 
 ## 🌐 在线访问
 
-在线访问教程：**[https://1985312383.github.io/med-imaging-primer/](https://1985312383.github.io/med-imaging-primer/)**
+<div align="center">
+
+[![在线文档](https://img.shields.io/badge/📖_在线文档-立即访问-blue?style=for-the-badge)](https://1985312383.github.io/med-imaging-primer/)
+
+**👉 [点击这里访问在线教程](https://1985312383.github.io/med-imaging-primer/) 👈**
+
+</div>
 
 ## ✨ 项目特点
 
@@ -43,29 +49,27 @@
 
 ### ✅ 已完成章节
 
-**第1章 医学影像基础**
-- 1.1 常见成像模态原理与特点（CT、MRI、X-ray、PET、超声）
-- 1.2 数据格式标准（DICOM、NIfTI 等）
-- 1.3 常用开源工具（ITK、VTK、SimpleITK、MONAI 等）
-- 1.4 医学影像中的伪影（CT、MRI、X-ray、超声伪影）
+#### 第1章 医学影像基础
+- **1.1** 常见成像模态原理 — 理解 CT、MRI、X-ray、PET 和超声成像
+- **1.2** 数据格式标准 — 掌握 DICOM、NIfTI 及格式转换
+- **1.3** 常用开源工具 — ITK、SimpleITK 和可视化工具实用指南
+- **1.4** 医学影像中的伪影 — 识别和理解成像伪影
 
-**第2章 模态特定的预处理**
-- 2.1 CT：从探测器信号到校正投影 ✨ **新增**
-  - 探测器类型和光子采集
-  - Lambert-Beer 定律和投影值计算
-  - 校正流程（暗电流、增益、空气、射束硬化、散射、环形伪影）
+#### 第2章 模态特定的预处理
+- **2.1** CT：从探测器信号到校正投影 ✨ **新增**
+  - 从光子采集到校准投影数据的完整工作流程
 
-**第5章 基于深度学习的医学图像后处理**
-- 5.1 预处理（强调模态差异）
-- 5.2 U-Net 与图像分割
-- 5.3 分类与检测
-- 5.4 图像增强与恢复
+#### 第5章 基于深度学习的后处理
+- **5.1** 预处理 — 针对 AI 模型的模态特定数据准备
+- **5.2** U-Net 与图像分割 — 医学结构的语义分割
+- **5.3** 分类与检测 — 自动诊断和病灶检测
+- **5.4** 图像增强与恢复 — 去噪和超分辨率技术
 
 ### 🚀 即将推出
-- 第2章 2.2 MRI k-空间预处理
-- 第2章 2.3 X-ray 直接成像校正
-- 第3章 按模态分类的图像重建
-- 第4章 多模态重建实践示例
+- **2.2** MRI k-空间预处理
+- **2.3** X-ray 直接成像校正
+- **第3章** 按模态分类的图像重建算法
+- **第4章** 多模态重建实践
 
 ## 🤝 如何贡献
 
@@ -107,18 +111,18 @@
 
 本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件
 
-## 🔗 相关链接
+## 🔗 快速链接
 
-- **在线文档**：[https://1985312383.github.io/med-imaging-primer/](https://1985312383.github.io/med-imaging-primer/)
-- **GitHub 仓库**：[https://github.com/1985312383/med-imaging-primer](https://github.com/1985312383/med-imaging-primer)
-- **问题反馈**：[https://github.com/1985312383/med-imaging-primer/issues](https://github.com/1985312383/med-imaging-primer/issues)
+- **📖 在线文档**：[https://1985312383.github.io/med-imaging-primer/](https://1985312383.github.io/med-imaging-primer/)
+- **💻 GitHub 仓库**：[https://github.com/1985312383/med-imaging-primer](https://github.com/1985312383/med-imaging-primer)
 
-## 📮 联系方式
+## � 反馈与参与
 
-如果你有任何问题或建议，欢迎：
+我们重视您的反馈并鼓励社区参与：
 
-- 提交 [Issue](https://github.com/1985312383/med-imaging-primer/issues)
-- 发起 [Discussion](https://github.com/1985312383/med-imaging-primer/discussions)
+- **🐛 报告问题**：发现错误或 bug？[提交 Issue](https://github.com/1985312383/med-imaging-primer/issues)
+- **💡 建议想法**：有新内容建议？[发起 Discussion](https://github.com/1985312383/med-imaging-primer/discussions)
+- **🤝 贡献代码**：想要贡献？请查看上方[如何贡献](#-如何贡献)部分
 
 ---
 

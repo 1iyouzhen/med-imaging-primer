@@ -34,7 +34,13 @@ This tutorial aims to help beginners systematically learn medical imaging proces
 
 ## 🌐 Online Access
 
-Visit the tutorial online: **[https://1985312383.github.io/med-imaging-primer/](https://1985312383.github.io/med-imaging-primer/)**
+<div align="center">
+
+[![Online Documentation](https://img.shields.io/badge/📖_Online_Documentation-Visit_Now-blue?style=for-the-badge)](https://1985312383.github.io/med-imaging-primer/)
+
+**👉 [Click here to access the online tutorial](https://1985312383.github.io/med-imaging-primer/) 👈**
+
+</div>
 
 ## ✨ Features
 
@@ -48,29 +54,27 @@ Visit the tutorial online: **[https://1985312383.github.io/med-imaging-primer/](
 
 ### ✅ Completed Chapters
 
-**Chapter 1: Medical Imaging Basics**
-- 1.1 Common Imaging Modality Principles (CT, MRI, X-ray, PET, Ultrasound)
-- 1.2 Data Format Standards (DICOM, NIfTI, and others)
-- 1.3 Common Open Source Tools (ITK, VTK, SimpleITK, MONAI, etc.)
-- 1.4 Artifacts in Medical Imaging (CT, MRI, X-ray, Ultrasound artifacts)
+#### Chapter 1: Medical Imaging Basics
+- **1.1** Common Imaging Modality Principles — Understanding CT, MRI, X-ray, PET, and Ultrasound
+- **1.2** Data Format Standards — Mastering DICOM, NIfTI, and format conversion
+- **1.3** Common Open Source Tools — Practical guide to ITK, SimpleITK, and visualization tools
+- **1.4** Artifacts in Medical Imaging — Identifying and understanding imaging artifacts
 
-**Chapter 2: Modality-Specific Preprocessing**
-- 2.1 CT: From Detector Signal to Corrected Projection ✨ **NEW**
-  - Detector types and photon acquisition
-  - Lambert-Beer law and projection value calculation
-  - Calibration procedures (dark current, gain, air, beam hardening, scatter, ring artifact)
+#### Chapter 2: Modality-Specific Preprocessing
+- **2.1** CT: From Detector Signal to Corrected Projection ✨ **NEW**
+  - Complete workflow from photon acquisition to calibrated projection data
 
-**Chapter 5: Medical Image Post-processing with Deep Learning**
-- 5.1 Preprocessing (Modality-Specific Considerations)
-- 5.2 U-Net and Image Segmentation
-- 5.3 Classification and Detection
-- 5.4 Image Enhancement and Recovery
+#### Chapter 5: Deep Learning Post-processing
+- **5.1** Preprocessing — Modality-specific data preparation for AI models
+- **5.2** U-Net and Image Segmentation — Semantic segmentation of medical structures
+- **5.3** Classification and Detection — Automated diagnosis and lesion detection
+- **5.4** Image Enhancement and Recovery — Denoising and super-resolution techniques
 
 ### 🚀 Coming Soon
-- Chapter 2.2 MRI k-space Preprocessing
-- Chapter 2.3 X-ray Direct Imaging Correction
-- Chapter 3: Image Reconstruction by Modality
-- Chapter 4: Reconstruction Practice with Multi-Modality Examples
+- **2.2** MRI k-space Preprocessing
+- **2.3** X-ray Direct Imaging Correction
+- **Chapter 3** Image Reconstruction Algorithms by Modality
+- **Chapter 4** Multi-Modality Reconstruction Practice
 
 ## 🤝 Contributing
 
@@ -112,18 +116,18 @@ Thanks goes to these wonderful people:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🔗 Links
+## 🔗 Quick Links
 
-- **Documentation**: [https://1985312383.github.io/med-imaging-primer/](https://1985312383.github.io/med-imaging-primer/)
-- **GitHub Repository**: [https://github.com/1985312383/med-imaging-primer](https://github.com/1985312383/med-imaging-primer)
-- **Issues**: [https://github.com/1985312383/med-imaging-primer/issues](https://github.com/1985312383/med-imaging-primer/issues)
+- **📖 Online Documentation**: [https://1985312383.github.io/med-imaging-primer/](https://1985312383.github.io/med-imaging-primer/)
+- **💻 GitHub Repository**: [https://github.com/1985312383/med-imaging-primer](https://github.com/1985312383/med-imaging-primer)
 
-## 📮 Contact
+## 💬 Feedback & Participation
 
-If you have any questions or suggestions, please feel free to:
+We value your feedback and encourage community participation:
 
-- Open an [Issue](https://github.com/1985312383/med-imaging-primer/issues)
-- Start a [Discussion](https://github.com/1985312383/med-imaging-primer/discussions)
+- **🐛 Report Issues**: Found a bug or error? [Open an Issue](https://github.com/1985312383/med-imaging-primer/issues)
+- **💡 Suggest Ideas**: Have suggestions for new content? [Start a Discussion](https://github.com/1985312383/med-imaging-primer/discussions)
+- **🤝 Contribute**: Want to contribute? See the [Contributing](#-contributing) section above
 
 ---
 
