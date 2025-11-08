@@ -3,10 +3,10 @@
 
 ### 1.1 k-空间
 
-在k‑space（以下简称k-空间）这一概念之前，在MRI（磁共振成像）中我们习惯于直接理解图像是基于体素在空间位置 $(x, y, z)$ 上的信号强度。但实际上，MR采集的是一种频域\空间频率域的数据，也就是 k-空间。其核心原因包括：
+在k‑space（以下简称k-空间）这一概念之前，在MRI（磁共振成像）中我们习惯于直接理解图像是基于体素在空间位置 $(x, y, z)$ 上的信号强度。但实际上，MR采集的是一种频域\空间频率域的数据，也就是 k-空间，其核心原因包括：
 
 * 在 MRI 中，通过施加梯度磁场，使得被激发的核磁共振信号带有空间编码。因此，接收到的信号本质上是物体在不同空间频率（取决于梯度强度与时间）的成分。
-* 从信号处理／傅里叶分析角度来看，一个空间分布 $I(x,y)$ 可以通过傅里叶变换表示为一系列不同频率分量的叠加，k-空间恰好就是这些空间频率分量在二维或三维域上的“地图”。
+* 从信号处理\傅里叶分析角度来看，一个空间分布 $I(x,y)$ 可以通过傅里叶变换表示为一系列不同频率分量的叠加，k-空间恰好就是这些空间频率分量在二维或三维域上的“地图”。
 * 实际上，MRI 所采集的原始数据矩阵即为 k-空间数据（通常按行按列储存，对应频率编码方向 $k_x$ 和相位编码方向 $k_y$ ）。然后通过逆傅里叶变换得到最终图像。
 
 **通俗理解**
@@ -214,7 +214,7 @@ PCA去噪首先将图像中的patch或voxels看作多维数据（不同像素强
 4. 向量 $x_i$ 在 $u_1, u_2,…$ 上的投影即是主成分系数。假设噪声主要分布在低方差（后面几个）主成分上，就可以丢弃\衰减这些成分，从而去噪；
 5. 最后将保留的主成分重构回patch空间，得到去噪patch。
 
-在MRI多回波、Relaxometry任务中，PCA 去噪已被证明可将RMSE降低 $2\sim4\times$ 而不损失分辨率。
+在MRI多回波、Relaxometry任务中，PCA 去噪已被证明可将RMSE降低 $2\sim4$ 而不损失分辨率。
 
 **适用于 MRI 的考虑**
 
@@ -548,7 +548,7 @@ MRI 扫描期间采集 k-空间数据 + navigator 位置数据 Δr(t)
 
 [5] Coupe, P., Yger, P., Prima, S., Hellier, P., Kervrann, C., & Barillot, C. (2008). *An optimized blockwise nonlocal means denoising filter for 3-D magnetic resonance images*. IEEE Transactions on Medical Imaging, 27(4), 425–441.
 
-[6] **Pruessmann, K. P., Weiger, M., Scheidegger, M. B., & Boesiger, P. (1999). *SENSE: Sensitivity encoding for fast MRI*. Magnetic Resonance in Medicine, 42(5), 952–962.
+[6] Pruessmann, K. P., Weiger, M., Scheidegger, M. B., & Boesiger, P. (1999). *SENSE: Sensitivity encoding for fast MRI*. Magnetic Resonance in Medicine, 42(5), 952–962.
 
 [7] Griswold, M. A., Jakob, P. M., Heidemann, R. M., Nittka, M., Jellus, V., Wang, J., Kiefer, B., & Haase, A. (2002). *Generalized autocalibrating partially parallel acquisitions (GRAPPA)*. Magnetic Resonance in Medicine, 47(6), 1202–1210.**
 
