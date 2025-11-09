@@ -1,6 +1,6 @@
 ---
-title: 5.2 Image Segmentation: U-Net and its Variants
-description: In-depth exploration of medical image segmentation core technologies - U-Net architecture and its applications across different modalities
+title: "5.2 Image Segmentation: U-Net and its Variants"
+description: "In-depth exploration of medical image segmentation core technologies - U-Net architecture and its applications across different modalities"
 ---
 
 # 5.2 Image Segmentation: U-Net and its Variants
