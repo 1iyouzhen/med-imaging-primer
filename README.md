@@ -1,108 +1,103 @@
-# Medical Imaging Primer
+# 医学影像处理开源教程
 
 <div align="center">
 
-**English | [简体中文](README.zh.md)**
+**[English](README_en.md) | 简体中文**
 
 </div>
 
-An open-source tutorial on medical imaging processing, providing a systematic guide from physical imaging principles, reconstruction algorithms to deep learning post-processing.
+一个关于医学影像处理的开源教程，提供从物理成像原理、重建算法到深度学习后处理的系统性指南。
 
 > [!IMPORTANT]
-> **Content Source and Copyright Notice**
+> **内容来源和版权声明**
 >
-> All images and content in this tutorial are sourced from publicly available internet resources or published academic materials. This tutorial does not contain any trade secrets from medical device manufacturers, nor does it include any unpublished proprietary methods or technologies. If there are any copyright concerns, please feel free to contact us for removal.
+> 本教程中使用的所有图片和内容均来自互联网公开资源或已出版的学术资料。本教程不涉及任何医疗器械公司的商业机密，也不包含任何未公开发表的专有方法或技术。如有版权问题，欢迎联系删除。
 
 > [!NOTE]
-> **Intended Audience and Value**
+> **教程受众和价值说明**
 >
-> This tutorial aims to provide value to three groups of readers:
-> - **Medical Students**: We hope to help you understand the physical principles and technical foundations of medical imaging, though this tutorial does not cover clinical diagnosis.
-> - **Biomedical Engineering Students**: We attempt to provide systematic knowledge from physical principles to algorithm implementation.
-> - **Computer Science/AI Researchers**: We hope this resource may help you understand the characteristics and preprocessing methods of medical imaging data.
+> 本教程希望为以下三类读者提供帮助：
+> - **医学生**：我们希望能够帮助你理解医学影像的物理原理和技术基础，但本教程不涉及临床诊断。
+> - **生物医学工程专业学生**：我们尝试提供从物理原理到算法实现的系统性知识。
+> - **计算机科学/AI 领域的研究者**：我们希望这个资源可能有所帮助，让你理解医学影像数据的特性和预处理方法。
 >
-> Please note: This is a learning resource and cannot replace systematic professional education.
+> 请注意：本教程是一个学习资源，不能替代系统的专业教育。
 
-> [!TIP]
-> **Update Timeliness and Accuracy**
->
-> For the most up-to-date and accurate content, please refer to the [Chinese version (简体中文)](README.zh.md) as the primary reference.
+## 📖 关于本项目
 
-## 📖 About
+本教程旨在帮助初学者系统性地学习医学影像处理技术。无需医学或影像学背景，我们从 CT/MRI 的基础知识开始，逐步深入到重建算法和 AI 驱动的后处理等高级主题。
 
-This tutorial aims to help beginners systematically learn medical imaging processing technology. No medical or imaging background is required - we start from the basics of CT/MRI and gradually progress to advanced topics including reconstruction algorithms and AI-powered post-processing.
-
-## 🌐 Online Access
+## 🌐 在线访问
 
 <div align="center">
 
-[![Online Documentation](https://img.shields.io/badge/📖_Online_Documentation-Visit_Now-blue?style=for-the-badge)](https://datawhalechina.github.io/med-imaging-primer/)
+[![在线文档](https://img.shields.io/badge/📖_在线文档-立即访问-blue?style=for-the-badge)](https://datawhalechina.github.io/med-imaging-primer/)
 
-**👉 [Click here to access the online tutorial](https://datawhalechina.github.io/med-imaging-primer/) 👈**
+**👉 [点击这里访问在线教程](https://datawhalechina.github.io/med-imaging-primer/) 👈**
 
 </div>
 
-## ✨ Features
+## ✨ 项目特点
 
-- **From Scratch**: No prerequisites required, starting from fundamental concepts
-- **Principle-First**: Deep dive into physical mechanisms and mathematical models, beyond just API usage
-- **Multi-Modal Coverage**: Comprehensive coverage of CT, MRI, X-ray, PET, and Ultrasound imaging
-- **Comprehensive**: Covers the complete pipeline from raw data → reconstruction → AI post-processing
-- **Open Source**: Continuously updated content, contributions and discussions welcome
+- **零基础入门**：无需任何前置知识，从基础概念开始讲解
+- **原理优先**：深入探讨物理机制和数学模型，而不仅仅是 API 调用
+- **多模态覆盖**：全面涵盖 CT、MRI、X-ray、PET 和超声成像
+- **内容全面**：覆盖从原始数据 → 重建 → AI 后处理的完整流程
+- **开源协作**：内容持续更新，欢迎贡献和讨论
 
-## 📚 Content Outline
+## 📚 内容大纲
 
-### ✅ Completed Chapters
+### ✅ 已完成章节
 
-#### Chapter 1: Medical Imaging Basics
-- **1.1** Common Imaging Modality Principles — Understanding CT, MRI, X-ray, PET, and Ultrasound
-- **1.2** Data Format Standards — Mastering DICOM, NIfTI, and format conversion
-- **1.3** Common Open Source Tools — Practical guide to ITK, SimpleITK, and visualization tools
-- **1.4** Artifacts in Medical Imaging — Identifying and understanding imaging artifacts
+#### 第1章 医学影像基础
+- **1.1** 常见成像模态原理 — 理解 CT、MRI、X-ray、PET 和超声成像
+- **1.2** 数据格式标准 — 掌握 DICOM、NIfTI 及格式转换
+- **1.3** 常用开源工具 — ITK、SimpleITK 和可视化工具实用指南
+- **1.4** 医学影像中的伪影 — 识别和理解成像伪影
 
-#### Chapter 2: Modality-Specific Preprocessing
-- **2.1** CT: From Detector Signal to Corrected Projection ✨ **NEW**
-  - Complete workflow from photon acquisition to calibrated projection data
+#### 第2章 模态特定的预处理
+- **2.1** CT：从探测器信号到校正投影 ✨ **新增**
+  - 从光子采集到校准投影数据的完整工作流程
 
-#### Chapter 5: Deep Learning Post-processing
-- **5.1** Preprocessing — Modality-specific data preparation for AI models
-- **5.2** U-Net and Image Segmentation — Semantic segmentation of medical structures
-- **5.3** Classification and Detection — Automated diagnosis and lesion detection
-- **5.4** Image Enhancement and Recovery — Denoising and super-resolution techniques
+#### 第5章 基于深度学习的后处理
+- **5.1** 预处理 — 针对 AI 模型的模态特定数据准备
+- **5.2** U-Net 与图像分割 — 医学结构的语义分割
+- **5.3** 分类与检测 — 自动诊断和病灶检测
+- **5.4** 图像增强与恢复 — 去噪和超分辨率技术
 
-### 🚀 Coming Soon
-- **2.2** MRI k-space Preprocessing
-- **2.3** X-ray Direct Imaging Correction
-- **Chapter 3** Image Reconstruction Algorithms by Modality
-- **Chapter 4** Multi-Modality Reconstruction Practice
+### 🚀 即将推出
+- **2.2** MRI k-空间预处理
+- **2.3** X-ray 直接成像校正
+- **第3章** 按模态分类的图像重建算法
+- **第4章** 多模态重建实践
 
-## 🤝 Contributing
+## 🤝 如何贡献
 
-We welcome contributions of all kinds! Whether it's:
+我们欢迎各种形式的贡献！包括但不限于：
 
-- 📝 Improving documentation and fixing typos
-- 🌐 Adding translations
-- 💡 Suggesting new content or topics
-- 🐛 Reporting issues
-- 📖 Writing new chapters or sections
+- 📝 改进文档和修正错别字
+- 🌐 添加翻译
+- 💡 建议新的内容或主题
+- 🐛 报告问题
+- 📖 编写新的章节或小节
 
-### How to Contribute
+### 贡献步骤
 
-1. Fork this repository
-2. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-3. Push to the branch (`git push origin feature/AmazingFeature`)
-4. Open a Pull Request
+1. Fork 本仓库
+2. 提交你的更改 (`git commit -m 'Add some AmazingFeature'`)
+3. 推送到分支 (`git push origin feature/AmazingFeature`)
+4. 开启一个 Pull Request
 
-### Content Guidelines
+### 内容指南
 
-- Use clear and accessible language
-- Include practical examples where possible
-- Provide references to academic papers or authoritative sources
-- Follow the existing structure and formatting style
+- 使用清晰易懂的语言
+- 尽可能包含实际示例
+- 提供学术论文或权威来源的参考文献
+- 遵循现有的结构和格式风格
 
-## 👥 Contributors
+## 👥 贡献者
 
-Thanks goes to these wonderful people:
+感谢所有为本项目做出贡献的人：
 
 <div align="center">
 
@@ -112,24 +107,24 @@ Thanks goes to these wonderful people:
 
 </div>
 
-## 📄 License
+## 📄 许可证
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件
 
-## 🔗 Quick Links
+## 🔗 快速链接
 
-- **📖 Online Documentation**: [https://datawhalechina.github.io/med-imaging-primer/](https://datawhalechina.github.io/med-imaging-primer/)
-- **💻 GitHub Repository**: [https://github.com/datawhalechina/med-imaging-primer](https://github.com/datawhalechina/med-imaging-primer)
+- **📖 在线文档**：[https://datawhalechina.github.io/med-imaging-primer/](https://datawhalechina.github.io/med-imaging-primer/)
+- **💻 GitHub 仓库**：[https://github.com/datawhalechina/med-imaging-primer](https://github.com/datawhalechina/med-imaging-primer)
 
-## 💬 Feedback & Participation
+## � 反馈与参与
 
-We value your feedback and encourage community participation:
+我们重视您的反馈并鼓励社区参与：
 
-- **🐛 Report Issues**: Found a bug or error? [Open an Issue](https://github.com/datawhalechina/med-imaging-primer/issues)
-- **💡 Suggest Ideas**: Have suggestions for new content? [Start a Discussion](https://github.com/datawhalechina/med-imaging-primer/discussions)
-- **🤝 Contribute**: Want to contribute? See the [Contributing](#-contributing) section above
+- **🐛 报告问题**：发现错误或 bug？[提交 Issue](https://github.com/datawhalechina/med-imaging-primer/issues)
+- **💡 建议想法**：有新内容建议？[发起 Discussion](https://github.com/datawhalechina/med-imaging-primer/discussions)
+- **🤝 贡献代码**：想要贡献？请查看上方[如何贡献](#-如何贡献)部分
 
 ---
 
-⭐ If you find this tutorial helpful, please consider giving it a star!
+⭐ 如果你觉得这个教程有帮助，请考虑给它一个 star！
 
