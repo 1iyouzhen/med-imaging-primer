@@ -717,7 +717,7 @@ def resample_medical_image(image, original_spacing, target_spacing, method='line
     return resampled_image
 ```
 
-### 数据增强：医学习用技术
+### 医学影像专用数据增强技术
 
 #### 医学影像数据增强的特殊性
 
@@ -1039,5 +1039,5 @@ def validate_preprocessing(original_image, processed_image, roi_mask=None):
 ---
 
 ::: info 💡 下一步学习
-现在你已经掌握了不同模态医学影像的预处理技术。在下一节（5.2 U-Net及其变体）中，我们将深入学习医学图像分割的核心技术，了解如何将预处理后的影像转换为精确的解剖结构分割结果。
+现在你已经掌握了不同模态医学影像的预处理技术。在下一节（5.2 图像分割：U-Net及其变体）中，我们将深入学习医学图像分割的核心技术，了解如何将预处理后的影像转换为精确的解剖结构分割结果。
 :::

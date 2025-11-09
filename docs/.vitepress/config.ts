@@ -90,7 +90,7 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { text: '5.1 预处理（强调模态差异）', link: '/guide/ch05/01-preprocessing' },
-                { text: '5.2 图像分割', link: '/guide/ch05/02-segmentation' },
+                { text: '5.2 图像分割：U-Net 及其变体', link: '/guide/ch05/02-segmentation' },
                 { text: '5.3 分类与检测', link: '/guide/ch05/03-classification' },
                 { text: '5.4 图像增强与恢复', link: '/guide/ch05/04-enhancement' }
               ]
@@ -190,7 +190,7 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { text: '5.1 Preprocessing (Modality-Specific)', link: '/en/guide/ch05/01-preprocessing' },
-                { text: '5.2 Image Segmentation', link: '/en/guide/ch05/02-segmentation' },
+                { text: '5.2 Image Segmentation: U-Net and its Variants', link: '/en/guide/ch05/02-segmentation' },
                 { text: '5.3 Classification and Detection', link: '/en/guide/ch05/03-classification' },
                 { text: '5.4 Image Enhancement and Restoration', link: '/en/guide/ch05/04-enhancement' }
               ]

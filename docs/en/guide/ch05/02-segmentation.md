@@ -1,9 +1,9 @@
 ---
-title: 5.2 U-Net and its Variants
+title: 5.2 Image Segmentation: U-Net and its Variants
 description: In-depth exploration of medical image segmentation core technologies - U-Net architecture and its applications across different modalities
 ---
 
-# 5.2 U-Net and its Variants
+# 5.2 Image Segmentation: U-Net and its Variants
 
 > "U-Net is not just a network architecture, but a revolutionary thinking in medical image segmentation—proving that carefully designed architectures can surpass brute-force training on large datasets." — — Ronneberger et al., "U-Net: Convolutional Networks for Biomedical Image Segmentation", MICCAI 2015
 

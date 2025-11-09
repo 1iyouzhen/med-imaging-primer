@@ -66,7 +66,7 @@ This tutorial aims to help beginners systematically learn medical imaging proces
 
 #### Chapter 5: Deep Learning Post-processing
 - **5.1** Preprocessing — Modality-specific data preparation for AI models
-- **5.2** U-Net and Image Segmentation — Semantic segmentation of medical structures
+- **5.2** Image Segmentation：U-Net and its Variants  — Semantic segmentation of medical structures
 - **5.3** Classification and Detection — Automated diagnosis and lesion detection
 - **5.4** Image Enhancement and Recovery — Denoising and super-resolution techniques
 
