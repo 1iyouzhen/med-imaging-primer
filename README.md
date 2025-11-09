@@ -36,9 +36,9 @@ This tutorial aims to help beginners systematically learn medical imaging proces
 
 <div align="center">
 
-[![Online Documentation](https://img.shields.io/badge/📖_Online_Documentation-Visit_Now-blue?style=for-the-badge)](https://1985312383.github.io/med-imaging-primer/)
+[![Online Documentation](https://img.shields.io/badge/📖_Online_Documentation-Visit_Now-blue?style=for-the-badge)](https://datawhalechina.github.io/med-imaging-primer/)
 
-**👉 [Click here to access the online tutorial](https://1985312383.github.io/med-imaging-primer/) 👈**
+**👉 [Click here to access the online tutorial](https://datawhalechina.github.io/med-imaging-primer/) 👈**
 
 </div>
 
@@ -106,8 +106,8 @@ Thanks goes to these wonderful people:
 
 <div align="center">
 
-<a href="https://github.com/1985312383/med-imaging-primer/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=1985312383/med-imaging-primer" />
+<a href="https://github.com/datawhalechina/med-imaging-primer/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=datawhalechina/med-imaging-primer" />
 </a>
 
 </div>
@@ -118,15 +118,15 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🔗 Quick Links
 
-- **📖 Online Documentation**: [https://1985312383.github.io/med-imaging-primer/](https://1985312383.github.io/med-imaging-primer/)
-- **💻 GitHub Repository**: [https://github.com/1985312383/med-imaging-primer](https://github.com/1985312383/med-imaging-primer)
+- **📖 Online Documentation**: [https://datawhalechina.github.io/med-imaging-primer/](https://datawhalechina.github.io/med-imaging-primer/)
+- **💻 GitHub Repository**: [https://github.com/datawhalechina/med-imaging-primer](https://github.com/datawhalechina/med-imaging-primer)
 
 ## 💬 Feedback & Participation
 
 We value your feedback and encourage community participation:
 
-- **🐛 Report Issues**: Found a bug or error? [Open an Issue](https://github.com/1985312383/med-imaging-primer/issues)
-- **💡 Suggest Ideas**: Have suggestions for new content? [Start a Discussion](https://github.com/1985312383/med-imaging-primer/discussions)
+- **🐛 Report Issues**: Found a bug or error? [Open an Issue](https://github.com/datawhalechina/med-imaging-primer/issues)
+- **💡 Suggest Ideas**: Have suggestions for new content? [Start a Discussion](https://github.com/datawhalechina/med-imaging-primer/discussions)
 - **🤝 Contribute**: Want to contribute? See the [Contributing](#-contributing) section above
 
 ---

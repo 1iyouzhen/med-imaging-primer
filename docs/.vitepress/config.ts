@@ -27,7 +27,7 @@ export default defineConfig({
           { text: 'Tutorial', link: '/guide/' },
           {
             text: 'GitHub',
-            link: 'https://github.com/1985312383/med-imaging-primer',
+            link: 'https://github.com/datawhalechina/med-imaging-primer',
             target: '_blank'
           }
         ],
@@ -108,7 +108,7 @@ export default defineConfig({
           ]
         },
         socialLinks: [
-          { icon: 'github', link: 'https://github.com/1985312383/med-imaging-primer' }
+          { icon: 'github', link: 'https://github.com/datawhalechina/med-imaging-primer' }
         ],
         footer: {
           message: 'Released under the MIT License.',
@@ -127,7 +127,7 @@ export default defineConfig({
           { text: '教程', link: '/zh/guide/' },
           {
             text: 'GitHub',
-            link: 'https://github.com/1985312383/med-imaging-primer',
+            link: 'https://github.com/datawhalechina/med-imaging-primer',
             target: '_blank'
           }
         ],
@@ -208,7 +208,7 @@ export default defineConfig({
           ]
         },
         socialLinks: [
-          { icon: 'github', link: 'https://github.com/1985312383/med-imaging-primer' }
+          { icon: 'github', link: 'https://github.com/datawhalechina/med-imaging-primer' }
         ],
         footer: {
           message: 'Released under the MIT License.',
