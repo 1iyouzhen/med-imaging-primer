@@ -15,7 +15,7 @@ hero:
       link: /guide
     - theme: alt
       text: GitHub Repository
-      link: https://github.com/1985312383/med-imaging-primer
+      link: https://github.com/datawhalechina/med-imaging-primer
 
 features:
   - title: From Scratch

@@ -31,9 +31,9 @@
 
 <div align="center">
 
-[![在线文档](https://img.shields.io/badge/📖_在线文档-立即访问-blue?style=for-the-badge)](https://1985312383.github.io/med-imaging-primer/)
+[![在线文档](https://img.shields.io/badge/📖_在线文档-立即访问-blue?style=for-the-badge)](https://datawhalechina.github.io/med-imaging-primer/)
 
-**👉 [点击这里访问在线教程](https://1985312383.github.io/med-imaging-primer/) 👈**
+**👉 [点击这里访问在线教程](https://datawhalechina.github.io/med-imaging-primer/) 👈**
 
 </div>
 
@@ -101,8 +101,8 @@
 
 <div align="center">
 
-<a href="https://github.com/1985312383/med-imaging-primer/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=1985312383/med-imaging-primer" />
+<a href="https://github.com/datawhalechina/med-imaging-primer/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=datawhalechina/med-imaging-primer" />
 </a>
 
 </div>
@@ -113,15 +113,15 @@
 
 ## 🔗 快速链接
 
-- **📖 在线文档**：[https://1985312383.github.io/med-imaging-primer/](https://1985312383.github.io/med-imaging-primer/)
-- **💻 GitHub 仓库**：[https://github.com/1985312383/med-imaging-primer](https://github.com/1985312383/med-imaging-primer)
+- **📖 在线文档**：[https://datawhalechina.github.io/med-imaging-primer/](https://datawhalechina.github.io/med-imaging-primer/)
+- **💻 GitHub 仓库**：[https://github.com/datawhalechina/med-imaging-primer](https://github.com/datawhalechina/med-imaging-primer)
 
 ## � 反馈与参与
 
 我们重视您的反馈并鼓励社区参与：
 
-- **🐛 报告问题**：发现错误或 bug？[提交 Issue](https://github.com/1985312383/med-imaging-primer/issues)
-- **💡 建议想法**：有新内容建议？[发起 Discussion](https://github.com/1985312383/med-imaging-primer/discussions)
+- **🐛 报告问题**：发现错误或 bug？[提交 Issue](https://github.com/datawhalechina/med-imaging-primer/issues)
+- **💡 建议想法**：有新内容建议？[发起 Discussion](https://github.com/datawhalechina/med-imaging-primer/discussions)
 - **🤝 贡献代码**：想要贡献？请查看上方[如何贡献](#-如何贡献)部分
 
 ---

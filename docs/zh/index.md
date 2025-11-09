@@ -15,7 +15,7 @@ hero:
       link: /zh/guide
     - theme: alt
       text: GitHub 仓库
-      link: https://github.com/1985312383/med-imaging-primer
+      link: https://github.com/datawhalechina/med-imaging-primer
 
 features:
   - title: 从零开始

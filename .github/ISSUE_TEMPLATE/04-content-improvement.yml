@@ -80,7 +80,7 @@ body:
         例如 / Example:
         - 第2.1章 > 2.1.3节 > "探测器类型"部分
         - Chapter 2.1 > Section 2.1.3 > "Detector Types" section
-        - 链接 / Link: https://1985312383.github.io/med-imaging-primer/...
+        - 链接 / Link: https://datawhalechina.github.io/med-imaging-primer/...
 
   - type: textarea
     id: suggestion-description
@@ -259,6 +259,6 @@ body:
         您的建议对改进教程质量非常重要。我们会认真考虑每一个建议，并在可能的情况下实施。
         Your suggestions are very important for improving the tutorial quality. We will carefully consider each suggestion and implement it when possible.
         
-        如果您愿意直接贡献内容，欢迎查看我们的[贡献指南](https://github.com/1985312383/med-imaging-primer#-contributing)！
-        If you would like to contribute content directly, please check our [Contributing Guide](https://github.com/1985312383/med-imaging-primer#-contributing)!
+        如果您愿意直接贡献内容，欢迎查看我们的[贡献指南](https://github.com/datawhalechina/med-imaging-primer#-contributing)！
+        If you would like to contribute content directly, please check our [Contributing Guide](https://github.com/datawhalechina/med-imaging-primer#-contributing)!
 

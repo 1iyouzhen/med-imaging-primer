@@ -62,7 +62,7 @@ body:
         例如 / Example:
         - 第2.1章 > 2.1.3节 > "探测器类型"部分
         - Chapter 2.1 > Section 2.1.3 > "Detector Types" section
-        - 链接 / Link: https://1985312383.github.io/med-imaging-primer/...
+        - 链接 / Link: https://datawhalechina.github.io/med-imaging-primer/...
 
   - type: dropdown
     id: question-type

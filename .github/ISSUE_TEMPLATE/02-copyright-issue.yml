@@ -63,7 +63,7 @@ body:
         
         例如 / Example:
         - 章节：第2.1章 / Chapter: 2.1
-        - 链接：https://1985312383.github.io/med-imaging-primer/zh/guide/ch02/01-ct-preprocessing.html
+        - 链接：https://datawhalechina.github.io/med-imaging-primer/zh/guide/ch02/01-ct-preprocessing.html
         - 图片：CT探测器结构示意图（第3张图） / Image: CT detector structure diagram (3rd image)
     validations:
       required: true

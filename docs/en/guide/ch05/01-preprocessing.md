@@ -19,13 +19,13 @@ Unlike natural images, medical images have unique physical characteristics and c
 
 Medical images differ fundamentally from the natural images we encounter in daily life:
 
-| Characteristic | Natural Images | Medical Images |
-|---------------|---------------|----------------|
-| **Data Range** | 0-255 (8-bit) | Modality-specific (HU values, arbitrary units, etc.) |
-| **Physical Meaning** | RGB color intensity | Physical measurements (attenuation, magnetization intensity, etc.) |
-| **Standardization** | Relatively standard | Highly dependent on equipment and scanning parameters |
-| **Region of Interest** | Entire image | Specific tissues or lesions |
-| **Prior Knowledge** | Limited | Rich anatomical and physiological priors |
+| Characteristic         | Natural Images      | Medical Images                                                     |
+| ---------------------- | ------------------- | ------------------------------------------------------------------ |
+| **Data Range**         | 0-255 (8-bit)       | Modality-specific (HU values, arbitrary units, etc.)               |
+| **Physical Meaning**   | RGB color intensity | Physical measurements (attenuation, magnetization intensity, etc.) |
+| **Standardization**    | Relatively standard | Highly dependent on equipment and scanning parameters              |
+| **Region of Interest** | Entire image        | Specific tissues or lesions                                        |
+| **Prior Knowledge**    | Limited             | Rich anatomical and physiological priors                           |
 
 ::: info 🧠 The "Appetite" of Deep Learning
 Deep learning models, especially CNNs, typically expect:
@@ -102,13 +102,13 @@ Where:
 
 #### Clinically Common Windows
 
-| Window Type | Window Level | Window Width | Applicable Tissue | Visible Structures |
-|------------|-------------|--------------|------------------|-------------------|
-| **Lung Window** | -600 | 1500 | Lung tissue | Lung markings, small nodules, pneumothorax |
-| **Mediastinal Window** | 50 | 350 | Mediastinal structures | Heart, great vessels, lymph nodes |
-| **Bone Window** | 300 | 2000 | Bones | Cortical bone, bone marrow, microfractures |
-| **Brain Window** | 40 | 80 | Brain tissue | Gray matter, white matter, cerebrospinal fluid |
-| **Abdominal Window** | 50 | 400 | Abdominal organs | Liver, pancreas, kidneys |
+| Window Type            | Window Level | Window Width | Applicable Tissue      | Visible Structures                             |
+| ---------------------- | ------------ | ------------ | ---------------------- | ---------------------------------------------- |
+| **Lung Window**        | -600         | 1500         | Lung tissue            | Lung markings, small nodules, pneumothorax     |
+| **Mediastinal Window** | 50           | 350          | Mediastinal structures | Heart, great vessels, lymph nodes              |
+| **Bone Window**        | 300          | 2000         | Bones                  | Cortical bone, bone marrow, microfractures     |
+| **Brain Window**       | 40           | 80           | Brain tissue           | Gray matter, white matter, cerebrospinal fluid |
+| **Abdominal Window**   | 50           | 400          | Abdominal organs       | Liver, pancreas, kidneys                       |
 
 ::: tip 💡 The Art of Window Selection
 Window selection is like camera focusing:
@@ -289,7 +289,7 @@ class N4ITKBiasCorrector:
 2. **Extract white matter intensity range**: Find the dominant mode of white matter through statistical analysis
 3. **Linear mapping**: Map white matter range to standard interval (e.g., [0, 1])
 
-[📖 **Complete Code Example**: `white_stripe_normalization/`](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/) - Full White Stripe normalization implementation with multi-modality support]
+[📖 **Complete Code Example**: `white_stripe_normalization/`](https://github.com/datawhalechina/med-imaging-primer/tree/main/src/ch05/) - Full White Stripe normalization implementation with multi-modality support]
 
 **Execution Results Analysis:**
 
@@ -310,19 +310,19 @@ White Stripe normalization:
 
 Different MRI sequences provide complementary tissue information:
 
-| Sequence | T1-weighted | T2-weighted | FLAIR | DWI |
-|----------|-------------|-------------|-------|-----|
-| **Tissue Contrast** | Anatomical structure | Lesion detection | Lesion boundary | Cell density |
-| **CSF** | Low signal | High signal | Low signal | b-value dependent |
-| **White Matter Lesions** | Low contrast | High contrast | Very high contrast | Variable |
-| **Acute Infarction** | Not obvious early | High signal early | High signal | Diffusion limited |
+| Sequence                 | T1-weighted          | T2-weighted       | FLAIR              | DWI               |
+| ------------------------ | -------------------- | ----------------- | ------------------ | ----------------- |
+| **Tissue Contrast**      | Anatomical structure | Lesion detection  | Lesion boundary    | Cell density      |
+| **CSF**                  | Low signal           | High signal       | Low signal         | b-value dependent |
+| **White Matter Lesions** | Low contrast         | High contrast     | Very high contrast | Variable          |
+| **Acute Infarction**     | Not obvious early    | High signal early | High signal        | Diffusion limited |
 
 ![MRI Multi-sequence Comparison](https://www.researchgate.net/publication/349327938/figure/fig2/AS:989495652872194@1614926665094/Different-MRI-sequences-show-the-same-brain-tumor-The-T1-weighted-image-provides.ppm)
 *Comparison of different MRI sequences for the same brain tumor, showing complementary information*
 
 #### Multi-sequence Fusion Methods
 
-[📖 **Complete Code Example**: `multisequence_fusion/`](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/) - Multi-sequence MRI fusion implementation with different strategies]
+[📖 **Complete Code Example**: `multisequence_fusion/`](https://github.com/datawhalechina/med-imaging-primer/tree/main/src/ch05/) - Multi-sequence MRI fusion implementation with different strategies]
 
 **Execution Results Analysis:**
 
@@ -507,11 +507,11 @@ def lung_segmentation_preprocessing(image, lung_mask):
 
 Medical images from different sources may have different spatial resolutions:
 
-| Modality | Typical Resolution | Resolution Variation Reasons |
-|----------|-------------------|----------------------------|
-| **CT** | 0.5-1.0mm (in-plane), 0.5-5.0mm (slice thickness) | Scanning protocols, reconstruction algorithms |
-| **MRI** | 0.5-2.0mm (anisotropic) | Sequence types, acquisition parameters |
-| **X-ray** | 0.1-0.2mm (detector size) | Magnification, detector type |
+| Modality  | Typical Resolution                                | Resolution Variation Reasons                  |
+| --------- | ------------------------------------------------- | --------------------------------------------- |
+| **CT**    | 0.5-1.0mm (in-plane), 0.5-5.0mm (slice thickness) | Scanning protocols, reconstruction algorithms |
+| **MRI**   | 0.5-2.0mm (anisotropic)                           | Sequence types, acquisition parameters        |
+| **X-ray** | 0.1-0.2mm (detector size)                         | Magnification, detector type                  |
 
 #### Resampling Methods
 
@@ -691,12 +691,12 @@ flowchart TD
 
 #### Preprocessing Pitfalls
 
-| Pitfall Type | Specific Manifestation | Consequences | Solutions |
-|-------------|------------------------|-------------|-----------|
-| **Over-smoothing** | Using Gaussian filtering for denoising | Loss of details, small lesions disappear | Use edge-preserving denoising |
-| **Improper normalization** | Global statistics normalization | Abnormal regions suppressed | Local or adaptive normalization |
-| **Information leakage** | Using test set statistics | Overly optimistic performance | Use only training set statistics |
-| **Anatomical discontinuity** | Excessive spatial transforms | Anatomical structure destruction | Reasonable transform parameter limits |
+| Pitfall Type                 | Specific Manifestation                 | Consequences                             | Solutions                             |
+| ---------------------------- | -------------------------------------- | ---------------------------------------- | ------------------------------------- |
+| **Over-smoothing**           | Using Gaussian filtering for denoising | Loss of details, small lesions disappear | Use edge-preserving denoising         |
+| **Improper normalization**   | Global statistics normalization        | Abnormal regions suppressed              | Local or adaptive normalization       |
+| **Information leakage**      | Using test set statistics              | Overly optimistic performance            | Use only training set statistics      |
+| **Anatomical discontinuity** | Excessive spatial transforms           | Anatomical structure destruction         | Reasonable transform parameter limits |
 
 #### Validation Strategies
 
@@ -745,11 +745,11 @@ def validate_preprocessing(original_image, processed_image, roi_mask=None):
 
 ## 🖼️ Algorithm Demonstrations
 
-Below we showcase the practical effects of our implemented preprocessing algorithms on real data. All code examples can be found and run in the [`ch05-code-examples`](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/) directory.
+Below we showcase the practical effects of our implemented preprocessing algorithms on real data. All code examples can be found and run in the [`ch05-code-examples`](https://github.com/datawhalechina/med-imaging-primer/tree/main/src/ch05/) directory.
 
 ### MRI Bias Field Visualization and Correction
 
-![MRI Bias Field Visualization](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/visualize_bias_field/output/bias_field_visualization_division.png)
+![MRI Bias Field Visualization](https://github.com/datawhalechina/med-imaging-primer/tree/main/src/ch05/visualize_bias_field/output/bias_field_visualization_division.png)
 *MRI bias field visualization: left - original image, center - estimated bias field, right - corrected image*
 
 **Bias field correction performance comparison:**
@@ -757,12 +757,12 @@ Below we showcase the practical effects of our implemented preprocessing algorit
 - Homomorphic method: MSE=0.1984, PSNR=7.0dB, SSIM=0.149
 - Polynomial method: MSE=0.0663, PSNR=11.8dB, SSIM=0.545
 
-![Multiple Bias Field Correction Methods Comparison](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/visualize_bias_field/output/bias_field_methods_comparison.png)
+![Multiple Bias Field Correction Methods Comparison](https://github.com/datawhalechina/med-imaging-primer/tree/main/src/ch05/visualize_bias_field/output/bias_field_methods_comparison.png)
 *Performance comparison of different bias field correction methods, showing polynomial method performs best in this example*
 
 ### White Stripe Intensity Normalization
 
-![White Stripe Normalization Results](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/white_stripe_normalization/output/white_stripe_t1_normalization.png)
+![White Stripe Normalization Results](https://github.com/datawhalechina/med-imaging-primer/tree/main/src/ch05/white_stripe_normalization/output/white_stripe_t1_normalization.png)
 *White Stripe intensity normalization: showing original image, normalized result, difference comparison, and statistical analysis*
 
 **Normalization effects for different MRI sequences:**
@@ -770,12 +770,12 @@ Below we showcase the practical effects of our implemented preprocessing algorit
 - T2 sequence: 6 white matter pixels, normalized mean 0.886
 - FLAIR sequence: 10 white matter pixels, normalized mean 0.888
 
-![Multi-modality MRI Normalization Comparison](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/white_stripe_normalization/output/white_stripe_modality_comparison.png)
+![Multi-modality MRI Normalization Comparison](https://github.com/datawhalechina/med-imaging-primer/tree/main/src/ch05/white_stripe_normalization/output/white_stripe_modality_comparison.png)
 *White Stripe normalization effects for different MRI sequences, showing intensity distributions and normalization results*
 
 ### CLAHE Contrast Enhancement
 
-![CLAHE Parameter Comparison](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/clahe_enhancement/output/clahe_parameter_comparison.png)
+![CLAHE Parameter Comparison](https://github.com/datawhalechina/med-imaging-primer/tree/main/src/ch05/clahe_enhancement/output/clahe_parameter_comparison.png)
 *Effects of different CLAHE parameters, showing progressive enhancement from weak to strongest*
 
 **CLAHE enhancement quantitative evaluation:**
@@ -785,12 +785,12 @@ Below we showcase the practical effects of our implemented preprocessing algorit
 - Edge strength improvement factor: 18.19
 - PSNR: 28.05 dB, SSIM: 0.566
 
-![CLAHE Detailed Analysis](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/clahe_enhancement/output/clahe_detailed_analysis.png)
+![CLAHE Detailed Analysis](https://github.com/datawhalechina/med-imaging-primer/tree/main/src/ch05/clahe_enhancement/output/clahe_detailed_analysis.png)
 *Detailed CLAHE enhancement analysis, including edge detection, intensity distribution, and enhancement effect evaluation*
 
 ### CT HU Value Clipping
 
-![HU Value Clipping Comparison](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/clip_hu_values/output/hu_clipping_软组织范围.png)
+![HU Value Clipping Comparison](https://github.com/datawhalechina/med-imaging-primer/tree/main/src/ch05/clip_hu_values/output/hu_clipping_软组织范围.png)
 *CT HU value clipping: showing soft tissue range (-200, 400 HU) clipping effect*
 
 **Effects of different clipping strategies:**
@@ -801,17 +801,17 @@ Below we showcase the practical effects of our implemented preprocessing algorit
 
 ### Metal Artifact Detection
 
-![Metal Artifact Detection Results](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/detect_metal_artifacts/output/metal_artifact_detection.png)
+![Metal Artifact Detection Results](https://github.com/datawhalechina/med-imaging-primer/tree/main/src/ch05/detect_metal_artifacts/output/metal_artifact_detection.png)
 *CT metal artifact detection: automatic detection of metal regions and artifact severity assessment*
 
 **Detection effects of different thresholds:**
 | Threshold (HU) | Detected Regions | Metal Pixels | Ratio | Severity |
-|---------------|------------------|--------------|-------|----------|
-| 2000 | 2 | 166 | 0.02% | Slight |
-| 3000 | 2 | 165 | 0.02% | Slight |
-| 4000 | 2 | 133 | 0.01% | Slight |
+| -------------- | ---------------- | ------------ | ----- | -------- |
+| 2000           | 2                | 166          | 0.02% | Slight   |
+| 3000           | 2                | 165          | 0.02% | Slight   |
+| 4000           | 2                | 133          | 0.01% | Slight   |
 
-![Metal Artifact Threshold Comparison](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/detect_metal_artifacts/output/metal_threshold_comparison.png)
+![Metal Artifact Threshold Comparison](https://github.com/datawhalechina/med-imaging-primer/tree/main/src/ch05/detect_metal_artifacts/output/metal_threshold_comparison.png)
 *Comparison of metal artifact detection effects for different HU thresholds*
 
 ### Practical Application Recommendations

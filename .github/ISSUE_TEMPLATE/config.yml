@@ -1,12 +1,12 @@
 blank_issues_enabled: false
 contact_links:
   - name: "📖 在线文档 / Online Documentation"
-    url: https://1985312383.github.io/med-imaging-primer/
+    url: https://datawhalechina.github.io/med-imaging-primer/
     about: "访问完整的在线教程文档 / Access the complete online tutorial documentation"
   - name: "💬 讨论区 / Discussions"
-    url: https://github.com/1985312383/med-imaging-primer/discussions
+    url: https://github.com/datawhalechina/med-imaging-primer/discussions
     about: "参与社区讨论，分享学习心得 / Participate in community discussions and share learning experiences"
   - name: "🤝 贡献指南 / Contributing Guide"
-    url: https://github.com/1985312383/med-imaging-primer#-contributing
+    url: https://github.com/datawhalechina/med-imaging-primer#-contributing
     about: "了解如何为项目做出贡献 / Learn how to contribute to the project"
 

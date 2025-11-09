@@ -46,7 +46,7 @@ class MedicalAugmentation:
         return enhanced_image
 ```
 
-[📖 **完整代码示例**: `data_augmentation/`](https://github.com/1985312383/med-imaging-primer/tree/main/src/ch05/) - 包含完整的医学图像增强实现、2D/3D变换和模态适配功能]
+[📖 **完整代码示例**: `data_augmentation/`](https://github.com/datawhalechina/med-imaging-primer/tree/main/src/ch05/) - 包含完整的医学图像增强实现、2D/3D变换和模态适配功能]
 
 **运行结果分析：**
 
