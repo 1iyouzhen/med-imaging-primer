@@ -1,5 +1,5 @@
 ---
-title: 2.2 MRI：k空间数据预处理
+title: 2.2 MRI k空间数据预处理
 description: 深入理解MRI k空间采集、噪声特性、并行成像和运动校正的完整预处理流程
 ---
 
