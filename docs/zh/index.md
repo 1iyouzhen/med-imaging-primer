@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: 开始阅读
-      link: /zh/guide
+      link: /guide
     - theme: alt
       text: GitHub 仓库
       link: https://github.com/datawhalechina/med-imaging-primer
