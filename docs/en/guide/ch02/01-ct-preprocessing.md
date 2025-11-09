@@ -1,5 +1,5 @@
 ---
-title: 2.1 CT: From Detector Signal to Corrected Projection
+title: 2.1 CT  From Detector Signal to Corrected Projection
 description: In-depth understanding of the complete workflow of CT data acquisition, photon conversion, and preprocessing correction
 ---
 
