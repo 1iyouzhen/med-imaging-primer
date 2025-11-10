@@ -594,8 +594,8 @@ class MemoryEfficient3DNet(nn.Module):
 - **Variable magnification**: Different objective lenses (4x, 10x, 20x, 40x)
 - **Only slide-level labels**: Often only known whether the patient has cancer
 
-![Whole slide image analysis workflow](https://www.researchgate.net/publication/335782688/figure/fig1/AS:803675432949761@1568948590481/The-workflow-of-multiple-instance-learning-based-prostate-cancer-detection-in-gigapixel.png)
-*MIL-based cancer detection workflow for gigapixel WSI*
+![Whole slide image analysis workflow](/images/ch05/attention-mil.png)
+*MIL-based whole slide image analysis workflow - Custom diagram showing the process from WSI to final diagnosis*
 
 ### MIL Fundamentals
 
