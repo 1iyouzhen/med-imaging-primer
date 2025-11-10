@@ -6,6 +6,8 @@ Enhanced Features: Elastic deformation, intensity transformation, noise addition
 """
 
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # 设置非交互式后端
 import matplotlib.pyplot as plt
 from scipy import ndimage
 from skimage.transform import resize, rotate, AffineTransform, warp
@@ -13,6 +15,12 @@ from skimage.filters import gaussian
 import os
 from pathlib import Path
 import json
+import warnings
+
+# 过滤matplotlib警告
+warnings.filterwarnings("ignore", category=UserWarning, module="matplotlib")
+warnings.filterwarnings("ignore", message=".*findfont.*")
+warnings.filterwarnings("ignore", message=".*font.*")
 
 # 设置中文字体 / Set Chinese font
 try:
@@ -352,8 +360,6 @@ class MedicalSegmentationAugmentation:
         plt.savefig(output_path, dpi=300, bbox_inches='tight')
         print(f"可视化结果已保存 / Visualization saved to: {output_path}")
 
-        plt.show()
-        plt.pause(2)
         plt.close()
 
         return output_path
@@ -407,7 +413,7 @@ class MedicalSegmentationAugmentation:
         print(f"分析结果已保存 / Analysis saved to: {analysis_path}")
 
         # 打印关键结果
-        print("\n📊 增强效果分析 / Augmentation Effect Analysis:")
+        print("\n[Analysis] 增强效果分析 / Augmentation Effect Analysis:")
         print("-" * 60)
 
         for aug_type, metrics in analysis_results['augmentations'].items():
@@ -438,11 +444,11 @@ def main():
     augmentor = MedicalSegmentationAugmentation(seed=42)
 
     # 创建示例医学图像
-    print("\n🏥 创建示例医学图像 / Creating sample medical image...")
+    print("\n[Medical] 创建示例医学图像 / Creating sample medical image...")
     original_img, original_img_display, original_mask, original_mask_display, nodule_mask = augmentor.create_sample_medical_image()
 
     # 应用不同的增强技术
-    print("\n🎨 应用增强技术 / Applying augmentation techniques...")
+    print("\n[Augment] 应用增强技术 / Applying augmentation techniques...")
     augmentations = []
 
     # 1. 弹性变形
@@ -470,7 +476,7 @@ def main():
     augmentations.append((occlusion_img, occlusion_mask, "部分遮挡"))
 
     # 可视化结果
-    print("\n📊 生成可视化结果 / Generating visualization results...")
+    print("\n[Visualize] 生成可视化结果 / Generating visualization results...")
     viz_path = augmentor.visualize_augmentation_results(
         original_img_display, original_mask_display, augmentations
     )
@@ -481,7 +487,7 @@ def main():
     )
 
     print("\n" + "=" * 80)
-    print("医学图像分割增强演示完成 / Medical Segmentation Augmentation Demo Completed!")
+    print("[Complete] 医学图像分割增强演示完成 / Medical Segmentation Augmentation Demo Completed!")
     print("=" * 80)
 
     return {

@@ -57,7 +57,7 @@ description: 医学图像增强与恢复技术
 - **临床适用性**：实际临床场景可用性
 - **一致性检查**：与原始图像诊断结论一致性
 
-[📖 **完整代码示例**: `data_augmentation/`](https://github.com/datawhalechina/med-imaging-primer/tree/main/src/ch05/) - 包含完整的医学图像增强实现、2D/3D变换和模态适配功能]
+[📖 **完整代码示例**: `medical_image_augmentation/`](https://github.com/datawhalechina/med-imaging-primer/tree/main/src/ch05/medical_image_augmentation/) - 包含完整的医学图像增强实现、2D/3D变换和模态适配功能]
 
 **实际应用效果：**
 医学图像增强在临床应用中已证明能够将模型性能提升15-30%，特别是在数据稀缺的情况下，合理的增强策略相当于将训练数据扩大2-5倍。但需要强调的是，**增强策略必须经过临床医生验证**，确保不引入医学上不合理的变化。
@@ -66,7 +66,7 @@ description: 医学图像增强与恢复技术
 
 我们创建了一个完整的通用医学图像增强系统，支持多种模态和增强策略：
 
-![通用医学图像增强效果演示](/images/ch05/medical_augmentation_ct_demo.png)
+![通用医学图像增强效果演示](/images/ch05/medical_image_augmentation_ct_demo.png)
 *图：通用医学图像增强技术演示。展示了CT图像的基础增强（旋转、平移、缩放、翻转）、强度增强（对比度、亮度、噪声）和高级增强（弹性变形、局部遮挡）效果，所有增强都考虑了医学约束条件。*
 
 **核心特性：**
