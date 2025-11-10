@@ -13,7 +13,7 @@ The field of medical imaging faces unique challenges: data scarcity, variations 
 
 ---
 
-## <� Medical Image Augmentation Techniques
+## 🎨 Medical Image Augmentation Techniques
 
 ### Basic Data Augmentation
 
@@ -1060,7 +1060,7 @@ class MultiScaleSR:
 
 ---
 
-## =� Augmentation Effect Evaluation
+## 📏 Augmentation Effect Evaluation
 
 ### Quantitative Evaluation Metrics
 
@@ -1279,7 +1279,7 @@ class TaskOrientedEvaluation:
 
 ---
 
-## =� Practical Application Cases
+## 🏥 Practical Application Cases
 
 ### Data Augmentation Effect Comparison
 
@@ -1465,6 +1465,6 @@ def super_resolution_case_study(lr_images, hr_images, model):
 
 ---
 
-::: info <� Chapter Completion
+::: info 🎯 Chapter Completion
 Through this chapter, you have mastered the core technologies of medical image augmentation and recovery. From traditional geometric transformations to advanced generative adversarial networks, from simple filtering denoising to complex deep learning super-resolution, these techniques will help you solve medical imaging data scarcity and quality issues, providing better data foundations for subsequent deep learning models.
 :::

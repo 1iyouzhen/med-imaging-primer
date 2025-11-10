@@ -13,7 +13,7 @@ Medical image classification and detection face unique challenges: extreme class
 
 ---
 
-## <å Classification vs Detection: Core Concepts and Differences
+## ðŸ” Classification vs Detection: Core Concepts and Differences
 
 ### Basic Task Definition
 
@@ -110,7 +110,7 @@ class MedicalClassificationModel(nn.Module):
 
 ---
 
-## =ø 2D CNN-based X-ray Classification
+## ðŸ¥ 2D CNN-based X-ray Classification
 
 ### X-ray Classification Characteristics
 
@@ -327,7 +327,7 @@ class BalancedSampler(torch.utils.data.Sampler):
 
 ---
 
-## >Ê 3D CNN for Volumetric Medical Data Analysis
+## ðŸ§  3D CNN for Volumetric Medical Data Analysis
 
 ### From 2D to 3D: Challenges and Opportunities
 
@@ -338,7 +338,7 @@ Volumetric medical data (CT, MRI) has unique characteristics:
 | Feature | 2D Image | 3D Volume |
 |---------|----------|-----------|
 | **Spatial Information** | Plane context | Full 3D spatial relationships |
-| **Computational Complexity** | O(H×W) | O(H×W×D) |
+| **Computational Complexity** | O(Hï¿½W) | O(Hï¿½Wï¿½D) |
 | **Memory Requirements** | MB | GB |
 | **Inter-slice Information** | Lost | Preserved |
 | **Clinical Value** | Localized diagnosis | Comprehensive analysis |
@@ -589,7 +589,7 @@ class MemoryEfficient3DNet(nn.Module):
 
 **Whole Slide Images (WSI)** have unique characteristics:
 
-- **Ultra-high resolution**: 100,000×100,000 pixels or higher
+- **Ultra-high resolution**: 100,000ï¿½100,000 pixels or higher
 - **Huge file size**: Several GB
 - **Variable magnification**: Different objective lenses (4x, 10x, 20x, 40x)
 - **Only slide-level labels**: Often only known whether the patient has cancer
@@ -876,7 +876,7 @@ def visualize_attention_map(wsi_path, model, attention_weights, patch_coordinate
 
 ---
 
-## <¯ Object Detection in Medical Imaging
+## ðŸŽ¯ Object Detection in Medical Imaging
 
 ### Medical Object Detection Characteristics
 
@@ -1159,7 +1159,7 @@ class HardNegativeMiner:
 
 ---
 
-## =Ê Performance Comparison and Best Practices
+## ðŸ“Š Performance Comparison and Best Practices
 
 ### Evaluation Metrics
 
@@ -1353,6 +1353,6 @@ flowchart TD
 
 ---
 
-::: info =¡ Next Learning
+::: info ðŸš€ Next Learning
 Now you have mastered the core technologies of medical image classification and detection. In the next section (5.4 Image Augmentation and Recovery), we will explore how to overcome data scarcity challenges through advanced data enhancement techniques and recover lost image information.
 :::
