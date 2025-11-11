@@ -1,9 +1,9 @@
 ---
-title: 5.2 U-Net and its Variants
-description: In-depth exploration of medical image segmentation core technologies - U-Net architecture and its applications across different modalities
+title: "5.2 Image Segmentation: U-Net and its Variants"
+description: "In-depth exploration of medical image segmentation core technologies - U-Net architecture and its applications across different modalities"
 ---
 
-# 5.2 U-Net and its Variants
+# 5.2 Image Segmentation: U-Net and its Variants
 
 > "U-Net is not just a network architecture, but a revolutionary thinking in medical image segmentation—proving that carefully designed architectures can surpass brute-force training on large datasets." — — Ronneberger et al., "U-Net: Convolutional Networks for Biomedical Image Segmentation", MICCAI 2015
 
@@ -34,8 +34,8 @@ U-Net's success stems from three core design principles:
 2. **Skip Connections**: Directly transfer shallow features to avoid information loss
 3. **Fully Convolutional Network**: Adapt to input images of any size
 
-![U-Net Architecture Evolution](https://miro.medium.com/v2/resize:fit:1400/1*OkUrp9sD_a3E57i34105fw.png)
-*U-Net's core idea: Encoder extracts semantic features, decoder restores spatial resolution, skip connections ensure details aren't lost*
+![U-Net Architecture Evolution](/images/ch05/unet-architecture.png)
+*U-Net's core idea: Encoder extracts semantic features, decoder restores spatial resolution, skip connections ensure details aren't lost - Custom diagram*
 
 ---
 
@@ -285,8 +285,8 @@ class ResidualBlock(nn.Module):
 - Introduces residual learning
 - Deeper network structures (usually 5 layers or more)
 
-![V-Net vs U-Net Comparison](https://www.researchgate.net/publication/333694144/figure/fig1/AS:769140128417795@1540188513205/The-V-Net-architecture.png)
-*V-Net architecture: Designed specifically for 3D medical image segmentation, using 3D convolutions and residual connections*
+![V-Net vs U-Net Comparison](/images/ch05/04-unet-plus-plus-en.png)
+*V-Net architecture: Designed specifically for 3D medical image segmentation, using 3D convolutions and residual connections - Using U-Net++ diagram as conceptual replacement*
 
 ### 2. U-Net++ (Nested U-Net)
 
@@ -361,7 +361,7 @@ class AttentionGate(nn.Module):
         return x * psi
 ```
 
-![Attention U-Net Mechanism](https://miro.medium.com/v2/resize:fit:1400/1*8uAONlK4z3bOTw5cJ2Ujmw.png)
+![Attention U-Net Mechanism](/images/ch05/05-classification-detection-en.png)
 *Attention U-Net automatically learns skip connection importance through attention mechanisms, suppressing irrelevant regions and highlighting relevant features*
 
 ### 4. nnU-Net: Fully Automated Medical Image Segmentation Framework

@@ -871,5 +871,5 @@ Each algorithm has complete documentation and test cases. We recommend:
 ---
 
 ::: info 💡 Next Steps
-Now you have mastered preprocessing techniques for different modality medical images. In the next section (5.2 U-Net and its variants), we will deeply study the core technologies of medical image segmentation, understanding how to convert preprocessed images into precise anatomical structure segmentation results.
+Now you have mastered preprocessing techniques for different modality medical images. In the next section (5.2 Image Segmentation: U-Net and its variants), we will deeply study the core technologies of medical image segmentation, understanding how to convert preprocessed images into precise anatomical structure segmentation results.
 :::
