@@ -12,14 +12,26 @@ CT reconstruction is mathematically based on the **Radon transform**, which mode
 ### 2.1 Parallel-beam geometry
 In a parallel-beam system, X-rays are parallel for each view, and each detector element measures the total attenuation along its corresponding ray. Although conceptually simple, parallel-beam geometry is rarely used in modern CT scanners because it requires translation instead of rotation.
 
-Mathematically, the projection p(θ, t) can be expressed as an integral of the object’s attenuation function f(x, y) along the X-ray path:
-p(θ, t) = ∫ f(x, y) δ(t − x·cosθ − y·sinθ) dx dy
-where δ represents the Dirac delta function, θ is the projection angle, and t is the detector coordinate.
+Mathematically, the projection p(θ, t) can be expressed as :
+
+
+$$p(\theta, t) = \int_{-\infty}^{+\infty} f(x, y) \, \delta(t - x\cos\theta - y\sin\theta) \, dx\,dy$$
+
+where:
+- $f(x, y)$ is the attenuation coefficient distribution
+- $\theta$ is the projection angle
+- $t$ is the detector coordinate
+- $\delta$ is the Dirac delta function
 
 ### 2.2 Fan-beam geometry
-In fan-beam geometry, the X-ray source emits rays diverging within a plane, forming a fan shape. The relationship between fan-beam and parallel-beam projections is:
-p_fan(β, γ) = p_parallel(θ = β + γ, t = R·sinγ)
-where β is the rotation angle of the source, γ is the fan angle, and R is the distance from the source to the isocenter.
+The relationship between fan-beam and parallel-beam projections:
+
+$$p_{\text{fan}}(\beta, \gamma) = p_{\text{parallel}}(\theta = \beta + \gamma, t = R \sin \gamma)$$
+
+where:
+- $\beta$ is the rotation angle of the source
+- $\gamma$ is the fan angle  
+- $R$ is the source-to-center distance
 
 ### 2.3 Cone-beam geometry
 In cone-beam systems, the source emits rays diverging both horizontally and vertically, forming a 3D cone shape. This geometry allows volumetric data acquisition in a single rotation but makes image reconstruction more complex. Algorithms such as the Feldkamp–Davis–Kress (FDK) method are used to approximate the full 3D reconstruction efficiently.
@@ -36,13 +48,15 @@ The Radon transform describes how projection data are generated from an image.
 For a two-dimensional image f(x, y), the Radon transform Rf(θ, s) represents the line integral of f along a line at angle θ and offset s.
 
 It can be expressed conceptually as:
-Rf(θ, s) = ∫ f(s * cosθ − t * sinθ, s * sinθ + t * cosθ) dt
 
-Here:
-- f(x, y) is the original image (attenuation distribution),
-- θ is the projection angle,
-- s is the detector coordinate,
-- Rf(θ, s) is the resulting projection (sinogram).
+
+$$Rf(\theta, s) = \int_{-\infty}^{+\infty} f(s \cos\theta - t \sin\theta, s \sin\theta + t \cos\theta) \, dt$$
+
+where:
+- $f(x, y)$ is the original image
+- $\theta$ is the projection angle
+- $s$ is the detector coordinate
+- $Rf(\theta, s)$ is the sinogram
 
 The **inverse Radon transform** reconstructs f(x, y) from all its projections Rf(θ, s) collected over a full angular range.
 
@@ -63,12 +77,14 @@ The FBP process consists of two main steps:
    For every pixel (x, y), the algorithm sums contributions from all projection angles.
 
 In compact mathematical form, the reconstruction can be represented as:
-f(x, y) = ∫ [Rf(θ, s) * h(s)] evaluated at s = x * cosθ + y * sinθ, integrated over θ from 0 to π.
+
+
+$$f(x, y) = \int_0^{\pi} [Rf(\theta, s) * h(s)] \bigg|_{s = x\cos\theta + y\sin\theta} \, d\theta$$
 
 where:
-- h(s) is the convolution filter kernel,
-- “*” denotes convolution,
-- the integral over θ accumulates all angular contributions.
+- $h(s)$ is the convolution filter kernel (ramp filter)
+- $*$ denotes convolution
+- The integral accumulates contributions from all projection angles
 
 FBP provides fast and accurate reconstruction under ideal conditions, but it is sensitive to noise, limited angular coverage, and inconsistent measurements.
 
@@ -83,36 +99,43 @@ FBP provides fast and accurate reconstruction under ideal conditions, but it is 
 
 ---
 
-### 3.4 Example: Filtered Backprojection with Python
+
+### 3.4 Filter Comparison Example
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
 from skimage.data import shepp_logan_phantom
 from skimage.transform import radon, iradon
 
-# Generate a 2D Shepp–Logan phantom image
+# Generate test image
 image = shepp_logan_phantom()
 angles = np.linspace(0., 180., max(image.shape), endpoint=False)
-
-# Perform the Radon transform (simulate projection acquisition)
 sinogram = radon(image, theta=angles, circle=True)
 
-# Reconstruct using Filtered Backprojection (FBP)
-reconstruction_fbp = iradon(sinogram, theta=angles, filter_name='ramp', circle=True)
+# Reconstruction using different filters
+filters = ['ramp', 'shepp-logan', 'cosine', 'hamming', 'hann']
+reconstructions = []
 
-# Display results
-fig, axes = plt.subplots(1, 3, figsize=(12, 4))
-titles = ['Original Image', 'Sinogram (Projection Data)', 'Reconstruction (FBP)']
-for ax, title, data in zip(axes, titles, [image, sinogram, reconstruction_fbp]):
-    ax.set_title(title)
-    ax.imshow(data, cmap='gray', aspect='auto')
-    ax.axis('off')
+for filter_name in filters:
+    reconstruction = iradon(sinogram, theta=angles, 
+                           filter_name=filter_name, circle=True)
+    reconstructions.append(reconstruction)
+
+# Display comparison results
+fig, axes = plt.subplots(2, 3, figsize=(15, 10))
+axes[0, 0].imshow(image, cmap='gray')
+axes[0, 0].set_title('Original Image')
+
+for i, (filter_name, recon) in enumerate(zip(filters, reconstructions)):
+    row, col = (i+1) // 3, (i+1) % 3
+    axes[row, col].imshow(recon, cmap='gray')
+    axes[row, col].set_title(f'{filter_name.title()} Filter')
+    axes[row, col].axis('off')
+
 plt.tight_layout()
 plt.show()
-
 ```
-
-
 ## 4. FDK Algorithm (3D Cone-beam Reconstruction)
 
 The Feldkamp–Davis–Kress (FDK) algorithm is an approximate analytical reconstruction method designed for 3D cone-beam CT data acquired with a circular scanning trajectory. It extends the 2D Filtered Backprojection (FBP) method by introducing geometric weighting to correct for cone-beam divergence.
@@ -130,38 +153,39 @@ For a given projection angle beta, and detector coordinates (u, v), the detected
 ---
 
 ### 4.2 Algorithm Steps
+
 1. **Weighting**
 
    To correct for cone-beam divergence, each detector pixel is multiplied by a distance-based weighting factor:
 
-   w(u, v) = D / sqrt(D^2 + u^2 + v^2)
+   $$w(u, v) = \frac{D}{\sqrt{D^2 + u^2 + v^2}}$$
 
-   where D is the distance from the X-ray source to the detector plane.
+   where $D$ is the distance from the X-ray source to the detector plane.
 
 2. **Filtering**
 
-   Each detector row (along the u-direction) is convolved with a one-dimensional ramp filter h(u) to perform high-pass frequency compensation, similar to the two-dimensional Filtered Backprojection (FBP) process.
+   Each detector row (along the $u$-direction) is convolved with a one-dimensional ramp filter $h(u)$ to perform high-pass frequency compensation, similar to the two-dimensional Filtered Backprojection (FBP) process.
 
-   p_filtered(u, v, beta) = convolution of p_weighted(u, v, beta) with h(u)
+   $$p_{\text{filtered}}(u, v, \beta) = p_{\text{weighted}}(u, v, \beta) * h(u)$$
 
    The ramp filter enhances high-frequency components, which improves spatial resolution but can also increase noise. In practice, smoother filters such as Hann or Hamming are often applied to reduce high-frequency amplification.
 
 3. **Backprojection**
 
    The filtered data are then backprojected into the three-dimensional reconstruction volume.  
-   For each voxel (x, y, z), the algorithm computes its corresponding detector coordinates (u, v) for each projection angle beta, and accumulates the weighted projection values from all viewing angles.
+   For each voxel $(x, y, z)$, the algorithm computes its corresponding detector coordinates $(u, v)$ for each projection angle $\beta$, and accumulates the weighted projection values from all viewing angles.
 
-   Conceptually, the reconstructed value f(x, y, z) is calculated as the sum or integral over all projection angles:
+   Conceptually, the reconstructed value $f(x, y, z)$ is calculated as the sum or integral over all projection angles:
 
-   f(x, y, z) = ∫ [ D^2 / (D + x * cos(beta) + y * sin(beta))^2 ] *
-                p_filtered( u(x, y, beta), v(x, y, z, beta), beta ) d(beta)
+   $$f(x, y, z) = \int_0^{2\pi} \frac{D^2}{(D + x \cos\beta + y \sin\beta)^2} \cdot p_{\text{filtered}}\big( u(x, y, \beta), v(x, y, z, \beta), \beta \big)  d\beta$$
 
    where the geometric mapping functions are defined as:
 
-   - u(x, y, beta) = D * (x * sin(beta) - y * cos(beta)) / (D + x * cos(beta) + y * sin(beta))
-   - v(x, y, z, beta) = D * z / (D + x * cos(beta) + y * sin(beta))
+   $$u(x, y, \beta) = \frac{D (x \sin\beta - y \cos\beta)}{D + x \cos\beta + y \sin\beta}$$
 
-   These mapping functions describe how each voxel in the 3D object corresponds to detector positions for different projection angles. During implementation, interpolation is often required because (u, v) coordinates may not align exactly with discrete detector pixels.
+   $$v(x, y, z, \beta) = \frac{D z}{D + x \cos\beta + y \sin\beta}$$
+
+   These mapping functions describe how each voxel in the 3D object corresponds to detector positions for different projection angles. During implementation, interpolation is often required because $(u, v)$ coordinates may not align exactly with discrete detector pixels.
 
 ---
 
@@ -211,8 +235,8 @@ for each voxel (x, y, z):
 | Property | Description |
 |-----------|--------------|
 | **Type** | Analytic reconstruction (extension of FBP to 3D cone-beam geometry) |
-| **Computational complexity** |  $O(N^3)$ for reconstructing an $N \times N \times N$ voxel volume |
-| **Memory requirement** | High, since a full 3D array and projection stack are stored simultaneously |
+| **Computational complexity** | $O(N^3)$ for reconstructing an $N \times N \times N$ voxel volume |
+| **Memory requirement** | High, proportional to $N^3 + N^2 \times M$ where $M$ is number of projections |
 | **Accuracy** | High for small cone angles, approximate for large cone angles due to circular trajectory assumption |
 | **Noise sensitivity** | Similar to FBP — sensitive to high-frequency noise; can be mitigated using apodized filters (e.g., Hann, Hamming) |
 | **Parallelization** | Highly parallelizable; GPU acceleration (CUDA/OpenCL) is commonly used in clinical CBCT reconstruction |
@@ -232,12 +256,16 @@ Analytical reconstruction methods such as FBP and FDK are computationally effici
 
 After discretizing the imaging domain into N pixels (for 2D) or voxels (for 3D), the CT reconstruction problem can be represented as a system of linear equations:
 
-A * f = p
+$$A f = p$$
 
-where  
-- **A** is the system matrix of size M × N, representing the intersection lengths between each X-ray path and each image element,  
-- **f** is the unknown image vector (the attenuation coefficients to be reconstructed),  
-- **p** is the measured projection vector (the sinogram data collected by the detector).
+where each projection measurement:
+
+$$p_i = \sum_{j=1}^N a_{ij} f_j + \varepsilon_i$$
+
+- $A$: system matrix ($M \times N$)
+- $f$: unknown image vector
+- $p$: measured projection vector  
+- $\varepsilon_i$: measurement noise
 
 Each measured projection value can be viewed as a weighted sum of the attenuation coefficients along a specific X-ray path:
 
@@ -256,13 +284,14 @@ A more stable and widely used variant is the **Simultaneous Algebraic Reconstruc
 
 The general SART update rule can be written as:
 
-f(k+1) = f(k) + λ * [ Aᵀ * (p − A * f(k)) ] / Σ_j(a_ij)
+$$f^{(k+1)} = f^{(k)} + \lambda \cdot \frac{A^T (p - A f^{(k)})}{\sum_j a_{ij}}$$
 
-where  
-- **f(k)** is the reconstructed image after iteration k,  
-- **λ** (lambda) is a relaxation parameter controlling the convergence rate (typically between 0.5 and 1.0),  
-- **Aᵀ** is the transpose of the system matrix A,  
-- **p** is the measured projection vector.
+where:
+- $f^{(k)}$ is the reconstructed image at iteration $k$
+- $\lambda$ is the relaxation parameter ($0.5 \leq \lambda \leq 1.0$)
+- $A$ is the system matrix
+- $A^T$ is its transpose
+- $p$ is the measured projection vector
 
 SART converges faster and is less sensitive to inconsistent or noisy data than the original ART method.  
 It provides a good balance between computational cost and reconstruction quality, making it suitable for sparse-view or low-dose CT applications.
@@ -276,11 +305,8 @@ It partitions projection data into subsets to accelerate the standard Expectatio
 
 The update rule is:
 
-$$
-f^{(k+1)} = f^{(k)} \cdot
-\frac{A^T \left( \frac{p}{A f^{(k)}} \right)}
-{A^T \mathbf{1}}
-$$
+$$f^{(k+1)} = f^{(k)} \cdot \frac{A^T \left( \frac{p}{A f^{(k)}} \right)}{A^T \mathbf{1}}$$
+
 
 This multiplicative scheme ensures non-negativity and provides faster convergence by processing smaller data subsets per iteration.
 
@@ -291,31 +317,21 @@ This multiplicative scheme ensures non-negativity and provides faster convergenc
 Regularization incorporates prior information to stabilize reconstruction, suppress noise, and preserve image structure.  
 Two common forms are **Tikhonov (L2)** and **Total Variation (TV)** regularization.
 
-#### (a) Tikhonov Regularization
+#### (a) Tikhonov (L2) Regularization
 
-Also known as **L2 regularization**, it penalizes large pixel values and enforces smoothness:
+$$\min_f \|A f - p\|_2^2 + \lambda \|f\|_2^2$$
 
-$$
-\min_f \; \|A f - p\|_2^2 + \lambda \|f\|_2^2
-$$
+Analytical solution for small-scale problems:
 
-The analytical solution for small-scale problems is:
-
-$$
-f = (A^T A + \lambda I)^{-1} A^T p
-$$
-
-However, for large CT systems, iterative solvers (e.g., conjugate gradient) are used.
+$$f = (A^T A + \lambda I)^{-1} A^T p$$
 
 #### (b) Total Variation (TV) Regularization
 
-TV regularization promotes piecewise smoothness while preserving edges:
+$$\min_f \|A f - p\|_2^2 + \lambda \|\nabla f\|_1$$
 
-$$
-\min_f \; \|A f - p\|_2^2 + \lambda \|\nabla f\|_1
-$$
+where $\nabla f$ denotes the image gradient magnitude.
 
-where \(\nabla f\) denotes the image gradient.  
+
 This approach forms the foundation of **compressed-sensing CT**, achieving high-quality reconstructions from sparse or low-dose data [6].
 
 ---
@@ -417,6 +433,43 @@ Common forms include **Tikhonov (L2)** and **Total Variation (TV)** regularizati
 
 ---
 
+## 7. Extended Reading: Deep Learning CT Reconstruction
+
+Recent years have witnessed significant advances in deep learning for CT reconstruction, with major approaches including:
+
+### 7.1 Deep Learning-Based Post-processing Methods
+- **FBPConvNet**: Combines traditional FBP with CNN for post-processing denoising
+- **RED-CNN**: Residual encoder-decoder network specialized for low-dose CT denoising
+- **GAN-based Methods**: Uses generative adversarial networks to enhance reconstructed image quality
+
+### 7.2 Deep Iterative Reconstruction Methods
+- **Learned Primal-Dual**: Unfolds iterative reconstruction algorithms into deep networks
+- **ADMM-Net**: Learnable reconstruction network based on alternating direction method of multipliers
+- **MODL**: Model-driven deep network based on dictionary learning
+
+### 7.3 End-to-End Deep Learning Reconstruction
+- **DeepPET**: End-to-end network for direct image reconstruction from projection data
+- **iCT-Net**: Integrated learning network designed for sparse-view CT
+- **DuDoNet**: Dual-domain network that learns simultaneously in both projection and image domains
+
+### 7.4 Advantages and Challenges
+**Advantages**:
+- Maintains good image quality even under extremely low-dose conditions
+- Significantly faster reconstruction compared to traditional iterative methods
+- Capable of learning complex noise and artifact patterns
+
+**Challenges**:
+- Requires large amounts of high-quality training data
+- Model generalization and interpretability need improvement
+- Clinical validation and standardization still require time
+
+### 7.5 Recommended Literature
+1. **Jin et al.**, "Deep Convolutional Neural Network for Inverse Problems in Imaging", *IEEE TIP*, 2017.
+2. **Yang et al.**, "DuDoNet: Dual Domain Network for CT Metal Artifact Reduction", *CVPR*, 2019.
+3. **Wang et al.**, "iCT-Net: Integrate CNN and Transformer for Sparse-View CT Reconstruction", *Medical Physics*, 2022.
+
+---
+
 ## References
 
 1. **A. C. Kak** and **M. Slaney**, *Principles of Computerized Tomographic Imaging*, SIAM, 2001.  
@@ -436,5 +489,9 @@ Common forms include **Tikhonov (L2)** and **Total Variation (TV)** regularizati
 
 6. **E. Y. Sidky** and **X. Pan**, “Image reconstruction in circular cone-beam computed tomography by constrained, total-variation minimization,” *Physics in Medicine and Biology*, vol. 53, no. 17, pp. 4777–4807, 2008.  
    (Demonstrates TV-based iterative reconstruction for cone-beam CT.)
+7. **Jin et al.**, "Deep Convolutional Neural Network for Inverse Problems in Imaging", *IEEE TIP*, 2017.
+8. **Yang et al.**, "DuDoNet: Dual Domain Network for CT Metal Artifact Reduction", *CVPR*, 2019.
+9. **Wang et al.**, "iCT-Net: Integrate CNN and Transformer for Sparse-View CT Reconstruction", *Medical Physics*, 2022.
+
 
 
