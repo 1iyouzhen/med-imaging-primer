@@ -307,12 +307,7 @@ $$
 将积分路径参数化后：
 
 $$
-p(\theta, t)
-=
-\int_{-\infty}^{+\infty}
-\mu(t\cos\theta - s\sin\theta, \;
-    t\sin\theta + s\cos\theta)
-\, ds
+p(\theta, t)=\int_{-\infty}^{+\infty} \mu(t \cos \theta-s \sin \theta, t \sin \theta+s \cos \theta) d s
 $$
 
 其中：
@@ -373,11 +368,7 @@ $$
 将所有角度的滤波投影反投影到图像空间：
 
 $$
-\mu(x,y)
-=
-\int_0^{\pi}
-\tilde{p}(\theta,  \; x\cos\theta + y\sin\theta )
-\; d\theta
+\mu(x, y)=\int_0^\pi \tilde{p}(\theta, x \cos \theta+y \sin \theta) d \theta
 $$
 
 意义：
@@ -390,13 +381,7 @@ $$
  **(3)FBP 总公式**
 
 $$
-\mu(x,y)
-=
-\int_0^{\pi}
-\left[
-p(\theta,t) * h(t)
-\right]_{t=x\cos\theta+y\sin\theta}
-\, d\theta
+\mu(x, y)=\int_0^\pi[p(\theta, t) * h(t)]_{t=x \cos \theta+y \sin \theta} d \theta
 $$
 
 ---
@@ -426,8 +411,7 @@ $$
 显示 CT 图像时需进行 windowing：
 
 $$
-I_{\text{display}}
-=
+I_{\text{display}}=
 \text{clip}\left(
 \frac{HU - (WL - \frac{WW}{2})}{WW}
 ,\, 0,\, 1
@@ -481,11 +465,7 @@ $$
 描述磁化矢量 $\mathbf{M} = (M_x, M_y, M_z)$ 在磁场中的动态变化：
 
 $$
-\frac{d\mathbf{M}}{dt}
-=
-\gamma (\mathbf{M} \times \mathbf{B})
--\frac{M_x \hat{i} + M_y \hat{j}}{T_2}
--\frac{(M_z - M_0)\hat{k}}{T_1}
+\frac{d \mathbf{M}}{d t}=\gamma(\mathbf{M} \times \mathbf{B})-\frac{M_x \hat{i}+M_y \hat{j}}{T_2}-\frac{\left(M_z-M_0\right) \hat{k}}{T_1}
 $$
 
 其中：
@@ -566,12 +546,7 @@ MRI 数据首先采样在 **k-space(频域)**  中，而不是直接得到图像
 物体磁化分布 $\rho(x,y)$ 在频率编码与相位编码梯度作用下，采样信号为：
 
 $$
-S(k_x, k_y)
-=
-\iint
-\rho(x, y)
-\, e^{-j 2\pi (k_x x + k_y y)}
-\, dx\, dy
+S\left(k_x, k_y\right)=\iint \rho(x, y) e^{-j 2 \pi\left(k_x x+k_y y\right)} d x d y
 $$
 
 其中：
@@ -589,12 +564,7 @@ $$
 图像恢复通过对 k-space 做逆傅里叶变换：
 
 $$
-\rho(x,y)
-=
-\iint
-S(k_x, k_y)
-\, e^{j 2\pi (k_x x + k_y y)}
-\, dk_x \, dk_y
+\rho(x, y)=\iint S\left(k_x, k_y\right) e^{j 2 \pi\left(k_x x+k_y y\right)} d k_x d k_y
 $$
 
 数值实现：
@@ -734,9 +704,7 @@ $$
 原始 RF 包络的动态范围非常大(\>60 dB)，需要压缩到可显示范围：
 
 $$
-I_{\text{display}}
-=
-\log \left( 1 + A(t) \right)
+I_{\text {display }}=\log (1+A(t))
 $$
 
 或常见的 dB 形式：
@@ -876,11 +844,7 @@ $$
 对数似然：
 
 $$
-\log L(\mathbf{x}) 
-= 
-\sum_i \left[
-y_i \ln \lambda_i - \lambda_i
-\right] + C
+\log L(\mathbf{x}) = \sum_i \left[y_i \ln \lambda_i - \lambda_i\right] + C
 $$
 
 MLE 目标：
@@ -897,12 +861,7 @@ $$
 经典的 MLEM 更新为：
 
 $$
-x_j^{(k+1)}
-=
-x_j^{(k)}
-\frac
-{\sum_i a_{ij} \frac{y_i}{\sum_m a_{im}x_m^{(k)}}}
-{\sum_i a_{ij}}
+x_j^{(k+1)}=x_j^{(k)}\frac{\sum_i a_{ij} \frac{y_i}{\sum_m a_{im}x_m^{(k)}}}{\sum_i a_{ij}}
 $$
 
 其中：
@@ -922,12 +881,7 @@ OSEM 将 sinogram 分成多个子集(subsets)，每次只用部分投影更新�
 OSEM 更新形式：
 
 $$
-x_j^{(k+1)}
-=
-x_j^{(k)}
-\frac
-{\sum_{i \in S_k} a_{ij} \frac{y_i}{\sum_m a_{im}x_m^{(k)}}}
-{\sum_{i \in S_k} a_{ij}}
+x_j^{(k+1)}=x_j^{(k)}\frac{\sum_{i \in S_k} a_{ij} \frac{y_i}{\sum_m a_{im}x_m^{(k)}}}{\sum_{i \in S_k} a_{ij}}
 $$
 
 其中 $S_k$ 是第 $k$ 个子集。
@@ -1015,9 +969,7 @@ $$
 原始 DR 图像可表示为：
 
 $$
-I_{\text{raw}}
-=
-G \cdot I_{\text{signal}} + D
+I_{\text{raw}}=G \cdot I_{\text{signal}} + D
 $$
 
 其中：
@@ -1033,10 +985,7 @@ $$
 平场校正的公式为：
 
 $$
-I_{\text{corr}}
-=
-\frac{ I_{\text{raw}} - I_{\text{dark}} }
-     { I_{\text{flat}} - I_{\text{dark}} }
+I_{\text{corr}}=\frac{ I_{\text{raw}} - I_{\text{dark}} }     { I_{\text{flat}} - I_{\text{dark}} }
 $$
 
 其中：
@@ -1279,8 +1228,7 @@ $$
 三线性插值的通式：
 
 $$
-f(x,y,z)
-=
+f(x,y,z)=
 \sum_{i=0}^1\sum_{j=0}^1\sum_{k=0}^1
 f(i,j,k)
 (1-|x-i|)
@@ -1322,8 +1270,7 @@ $$
 ● 3D 卷积(体数据)
 
 $$
-y(i,j,k) 
-= 
+y(i,j,k) = 
 \sum_{u} \sum_{v} \sum_{w}
 x(i-u, j-v, k-w)\, k(u,v,w)
 $$
@@ -1392,8 +1339,7 @@ $$
 ● 二分类交叉熵
 
 $$
-\mathcal{L}_{CE}
-=
+\mathcal{L}_{CE}=
 - \left[ 
 y \log(\hat{y}) + (1-y)\log(1-\hat{y})
 \right]
@@ -1402,8 +1348,7 @@ $$
 ● 多分类交叉熵
 
 $$
-\mathcal{L}_{CE}
-=
+\mathcal{L}_{CE}=
 -\sum_{c=1}^{C}
 y_c \log(\hat{y}_c)
 $$
@@ -1415,8 +1360,7 @@ $$
 Focal Loss 抑制简单样本，突出困难样本：
 
 $$
-\mathcal{L}_{Focal}
-=
+\mathcal{L}_{Focal}=
 -(1-\hat{y})^\gamma \, y\log(\hat{y})
 $$
 
