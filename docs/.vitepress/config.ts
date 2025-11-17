@@ -99,10 +99,19 @@ export default defineConfig({
               text: '附录',
               collapsed: true,
               items: [
-                { text: '附录A：关键公式', link: '/guide/appendix/a-formulas' },
-                { text: '附录B：工具安装', link: '/guide/appendix/b-installation' },
-                { text: '附录C：公开数据集列表', link: '/guide/appendix/c-datasets' },
-                { text: '附录D：术语表', link: '/guide/appendix/d-glossary' }
+                { text: '附录A：关键公式', link: '/guide/appendix/A-formula' },
+                { text: '附录B：工具安装', link: '/guide/appendix/B-tool-Installation' },
+                {
+                  text: '附录C：公开数据集列表',
+                  collapsed: true,
+                  items: [
+                    { text: 'C.1 CT数据集', link: '/guide/appendix/C-dataset/C-1-CT' },
+                    { text: 'C.2 MRI数据集', link: '/guide/appendix/C-dataset/C-2-MRI' },
+                    { text: 'C.3 X射线数据集', link: '/guide/appendix/C-dataset/C-3-X-ray' },
+                    { text: 'C.4 多模态数据集', link: '/guide/appendix/C-dataset/C-4-Multimodal' }
+                  ]
+                },
+                { text: '附录D：术语表', link: '/guide/appendix/D-glossary' }
               ]
             }
           ]
@@ -199,10 +208,19 @@ export default defineConfig({
               text: 'Appendix',
               collapsed: true,
               items: [
-                { text: 'Appendix A: Key Formulas', link: '/en/guide/appendix/a-formulas' },
-                { text: 'Appendix B: Tool Installation', link: '/en/guide/appendix/b-installation' },
-                { text: 'Appendix C: Public Datasets', link: '/en/guide/appendix/c-datasets' },
-                { text: 'Appendix D: Glossary', link: '/en/guide/appendix/d-glossary' }
+                { text: 'Appendix A: Key Formulas', link: '/en/guide/appendix/A-formula' },
+                { text: 'Appendix B: Tool Installation', link: '/en/guide/appendix/B-tool-Installation' },
+                {
+                  text: 'Appendix C: Public Datasets',
+                  collapsed: true,
+                  items: [
+                    { text: 'C.1 CT Datasets', link: '/en/guide/appendix/C-dataset/C-1-CT' },
+                    { text: 'C.2 MRI Datasets', link: '/en/guide/appendix/C-dataset/C-2-MRI' },
+                    { text: 'C.3 X-ray Datasets', link: '/en/guide/appendix/C-dataset/C-3-X-ray' },
+                    { text: 'C.4 Multimodal Datasets', link: '/en/guide/appendix/C-dataset/C-4-Multimodal' }
+                  ]
+                },
+                { text: 'Appendix D: Glossary', link: '/en/guide/appendix/D-glossary' }
               ]
             }
           ]
