@@ -20,14 +20,13 @@
 
 ## 2.1 坐标系与图像几何
 
-医学影像中的几何关系主要涉及 **像素/体素坐标 → 物理世界坐标** 的映射，以及常见的仿射变换（旋转、缩放、平移等）。
+医学影像中的几何关系主要涉及 **像素/体素坐标 → 物理世界坐标** 的映射，以及常见的仿射变换(旋转、缩放、平移等)。
 
- ** (1) 像素/体素坐标 → 物理空间坐标**
+ **(1)像素/体素坐标 → 物理空间坐标**
 
-影像文件（如 DICOM、NIfTI）通常提供一个 4×4 的空间变换矩阵，用于将体素坐标 $(i, j, k)$ 转换为物理坐标 $(x, y, z)$：
+影像文件(如 DICOM、NIfTI)通常提供一个 4×4 的空间变换矩阵，用于将体素坐标 $(i, j, k)$ 转换为物理坐标 $(x, y, z)$：
 
-<div class="math-display">
-\[
+$$
 \begin{bmatrix}
 x \\ y \\ z \\ 1
 \end{bmatrix}
@@ -36,77 +35,67 @@ x \\ y \\ z \\ 1
 \begin{bmatrix}
 i \\ j \\ k \\ 1
 \end{bmatrix}
-\]
-</div>
+$$
 
 - $\mathbf{M}_{\text{DICOM}}$ 包含：
 
-  - 体素间距（spacing）
-  - 图像方向（orientation）
-  - 图像原点（origin）
+  - 体素间距(spacing)
+  - 图像方向(orientation)
+  - 图像原点(origin)
 
 ---
 
- ** (2) DICOM 空间变换矩阵（典型形式）**
+ **(2)DICOM 空间变换矩阵（典型形式）**
 
-<div class="math-display">
-\[
+$$
 \mathbf{M}_{\text{DICOM}}=
 \begin{bmatrix}
 \mathbf{R} \cdot \text{diag}(\Delta x,\Delta y,\Delta z) & \mathbf{T} \\
 0 & 1
 \end{bmatrix}
-\]
-</div>
+$$
 
 其中：
 
-- $\mathbf{R}$：方向余弦矩阵（3×3，指定图像轴在世界坐标系的方向）
-- $\Delta x, \Delta y, \Delta z$：体素大小（单位 mm）
-- $\mathbf{T}$：原点坐标（患者坐标系下的 mm）
+- $\mathbf{R}$：方向余弦矩阵(3×3，指定图像轴在世界坐标系的方向)
+- $\Delta x, \Delta y, \Delta z$：体素大小(单位 mm)
+- $\mathbf{T}$：原点坐标(患者坐标系下的 mm)
 
 ---
 
- ** (3) 常见几何变换矩阵**
+ **(3)常见几何变换矩阵**
 
-● 缩放（Scaling）
+● 缩放(Scaling)
 
-<div class="math-display">
-\[
+$$
 \mathbf{S} =
 \begin{bmatrix}
 s_x & 0 & 0 \\
 0 & s_y & 0 \\
 0 & 0 & s_z
 \end{bmatrix}
-\]
-</div>
+$$
 
-● 旋转（Rotation，以 z 轴为例）
+● 旋转(Rotation，以 z 轴为例)
 
-<div class="math-display">
-\[
+$$
 \mathbf{R}_z(\theta)=
 \begin{bmatrix}
 \cos\theta & -\sin\theta & 0\\
 \sin\theta & \cos\theta  & 0\\
 0 & 0 & 1
 \end{bmatrix}
-\]
-</div>
+$$
 
-● 仿射变换（Affine Transform）
+● 仿射变换(Affine Transform)
 
-<div class="math-display">
-\[
+$$
 \mathbf{x}' = \mathbf{A}\mathbf{x} + \mathbf{b}
-\]
-</div>
+$$
 
 在齐次坐标中表达为：
 
-<div class="math-display">
-\[
+$$
 \begin{bmatrix}
 \mathbf{x}' \\ 1
 \end{bmatrix}
@@ -118,8 +107,7 @@ s_x & 0 & 0 \\
 \begin{bmatrix}
 \mathbf{x} \\ 1
 \end{bmatrix}
-\]
-</div>
+$$
 
 仿射变换广泛用于图像配准、重采样和多模态对齐。
 
@@ -127,109 +115,91 @@ s_x & 0 & 0 \\
 
 ---
 
- ** (1) 卷积定义（连续/离散）**
+ **(1)卷积定义（连续/离散）**
 
 ● 连续卷积
 
-<div class="math-display">
-\[
+$$
 (f * g)(t)=\int_{-\infty}^{+\infty} f(\tau)\, g(t-\tau)\, d\tau
-\]
-</div>
+$$
 
-● 离散卷积（信号）
+● 离散卷积(信号)
 
-<div class="math-display">
-\[
+$$
 (f * g)[n] = \sum_{k=-\infty}^{+\infty} f[k]\, g[n-k]
-\]
-</div>
+$$
 
-● 2D 图像卷积（常用于滤波）
+● 2D 图像卷积(常用于滤波)
 
-<div class="math-display">
-\[
+$$
 I'(x,y)=\sum_m \sum_n I(x-m,y-n) \, K(m,n)
-\]
-</div>
+$$
 
-卷积在 CT 滤波反投影（FBP）、MRI 去噪、图像平滑、锐化中都被频繁使用。
+卷积在 CT 滤波反投影(FBP)、MRI 去噪、图像平滑、锐化中都被频繁使用。
 
 ---
 
- ** (2) 下采样与上采样**
+ **(2)下采样与上采样**
 
-● 下采样（Downsampling）
+● 下采样(Downsampling)
 
-<div class="math-display">
-\[
+$$
 x_{\text{down}}[n] = x[kN]
-\]
-</div>
+$$
 
 N \= 2 时表示宽高减半。
 
-● 上采样（Upsampling）
+● 上采样(Upsampling)
 
 插 0 然后滤波：
 
-<div class="math-display">
-\[
+$$
 x_{\text{up}}[n] =
 \begin{cases}
 x[n/N], & n \mod N = 0 \\
 0, & \text{otherwise}
 \end{cases}
-\]
-</div>
+$$
 
 ---
 
- ** (3) 常见插值公式**
+ **(3)常见插值公式**
 
-● 双线性插值（2D）
+● 双线性插值(2D)
 
-<div class="math-display">
-\[
-f(x,y)=\sum_{m=0}^1\sum_{n=0}^1
+$$
+f(x,y)=\sum_{m=0}^1\sum_{n=0}^1 
 f(i+m, j+n)(1-|x-i-m|)(1-|y-j-n|)
-\]
-</div>
+$$
 
-● 三线性插值（3D）
+● 三线性插值(3D)
 
-用于体数据（CT/MRI）重采样，为双线性插值的三维扩展。
+用于体数据(CT/MRI)重采样，为双线性插值的三维扩展。
 
 ---
 
- ** (4) 空域 ↔ 频域关系（傅里叶变换基础）**
+ **(4)空域 ↔ 频域关系（傅里叶变换基础）**
 
-● 傅里叶变换（连续）
+● 傅里叶变换(连续)
 
-<div class="math-display">
-\[
+$$
 F(\omega)=\int f(t)e^{-j\omega t}dt
-\]
-</div>
+$$
 
-● 离散傅里叶变换（DFT）
+● 离散傅里叶变换(DFT)
 
-<div class="math-display">
-\[
+$$
 X[k]=\sum_{n=0}^{N-1} x[n] e^{-j2\pi kn/N}
-\]
-</div>
+$$
 
-● 卷积定理（医学影像极为重要）
+● 卷积定理(医学影像极为重要)
 
-<div class="math-display">
-\[
+$$
 \mathcal{F}\{f*g\} = \mathcal{F}\{f\}\cdot \mathcal{F}\{g\}
-\]
-</div>
+$$
 
 说明：  
-​**卷积在频域等价于乘法**，是 CT 滤波反投影（FBP）和 MRI 重建的核心。
+​**卷积在频域等价于乘法**，是 CT 滤波反投影(FBP)和 MRI 重建的核心。
 
 ## 2.3 噪声模型
 
@@ -237,13 +207,11 @@ X[k]=\sum_{n=0}^{N-1} x[n] e^{-j2\pi kn/N}
 
 ---
 
- ** (1) 加性高斯噪声（MRI / CT 常见）**
+ **(1)加性高斯噪声(MRI / CT 常见)**
 
-<div class="math-display">
-\[
+$$
 y = x + \mathcal{N}(0,\sigma^2)
-\]
-</div>
+$$
 
 适用场景：
 
@@ -252,19 +220,17 @@ y = x + \mathcal{N}(0,\sigma^2)
 
 ---
 
- ** (2) 泊松噪声（PET / X-ray）**
+ **(2)泊松噪声(PET / X-ray)**
 
 PET、X-ray 属于 ​**光子计数过程**，天然满足泊松模型：
 
-<div class="math-display">
-\[
+$$
 y \sim \text{Poisson}(x)
-\]
-</div>
+$$
 
 应用：
 
-- PET 投影数据（sinogram）
+- PET 投影数据(sinogram)
 - X-ray 强度采集
 - CT 投影数据的噪声建模
 
@@ -272,7 +238,7 @@ y \sim \text{Poisson}(x)
 
 # 3. CT（Computed Tomography）的关键公式
 
-本节总结 CT 成像与重建中最核心的数学公式，包括 X 射线衰减模型、Radon 变换、滤波反投影（FBP）以及 CT 图像的 HU 转换和窗口化处理。这些公式构成了现代 CT 成像技术的数学基础。
+本节总结 CT 成像与重建中最核心的数学公式，包括 X 射线衰减模型、Radon 变换、滤波反投影(FBP)以及 CT 图像的 HU 转换和窗口化处理。这些公式构成了现代 CT 成像技术的数学基础。
 
 ---
 
@@ -282,15 +248,13 @@ X 射线穿过组织时会被吸收与散射，其衰减过程由 **Lambert–Be
 
 ---
 
- ** (1) Lambert–Beer 定律**
+ **(1)Lambert–Beer 定律**
 
 当 X 射线束穿过介质时，探测器接收到的强度 $I$ 与入射强度 $I_0$ 的关系为：
 
-<div class="math-display">
-\[
+$$
 I = I_0 \exp\left( -\int_L \mu(s)\, ds \right)
-\]
-</div>
+$$
 
 其中：
 
@@ -301,23 +265,19 @@ I = I_0 \exp\left( -\int_L \mu(s)\, ds \right)
 
 ---
 
- ** (2) 投影数据（log-transform）**
+ **(2)投影数据(log-transform)**
 
 CT 投影通常进行对数变换，将指数衰减线性化：
 
-<div class="math-display">
-\[
+$$
 p = -\ln \left( \frac{I}{I_0} \right)
-\]
-</div>
+$$
 
 可得到：
 
-<div class="math-display">
-\[
+$$
 p = \int_L \mu(s)\, ds
-\]
-</div>
+$$
 
 这就是 Radon 变换的物理来源。
 
@@ -325,34 +285,30 @@ p = \int_L \mu(s)\, ds
 
 ## 3.2 Radon 变换
 
-Radon 变换描述了物体在不同角度下的线积分，是 CT 投影数据（sinogram）的数学表示。
+Radon 变换描述了物体在不同角度下的线积分，是 CT 投影数据(sinogram)的数学表示。
 
 ---
 
- ** (1) Radon 变换定义**
+ **(1)Radon 变换定义**
 
 二位对象 $\mu(x,y)$ 在角度 $\theta$ 上的投影写为：
 
-<div class="math-display">
-\[
-p(\theta, t) =
+$$
+p(\theta, t) = 
 \int_{-\infty}^{+\infty}
 \mu(x, y)\, ds
-\]
-</div>
+$$
 
 将积分路径参数化后：
 
-<div class="math-display">
-\[
+$$
 p(\theta, t)
 =
 \int_{-\infty}^{+\infty}
 \mu(t\cos\theta - s\sin\theta, \;
     t\sin\theta + s\cos\theta)
 \, ds
-\]
-</div>
+$$
 
 其中：
 
@@ -362,70 +318,62 @@ p(\theta, t)
 
 ---
 
- **（2）Radon 反变换（理想情况）**
+ **(2)Radon 反变换(理想情况)**
 
 理论上，物体可通过 Radon 反变换恢复：
 
-<div class="math-display">
-\[
+$$
 \mu(x,y)=\mathcal{R}^{-1}\{p(\theta,t)\}
-\]
-</div>
+$$
 
-实际重建必须结合滤波反投影（FBP）。
+实际重建必须结合滤波反投影(FBP)。
 
 ---
 
 ## 3.3 滤波反投影（FBP）
 
-FBP（Filtered Back Projection）是经典 CT 重建算法，是目前临床普遍使用的重建框架之一。
+FBP(Filtered Back Projection)是经典 CT 重建算法，是目前临床普遍使用的重建框架之一。
 
 ---
 
- **（1）卷积滤波（Filtering Step）**
+ **(1)卷积滤波(Filtering Step)**
 
 对每个角度的投影 $p(\theta,t)$ 做滤波：
 
-<div class="math-display">
-\[
+$$
 \tilde{p}(\theta,t)=
 p(\theta,t) * h(t)
-\]
-</div>
+$$
 
 其中：
 
 - $h(t)$：重建滤波器，例如
 
-  - ​**Ram-Lak**（理想高通）
+  - ​**Ram-Lak**(理想高通)
   - Shepp-Logan
   - Hanning、Cosine 等
 
 Ram-Lak 滤波器的频域表达：
 
-<div class="math-display">
-\[
+$$
 H(\omega)=|\omega|
-\]
-</div>
+$$
 
 滤波的作用是补偿反投影带来的低频增强。
 
 ---
 
- **（2）反投影（Back Projection）**
+ **(2)反投影(Back Projection)**
 
 将所有角度的滤波投影反投影到图像空间：
 
-<div class="math-display">
-\[
+$$
 \mu(x,y)
 =
 \int_0^{\pi}
 \tilde{p}(\theta,  \; x\cos\theta + y\sin\theta )
 \; d\theta
-\]
-</div>
+$$
 
 意义：
 
@@ -434,10 +382,9 @@ H(\omega)=|\omega|
 
 ---
 
- **（3）FBP 总公式**
+ **(3)FBP 总公式**
 
-<div class="math-display">
-\[
+$$
 \mu(x,y)
 =
 \int_0^{\pi}
@@ -445,52 +392,47 @@ H(\omega)=|\omega|
 p(\theta,t) * h(t)
 \right]_{t=x\cos\theta+y\sin\theta}
 \, d\theta
-\]
-</div>
+$$
 
 ---
 
 ## 3.4 CT 值（HU）转换公式
 
-CT 图像通常以 HU（Hounsfield Unit）为单位，用来衡量组织对 X 射线的衰减能力。
+CT 图像通常以 HU(Hounsfield Unit)为单位，用来衡量组织对 X 射线的衰减能力。
 
 ---
 
- **（1）HU 标准化公式**
+ **(1)HU 标准化公式**
 
-<div class="math-display">
-\[
-\text{HU} = 1000 \cdot
+$$
+\text{HU} = 1000 \cdot 
 \frac{\mu - \mu_{\text{water}}}{\mu_{\text{water}}}
-\]
-</div>
+$$
 
 - $\mu$：组织衰减系数
-- $\mu_{\text{water}}$：水的衰减系数（基准）
+- $\mu_{\text{water}}$：水的衰减系数(基准)
 - 水 \= 0 HU
 - 空气 \= –1000 HU
 
 ---
 
- **（2）线性窗函数（Windowing）**
+ **(2)线性窗函数(Windowing)**
 
 显示 CT 图像时需进行 windowing：
 
-<div class="math-display">
-\[
+$$
 I_{\text{display}}
 =
 \text{clip}\left(
 \frac{HU - (WL - \frac{WW}{2})}{WW}
 ,\, 0,\, 1
 \right)
-\]
-</div>
+$$
 
 其中：
 
-- $WW$：Window Width（窗宽）
-- $WL$：Window Level（窗位）
+- $WW$：Window Width(窗宽)
+- $WL$：Window Level(窗位)
 - clip(·)：将结果限制在 [0,1]
 
 示例：
@@ -501,17 +443,17 @@ I_{\text{display}}
 
 # 4. MRI（Magnetic Resonance Imaging）的关键公式
 
-MRI（磁共振成像）的数学基础主要包括核磁共振信号的产生（Larmor 进动与 Bloch 方程）、组织弛豫过程（T1、T2）、以及 k-space 的傅里叶编码与重建。本节给出 MRI 成像中最核心的公式。
+MRI(磁共振成像)的数学基础主要包括核磁共振信号的产生(Larmor 进动与 Bloch 方程)、组织弛豫过程(T1、T2)、以及 k-space 的傅里叶编码与重建。本节给出 MRI 成像中最核心的公式。
 
 ---
 
 ## 4.1 脉冲序列基础
 
-MRI 信号由磁场与射频脉冲（RF pulse）作用下的核磁矩行为决定，基本动力学由 Larmor 频率和 Bloch 方程描述。
+MRI 信号由磁场与射频脉冲(RF pulse)作用下的核磁矩行为决定，基本动力学由 Larmor 频率和 Bloch 方程描述。
 
 ---
 
- **（1）Larmor 频率公式**
+ **(1)Larmor 频率公式**
 
 核自旋在静磁场 $B_0$ 中的进动角频率为：
 
@@ -522,14 +464,14 @@ $$
 其中：
 
 - $\omega_0$：Larmor 频率
-- $\gamma$：旋磁比（proton: $\gamma/2\pi \approx 42.58\text{ MHz/T}$）
+- $\gamma$：旋磁比(proton: $\gamma/2\pi \approx 42.58\text{ MHz/T}$)
 - $B_0$：主磁场强度
 
-说明：高场强（如 3T）会带来更高的信噪比（SNR）。
+说明：高场强(如 3T)会带来更高的信噪比(SNR)。
 
 ---
 
- **（2）Bloch 方程（简式）**
+ **(2)Bloch 方程(简式)**
 
 描述磁化矢量 $\mathbf{M} = (M_x, M_y, M_z)$ 在磁场中的动态变化：
 
@@ -543,7 +485,7 @@ $$
 
 其中：
 
-- 第一项：进动（precession）
+- 第一项：进动(precision)
 - 第二项：横向弛豫 T2
 - 第三项：纵向弛豫 T1
 - $M_0$：平衡磁化强度
@@ -559,7 +501,7 @@ $$
 
 ---
 
- **（1）T1 恢复（Recovery）**
+ **(1)T1 恢复(Recovery)**
 
 $$
 M_z(t) = M_0 \left(1 - e^{-t/T_1}\right)
@@ -573,7 +515,7 @@ $$
 
 ---
 
- **（2）T2 衰减（Decay）**
+ **(2)T2 衰减(Decay)**
 
 $$
 M_{xy}(t) = M_0 e^{-t/T_2}
@@ -587,9 +529,9 @@ $$
 
 ---
 
- **（3）Proton Density（PD）信号表达**
+ **(3)Proton Density(PD)信号表达**
 
-未强烈依赖 T1/T2 的情况下，信号主要由质子密度（PD）决定：
+未强烈依赖 T1/T2 的情况下，信号主要由质子密度(PD)决定：
 
 $$
 S_{\text{PD}} \propto \rho \left(1 - e^{-TR/T_1}\right) e^{-TE/T_2}
@@ -610,11 +552,11 @@ $$
 
 ## 4.3 k-space 采样与重建
 
-MRI 数据首先采样在 **k-space（频域）**  中，而不是直接得到图像。k-space 采样与二维傅里叶变换直接相关。
+MRI 数据首先采样在 **k-space(频域)**  中，而不是直接得到图像。k-space 采样与二维傅里叶变换直接相关。
 
 ---
 
- **（1）MRI 信号方程（二维傅里叶编码）**
+ **(1)MRI 信号方程(二维傅里叶编码)**
 
 物体磁化分布 $\rho(x,y)$ 在频率编码与相位编码梯度作用下，采样信号为：
 
@@ -637,7 +579,7 @@ $$
 
 ---
 
- **（2）逆 Fourier 重建**
+ **(2)逆 Fourier 重建**
 
 图像恢复通过对 k-space 做逆傅里叶变换：
 
@@ -656,7 +598,7 @@ $$
 \rho = \mathcal{F}^{-1}\{ S \}
 $$
 
-临床 MRI 设备中采用快速傅里叶变换（FFT）。
+临床 MRI 设备中采用快速傅里叶变换(FFT)。
 
 # 5. 超声成像（Ultrasound）关键公式
 
@@ -666,11 +608,11 @@ $$
 
 ## 5.1 声波传播基本关系
 
-超声本质是纵波（压力波），在组织中传播时，其速度、频率和波长存在基本物理关系。
+超声本质是纵波(压力波)，在组织中传播时，其速度、频率和波长存在基本物理关系。
 
 ---
 
- **（1）波速、频率与波长**
+ **(1)波速、频率与波长**
 
 声速 $c$、频率 $f$、波长 $\lambda$ 的关系为：
 
@@ -684,11 +626,11 @@ $$
 | --------------| ----------------|
 |脂肪|\~1450|
 |肌肉|\~1580|
-|软组织平均值|**1540**（临床常用值）|
+|软组织平均值|**1540**(临床常用值)|
 
 ---
 
- **（2）声压波表达式（1D）**
+ **(2)声压波表达式(1D)**
 
 传播中的声波可表示为：
 
@@ -709,7 +651,7 @@ $$
 
 ---
 
- **（1）组织衰减模型**
+ **(1)组织衰减模型**
 
 声波在传播距离 $d$ 后，振幅衰减为：
 
@@ -717,7 +659,7 @@ $$
 A(d) = A_0 e^{-\alpha d}
 $$
 
-或以 dB 表示（更常见）：
+或以 dB 表示(更常见)：
 
 $$
 A_{\mathrm{dB}}(d) = A_{\mathrm{dB}}(0) - \alpha_{\mathrm{dB}} d
@@ -732,7 +674,7 @@ $$
 
 ---
 
- **（2）反射系数（Acoustic Impedance）**
+ **(2)反射系数(Acoustic Impedance)**
 
 不同组织界面的反射强度由声阻抗决定：
 
@@ -753,7 +695,7 @@ $$
 其中：
 
 - $Z_1, Z_2$：两种组织的声阻抗
-- $R$：反射强度比例（0\~1）
+- $R$：反射强度比例(0\~1)
 
 这是 B-mode 成像亮度的最基础来源。
 
@@ -761,11 +703,11 @@ $$
 
 ## 5.3 B-mode 成像数学
 
-B-mode（Brightness mode）是最常见的超声成像方式，涉及回波包络提取与对数压缩。
+B-mode(Brightness mode)是最常见的超声成像方式，涉及回波包络提取与对数压缩。
 
 ---
 
- **（1）包络检测（Hilbert 变换）**
+ **(1)包络检测(Hilbert 变换)**
 
 接收信号通常为射频信号 $x(t)$，需要提取其包络：
 
@@ -776,15 +718,15 @@ $$
 其中：
 
 - $\hat{x}(t)$：$x(t)$ 的 Hilbert 变换
-- $A(t)$：包络（代表强度）
+- $A(t)$：包络(代表强度)
 
 包络代表界面反射的强度，是 B-mode 灰度图的核心。
 
 ---
 
- **（2）B-mode 对数压缩（Log Compression）**
+ **(2)B-mode 对数压缩(Log Compression)**
 
-原始 RF 包络的动态范围非常大（\>60 dB），需要压缩到可显示范围：
+原始 RF 包络的动态范围非常大(\>60 dB)，需要压缩到可显示范围：
 
 $$
 I_{\text{display}}
@@ -806,7 +748,7 @@ $$
 
 ---
 
- **（3）扫描线（Scanline）到图像**
+ **(3)扫描线(Scanline)到图像**
 
 B-mode 最终图像是由多条 A-scan 组成。
 
@@ -816,11 +758,11 @@ $$
 I(x,y) = \text{LogCompress}\left( A(t) \right)
 $$
 
-其中 $x$ 由扫描角度决定，$y$ 为深度（传播时间）。
+其中 $x$ 由扫描角度决定，$y$ 为深度(传播时间)。
 
 # 6. PET / SPECT 成像关键公式
 
-PET（Positron Emission Tomography）与 SPECT（Single Photon Emission Computed Tomography）基于放射性核素衰变产生的γ光子来成像，其数学本质包括放射性衰变模型、泊松统计前向模型以及迭代重建（MLEM / OSEM）。本节给出 PET/SPECT 常用的核心公式。
+PET(Positron Emission Tomography)与 SPECT(Single Photon Emission Computed Tomography)基于放射性核素衰变产生的γ光子来成像，其数学本质包括放射性衰变模型、泊松统计前向模型以及迭代重建(MLEM / OSEM)。本节给出 PET/SPECT 常用的核心公式。
 
 ---
 
@@ -830,13 +772,11 @@ PET/SPECT 的信号源是放射性核素，其示踪剂活度遵循指数衰减�
 
 ---
 
- **（1）放射性衰减公式**
+ **(1)放射性衰减公式**
 
-<div class="math-display">
-\[
+$$
 N(t) = N_0 e^{-\lambda t}
-\]
-</div>
+$$
 
 其中：
 
@@ -846,25 +786,21 @@ N(t) = N_0 e^{-\lambda t}
 
 半衰期公式：
 
-<div class="math-display">
-\[
+$$
 T_{1/2} = \frac{\ln 2}{\lambda}
-\]
-</div>
+$$
 
 ---
 
- **（2）活度（Activity）**
+ **(2)活度(Activity)**
 
-衰变率（每秒衰变次数）为：
+衰变率(每秒衰变次数)为：
 
-<div class="math-display">
-\[
+$$
 A(t) = \lambda N(t)
-\]
-</div>
+$$
 
-单位为贝可（Bq）。
+单位为贝可(Bq)。
 
 ---
 
@@ -874,48 +810,42 @@ PET/SPECT 探测到的投影数据本质上是**放射性衰变 → γ光子发�
 
 ---
 
- **（1）泊松统计模型**
+ **(1)泊松统计模型**
 
 探测器 bin $i$ 的计数服从泊松分布：
 
-<div class="math-display">
-\[
+$$
 y_i \sim \text{Poisson}(\lambda_i)
-\]
-</div>
+$$
 
 其中：
 
-- $y_i$：实际观测计数（sinogram 的一个像素）
+- $y_i$：实际观测计数(sinogram 的一个像素)
 - $\lambda_i$：期望计数
 
 ---
 
- **（2）投影数据形成方程**
+ **(2)投影数据形成方程**
 
 PET 的前向投影可表示为：
 
-<div class="math-display">
-\[
+$$
 \lambda_i = \sum_{j} a_{ij} x_j + r_i
-\]
-</div>
+$$
 
 其中：
 
-- $x_j$：像素 $j$ 处的放射性活度（待重建）
-- $a_{ij}$：系统矩阵（system matrix）
+- $x_j$：像素 $j$ 处的放射性活度(待重建)
+- $a_{ij}$：系统矩阵(system matrix)
 
   - 包含几何因素、衰减、散射、检测效率
 - $r_i$：随机事件、散射事件、背景噪声
 
 向量形式：
 
-<div class="math-display">
-\[
+$$
 \boldsymbol{\lambda} = A \mathbf{x} + \mathbf{r}
-\]
-</div>
+$$
 
 这是 PET 重建的基础。
 
@@ -923,20 +853,18 @@ PET 的前向投影可表示为：
 
 ## 6.3 PET/SPECT 重建（MLEM / OSEM）
 
-PET/SPECT 多采用基于统计的 ​**MLEM 或 OSEM 迭代重建**，源于最大似然估计（MLE）。
+PET/SPECT 多采用基于统计的 ​**MLEM 或 OSEM 迭代重建**，源于最大似然估计(MLE)。
 
 ---
 
- **（1）MLE（Maximum Likelihood Estimation）**
+ **(1)MLE(Maximum Likelihood Estimation)**
 
 观测数据 $y_i$ 的似然函数：
 
-<div class="math-display">
-\[
-L(\mathbf{x}) = \prod_{i}
+$$
+L(\mathbf{x}) = \prod_{i} 
 \frac{\lambda_i^{y_i} e^{-\lambda_i}}{y_i!}
-\]
-</div>
+$$
 
 其中 $\lambda_i = \sum_j a_{ij} x_j$。
 
@@ -959,20 +887,18 @@ $$
 
 ---
 
- **（2）MLEM（Expectation–Maximization）更新公式**
+ **(2)MLEM(Expectation–Maximization)更新公式**
 
 经典的 MLEM 更新为：
 
-<div class="math-display">
-\[
+$$
 x_j^{(k+1)}
 =
 x_j^{(k)}
 \frac
 {\sum_i a_{ij} \frac{y_i}{\sum_m a_{im}x_m^{(k)}}}
 {\sum_i a_{ij}}
-\]
-</div>
+$$
 
 其中：
 
@@ -984,52 +910,48 @@ MLEM 收敛性好但速度慢。
 
 ---
 
- **（3）OSEM（Ordered Subsets Expectation Maximization）**
+ **(3)OSEM(Ordered Subsets Expectation Maximization)**
 
-OSEM 将 sinogram 分成多个子集（subsets），每次只用部分投影更新，提高速度。
+OSEM 将 sinogram 分成多个子集(subsets)，每次只用部分投影更新，提高速度。
 
 OSEM 更新形式：
 
-<div class="math-display">
-\[
+$$
 x_j^{(k+1)}
 =
 x_j^{(k)}
 \frac
 {\sum_{i \in S_k} a_{ij} \frac{y_i}{\sum_m a_{im}x_m^{(k)}}}
 {\sum_{i \in S_k} a_{ij}}
-\]
-</div>
+$$
 
 其中 $S_k$ 是第 $k$ 个子集。
 
-- 加快重建速度（约快 MLEM 的 S 倍）
+- 加快重建速度(约快 MLEM 的 S 倍)
 - 临床 PET/SPECT 重建常用 OSEM
 
 # 7. X-ray / DR 成像关键公式
 
-X-ray / DR（Digital Radiography）成像的核心来自光子穿透组织时的衰减与探测器响应。其物理模型通常可由 **Lambert-Beer 定律 + 线积分投影模型 + 探测器增益校正** 构成。本节总结 DR 成像中最重要的公式。
+X-ray / DR(Digital Radiography)成像的核心来自光子穿透组织时的衰减与探测器响应。其物理模型通常可由 **Lambert-Beer 定律 + 线积分投影模型 + 探测器增益校正** 构成。本节总结 DR 成像中最重要的公式。
 
 ---
 
 ## 7.1 投影模型（线积分）
 
-在 DR（投影摄影）中，X 射线从单一方向穿过物体，穿透路径上的衰减构成二维影像像素值。
+在 DR(投影摄影)中，X 射线从单一方向穿过物体，穿透路径上的衰减构成二维影像像素值。
 
 ---
 
- **（1）光子衰减模型（Lambert–Beer）**
+ **(1)光子衰减模型(Lambert–Beer)**
 
 对于入射强度 $I_0$，透射强度 $I$ 为：
 
-<div class="math-display">
-\[
+$$
 I = I_0 \exp
 \left(
 -\int_L \mu(s) \, ds
 \right)
-\]
-</div>
+$$
 
 其中：
 
@@ -1038,48 +960,40 @@ I = I_0 \exp
 
 ---
 
- **（2）投影（线积分）模型**
+ **(2)投影(线积分)模型**
 
 定义投影：
 
-<div class="math-display">
-\[
+$$
 p = \int_L \mu(s)\, ds
-\]
-</div>
+$$
 
 则 DR 图像的理想亮度模型可表示为：
 
-<div class="math-display">
-\[
+$$
 I = I_0 e^{-p}
-\]
-</div>
+$$
 
 log-transform 后得到线性表达式：
 
-<div class="math-display">
-\[
+$$
 p = -\ln \left(\frac{I}{I_0}\right)
-\]
-</div>
+$$
 
 意义：
 
-- DR 是 Radon 变换的单角度特例（CT 是多角度）
+- DR 是 Radon 变换的单角度特例(CT 是多角度)
 - p 反映 X 射线的整体衰减量，决定成像亮度
 
 ---
 
- **（3）亮度与衰减关系（直接表示）**
+ **(3)亮度与衰减关系(直接表示)**
 
-亮度（透过率）通常与衰减呈负相关：
+亮度(透过率)通常与衰减呈负相关：
 
-<div class="math-display">
-\[
+$$
 \text{Brightness}(x,y) \propto e^{-\mu(x,y) d}
-\]
-</div>
+$$
 
 其中 $d$ 为组织厚度。
 
@@ -1087,42 +1001,38 @@ p = -\ln \left(\frac{I}{I_0}\right)
 
 ## 7.2 图像归一化与增益校正
 
-真实探测器存在不均匀性、暗电流、增益偏差，因此必须对 DR 图像进行平场（Flat-field）校正，以恢复正确的衰减印记。
+真实探测器存在不均匀性、暗电流、增益偏差，因此必须对 DR 图像进行平场(Flat-field)校正，以恢复正确的衰减印记。
 
 ---
 
- **（1）探测器响应模型**
+ **(1)探测器响应模型**
 
 原始 DR 图像可表示为：
 
-<div class="math-display">
-\[
+$$
 I_{\text{raw}}
 =
 G \cdot I_{\text{signal}} + D
-\]
-</div>
+$$
 
 其中：
 
-- $G$：像素增益（gain），随像素变化
-- $D$：暗电流（dark field）
+- $G$：像素增益(gain)，随像素变化
+- $D$：暗电流(dark field)
 - $I_{\text{signal}}$：理想信号
 
 ---
 
- **（2）平场校正（Flat-field Correction）**
+ **(2)平场校正(Flat-field Correction)**
 
 平场校正的公式为：
 
-<div class="math-display">
-\[
+$$
 I_{\text{corr}}
 =
 \frac{ I_{\text{raw}} - I_{\text{dark}} }
      { I_{\text{flat}} - I_{\text{dark}} }
-\]
-</div>
+$$
 
 其中：
 
@@ -1132,23 +1042,21 @@ I_{\text{corr}}
 
 意义：
 
-- 校正增益不均匀（pixel gain variation）
+- 校正增益不均匀(pixel gain variation)
 - 校正暗电流偏置
 - 恢复正确的射线透射信息
 
 ---
 
- **（3）线性归一化（用于可视化）**
+ **(3)线性归一化(用于可视化)**
 
 校正后图像常做归一化：
 
-<div class="math-display">
-\[
-I_{\text{norm}} =
+$$
+I_{\text{norm}} = 
 \frac{I_{\text{corr}} - \min(I_{\text{corr}})}
      {\max(I_{\text{corr}})-\min(I_{\text{corr}})}
-\]
-</div>
+$$
 
 用于：
 
@@ -1167,29 +1075,25 @@ I_{\text{norm}} =
 
 ---
 
- **（1）Min–Max 归一化**
+ **(1)Min–Max 归一化**
 
 将值线性映射到 $[0,1]$：
 
-<div class="math-display">
-\[
+$$
 x' = \frac{x - x_{\min}}{x_{\max} - x_{\min}}
-\]
-</div>
+$$
 
-适用于灰度归一、窗宽映射（如 CT 图像）。
+适用于灰度归一、窗宽映射(如 CT 图像)。
 
 ---
 
- **（2）Z-score 标准化**
+ **(2)Z-score 标准化**
 
 常用于深度学习模型的输入标准化：
 
-<div class="math-display">
-\[
+$$
 x' = \frac{x - \mu}{\sigma}
-\]
-</div>
+$$
 
 其中：
 
@@ -1200,31 +1104,27 @@ x' = \frac{x - \mu}{\sigma}
 
 ---
 
- **(3) 直方图均衡化（Histogram Equalization）**
+ **(3) 直方图均衡化(Histogram Equalization)**
 
 通过增强对比度，使灰度分布更均匀。
 
-CDF（累计分布函数）为：
+CDF(累计分布函数)为：
 
-<div class="math-display">
-\[
+$$
 \text{CDF}(x)=\sum_{i=0}^{x} \frac{h(i)}{N}
-\]
-</div>
+$$
 
 均衡化后的像素：
 
-<div class="math-display">
-\[
+$$
 x' = (L-1) \cdot \text{CDF}(x)
-\]
-</div>
+$$
 
 其中：
 
 - $h(i)$：灰度 i 的频率
 - $N$：像素总数
-- $L$：灰度级数（通常 256）
+- $L$：灰度级数(通常 256)
 
 适用于 DR、超声、部分 MRI 场景。
 
@@ -1236,102 +1136,88 @@ x' = (L-1) \cdot \text{CDF}(x)
 
 ---
 
- **（1）高斯滤波（Gaussian Filter）**
+ **(1)高斯滤波(Gaussian Filter)**
 
 一维高斯核：
 
-<div class="math-display">
-\[
-G(x) =
+$$
+G(x) = 
 \frac{1}{\sqrt{2\pi\sigma^2}}
 e^{ -\frac{x^2}{2\sigma^2} }
-\]
-</div>
+$$
 
 二维高斯核：
 
-<div class="math-display">
-\[
+$$
 G(x,y) =
 \frac{1}{2\pi\sigma^2}
 e^{ -\frac{x^2+y^2}{2\sigma^2} }
-\]
-</div>
+$$
 
 作用：
 
 - 平滑图像
 - 减少高频噪声
-- 常用于去噪前处理（如 CT、X-ray、Ultrasound）
+- 常用于去噪前处理(如 CT、X-ray、Ultrasound)
 
 ---
 
- **（2）Sobel 边缘算子**
+ **(2)Sobel 边缘算子**
 
 用于检测水平或垂直边缘。
 
 Sobel-x：
 
-<div class="math-display">
-\[
+$$
 G_x =
 \begin{bmatrix}
 -1 & 0 & 1\\
 -2 & 0 & 2\\
 -1 & 0 & 1
 \end{bmatrix}
-\]
-</div>
+$$
 
 Sobel-y：
 
-<div class="math-display">
-\[
+$$
 G_y =
 \begin{bmatrix}
 -1 & -2 & -1\\
 0 & 0 & 0\\
 1 & 2 & 1
 \end{bmatrix}
-\]
-</div>
+$$
 
 梯度强度：
 
-<div class="math-display">
-\[
+$$
 |\nabla I| = \sqrt{ (G_x * I)^2 + (G_y * I)^2 }
-\]
-</div>
+$$
 
 适用于边缘检测、形态分析。
 
 ---
 
- **（3）Laplacian 边缘增强**
+ **(3)Laplacian 边缘增强**
 
 二阶导数算子：
 
-<div class="math-display">
-\[
-\nabla^2 I =
+$$
+\nabla^2 I = 
 \frac{\partial^2 I}{\partial x^2}
 +
 \frac{\partial^2 I}{\partial y^2}
-\]
-</div>
+$$
 
 典型离散模板：
 
-<div class="math-display">
-\[
+$$
 \begin{bmatrix}
 0 & -1 & 0\\
 -1 & 4 & -1\\
 0 & -1 & 0
 \end{bmatrix}
-\]
-</div>
+$$
 
 可用于锐化或边缘增强。
 
@@ -1343,20 +1229,17 @@ G_y =
 
 ---
 
- **（1）仿射变换矩阵**
+ **(1)仿射变换矩阵**
 
-三维仿射变换（常用于 CT/MRI 注册）：
+三维仿射变换(常用于 CT/MRI 注册)：
 
-<div class="math-display">
-\[
+$$
 \mathbf{x}' = \mathbf{A}\mathbf{x} + \mathbf{b}
-\]
-</div>
+$$
 
 齐次形式：
 
-<div class="math-display">
-\[
+$$
 \begin{bmatrix}
 \mathbf{x}' \\ 1
 \end{bmatrix}
@@ -1368,8 +1251,7 @@ G_y =
 \begin{bmatrix}
 \mathbf{x} \\ 1
 \end{bmatrix}
-\]
-</div>
+$$
 
 其中：
 
@@ -1378,20 +1260,19 @@ G_y =
 
 用于：
 
-- 多模态配准（MRI ↔ CT）
+- 多模态配准(MRI ↔ CT)
 - 图像对齐
-- 数据标准化（e.g., 统一 voxel spacing）
+- 数据标准化(e.g., 统一 voxel spacing)
 
 ---
 
- **（2）三线性插值（Trilinear Interpolation）**
+ **(2)三线性插值(Trilinear Interpolation)**
 
 重采样三维体数据最常用的方法。
 
 三线性插值的通式：
 
-<div class="math-display">
-\[
+$$
 f(x,y,z)
 =
 \sum_{i=0}^1\sum_{j=0}^1\sum_{k=0}^1
@@ -1399,8 +1280,7 @@ f(i,j,k)
 (1-|x-i|)
 (1-|y-j|)
 (1-|z-k|)
-\]
-</div>
+$$
 
 含义：
 
@@ -1421,68 +1301,58 @@ f(i,j,k)
 
 ## 9.1 卷积层（2D / 3D）
 
-卷积是 CNN 在医学影像中最重要的运算（例如 2D MRI 切片、3D CT 体数据、超声序列等）。
+卷积是 CNN 在医学影像中最重要的运算(例如 2D MRI 切片、3D CT 体数据、超声序列等)。
 
 ---
 
- **（1）卷积运算公式**
+ **(1)卷积运算公式**
 
-● 2D 卷积（图像）
+● 2D 卷积(图像)
 
-<div class="math-display">
-\[
+$$
 y(i,j) = \sum_m \sum_n x(i-m, j-n)\, k(m,n)
-\]
-</div>
+$$
 
-● 3D 卷积（体数据）
+● 3D 卷积(体数据)
 
-<div class="math-display">
-\[
-y(i,j,k)
-=
+$$
+y(i,j,k) 
+= 
 \sum_{u} \sum_{v} \sum_{w}
 x(i-u, j-v, k-w)\, k(u,v,w)
-\]
-</div>
+$$
 
 3D 卷积广泛用于 CT/MRI 分割和 3D 检测任务。
 
 ---
 
- **（2）卷积输出尺寸计算公式**
+ **(2)卷积输出尺寸计算公式**
 
 ● 2D 输出尺寸
 
-<div class="math-display">
-\[
-H_{\text{out}} =
+$$
+H_{\text{out}} = 
 \frac{H_{\text{in}} - K + 2P}{S} + 1
-\]
-</div>
+$$
 
-<div class="math-display">
-\[
-W_{\text{out}} =
+$$
+W_{\text{out}} = 
 \frac{W_{\text{in}} - K + 2P}{S} + 1
-\]
-</div>
+$$
 
 ● 3D 输出尺寸
 
-<div class="math-display">
-\[
+$$
 D_{\text{out}} =
 \frac{D_{\text{in}} - K + 2P}{S} + 1
-\]
-</div>
+$$
 
 参数说明：
 
 - $K$：kernel size
 - $S$：stride
 - $P$：padding
-- 输入/输出维度用于 CNN 结构设计（UNet、VNet 等）
+- 输入/输出维度用于 CNN 结构设计(UNet、VNet 等)
 
 ---
 
@@ -1492,71 +1362,61 @@ D_{\text{out}} =
 
 ---
 
- **（1）Dice Loss（分割常用）**
+ **(1)Dice Loss(分割常用)**
 
 Dice 系数：
 
-<div class="math-display">
-\[
+$$
 \text{Dice} =
 \frac{2|A \cap B|}{|A|+|B|}
-\]
-</div>
+$$
 
 Dice Loss：
 
-<div class="math-display">
-\[
+$$
 \mathcal{L}_{Dice} = 1 - \text{Dice}
-\]
-</div>
+$$
 
-用于分割任务（尤其是器官、病灶、小目标）。
+用于分割任务(尤其是器官、病灶、小目标)。
 
 ---
 
- **（2）Cross-Entropy Loss（分类/分割基础）**
+ **(2)Cross-Entropy Loss(分类/分割基础)**
 
 ● 二分类交叉熵
 
-<div class="math-display">
-\[
+$$
 \mathcal{L}_{CE}
 =
-- \left[
+- \left[ 
 y \log(\hat{y}) + (1-y)\log(1-\hat{y})
 \right]
-\]
-</div>
+$$
 
 ● 多分类交叉熵
 
-<div class="math-display">
-\[
+$$
 \mathcal{L}_{CE}
 =
 -\sum_{c=1}^{C}
 y_c \log(\hat{y}_c)
-\]
-</div>
+$$
 
 ---
 
- **（3）Focal Loss（解决类别不平衡）**
+ **(3)Focal Loss(解决类别不平衡)**
 
 Focal Loss 抑制简单样本，突出困难样本：
 
-<div class="math-display">
-\[
+$$
 \mathcal{L}_{Focal}
 =
 -(1-\hat{y})^\gamma \, y\log(\hat{y})
-\]
-</div>
+$$
 
 其中：
 
-- $\gamma$：调节难样本的权重（典型值 1–3）
+- $\gamma$：调节难样本的权重(典型值 1–3)
 - 常用于肺结节检测、肿瘤检测等类别极不平衡任务
 
 ---
@@ -1567,60 +1427,50 @@ Focal Loss 抑制简单样本，突出困难样本：
 
 ---
 
- **（1）Dice 系数**
+ **(1)Dice 系数**
 
-<div class="math-display">
-\[
+$$
 \text{Dice} =
 \frac{2|A \cap B|}{|A|+|B|}
-\]
-</div>
+$$
 
-- 0（差） → 1（完美）
+- 0(差) → 1(完美)
 - 常用于 CT/MRI 器官/病灶分割评估
 
 ---
 
- **（2）IoU（Intersection over Union）**
+ **(2)IoU(Intersection over Union)**
 
-<div class="math-display">
-\[
+$$
 \text{IoU}=
 \frac{|A \cap B|}{|A \cup B|}
-\]
-</div>
+$$
 
 与 Dice 关系：
 
-<div class="math-display">
-\[
+$$
 \text{Dice} = \frac{2\text{IoU}}{1+\text{IoU}}
-\]
-</div>
+$$
 
 ---
 
- **（3）Sensitivity（敏感度）**
+ **(3)Sensitivity(敏感度)**
 
-<div class="math-display">
-\[
+$$
 \text{Sensitivity}=
 \frac{TP}{TP+FN}
-\]
-</div>
+$$
 
 衡量“发现病灶”的能力。
 
 ---
 
- **（4）Specificity（特异度）**
+ **(4)Specificity(特异度)**
 
-<div class="math-display">
-\[
+$$
 \text{Specificity}=
 \frac{TN}{TN+FP}
-\]
-</div>
+$$
 
 衡量“避免误报”的能力。
 

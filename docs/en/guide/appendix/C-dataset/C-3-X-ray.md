@@ -13,7 +13,7 @@ CheXpert is a public chest X-ray image dataset released by Stanford University M
 
 - Contains **224,316 chest X-ray images**, from **65,240 patients**, with time range approximately from October 2002 to July 2017.
 - Each image is accompanied by corresponding radiology reports, and **14 observations** are automatically extracted from the reports, with labels divided into three categories: "positive (1)", "negative (0)", and "uncertain (-1/u)".
-- The 14 observations include: atelectasis , cardiomegaly , consolidation, edema, enlarged cardiomediastinum, fracture, lung lesion, lung opacity, pleural effusion, pleural other, pneumonia, pneumothorax, support devices, no finding.
+- The 14 observations include: atelectasis (肺不张), cardiomegaly (心脏扩大), consolidation (实变), edema (水肿), enlarged cardiomediastinum, fracture, lung lesion, lung opacity, pleural effusion, pleural other, pneumonia, pneumothorax, support devices, no finding.
 - Data perspective: When there are multiple views (such as frontal + lateral), the model usually takes the maximum value of each view's prediction as the indicator.
 - Data division: Official provides training set + validation set; the test set consists of 500 independent studies, annotated by five certified radiologists as reference standard.
 
