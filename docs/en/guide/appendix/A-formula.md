@@ -20,11 +20,11 @@ This section introduces cross-modality universal mathematical principles in medi
 
 ## 2.1 Coordinate Systems and Image Geometry
 
-Geometric relationships in medical imaging primarily involve the mapping of **pixel/voxel coordinates → physical world coordinates**, as well as common affine transformations (rotation, scaling, translation, etc.).
+Geometric relationships in medical imaging primarily involve the mapping of **pixel/voxel coordinates → physical world coordinates**, as well as common affine transformations(rotation, scaling, translation, etc.).
 
-** (1) Pixel/Voxel Coordinates → Physical Space Coordinates**
+**(1) Pixel/Voxel Coordinates → Physical Space Coordinates**
 
-Imaging files (such as DICOM, NIfTI) typically provide a 4×4 spatial transformation matrix to convert voxel coordinates $(i, j, k)$ to physical coordinates $(x, y, z)$:
+Imaging files(such as DICOM, NIfTI) typically provide a 4×4 spatial transformation matrix to convert voxel coordinates $(i, j, k)$ to physical coordinates $(x, y, z)$:
 
 $$
 \left[\begin{array}{c}
@@ -49,7 +49,7 @@ $$
 
 ---
 
-** (2) DICOM Spatial Transformation Matrix (Typical Form)**
+**(2) DICOM Spatial Transformation Matrix(Typical Form)**
 
 $$
 \mathbf{M}_{\text{DICOM}}=
@@ -61,13 +61,13 @@ $$
 
 Where:
 
-- $\mathbf{R}$: Direction cosine matrix (3×3, specifying the direction of image axes in the world coordinate system)
-- $\Delta x, \Delta y, \Delta z$: Voxel size (in mm)
-- $\mathbf{T}$: Origin coordinates (in mm in patient coordinate system)
+- $\mathbf{R}$: Direction cosine matrix(3×3, specifying the direction of image axes in the world coordinate system)
+- $\Delta x, \Delta y, \Delta z$: Voxel size(in mm)
+- $\mathbf{T}$: Origin coordinates(in mm in patient coordinate system)
 
 ---
 
-** (3) Common Geometric Transformation Matrices**
+**(3) Common Geometric Transformation Matrices**
 
 ● Scaling
 
@@ -80,7 +80,7 @@ s_x & 0 & 0 \\
 \end{array}\right]
 $$
 
-● Rotation (using z-axis as example)
+● Rotation(using z-axis as example)
 
 $$
 \mathbf{R}_z(\theta)=
@@ -120,7 +120,7 @@ Affine transformations are widely used in image registration, resampling, and mu
 
 ---
 
-** (1) Convolution Definition (Continuous/Discrete)**
+**(1) Convolution Definition(Continuous/Discrete)**
 
 ● Continuous Convolution
 
@@ -128,23 +128,23 @@ $$
 (f * g)(t)=\int_{-\infty}^{+\infty} f(\tau)\, g(t-\tau)\, d\tau
 $$
 
-● Discrete Convolution (Signal)
+● Discrete Convolution(Signal)
 
 $$
 (f * g)[n] = \sum_{k=-\infty}^{+\infty} f[k]\, g[n-k]
 $$
 
-● 2D Image Convolution (Commonly Used for Filtering)
+● 2D Image Convolution(Commonly Used for Filtering)
 
 $$
 I'(x,y)=\sum_m \sum_n I(x-m,y-n) \, K(m,n)
 $$
 
-Convolution is frequently used in CT filtered backprojection (FBP), MRI denoising, image smoothing, and sharpening.
+Convolution is frequently used in CT filtered backprojection(FBP), MRI denoising, image smoothing, and sharpening.
 
 ---
 
-** (2) Downsampling and Upsampling**
+**(2) Downsampling and Upsampling**
 
 ● Downsampling
 
@@ -168,43 +168,43 @@ $$
 
 ---
 
-** (3) Common Interpolation Formulas**
+**(3) Common Interpolation Formulas**
 
-● Bilinear Interpolation (2D)
+● Bilinear Interpolation(2D)
 
 $$
 f(x,y)=\sum_{m=0}^1\sum_{n=0}^1 
 f(i+m, j+n)(1-|x-i-m|)(1-|y-j-n|)
 $$
 
-● Trilinear Interpolation (3D)
+● Trilinear Interpolation(3D)
 
-Used for volumetric data (CT/MRI) resampling, as a 3D extension of bilinear interpolation.
+Used for volumetric data(CT/MRI) resampling, as a 3D extension of bilinear interpolation.
 
 ---
 
-** (4) Spatial Domain ↔ Frequency Domain Relationship (Fourier Transform Basics)**
+**(4) Spatial Domain ↔ Frequency Domain Relationship(Fourier Transform Basics)**
 
-● Fourier Transform (Continuous)
+● Fourier Transform(Continuous)
 
 $$
 F(\omega)=\int f(t)e^{-j\omega t}dt
 $$
 
-● Discrete Fourier Transform (DFT)
+● Discrete Fourier Transform(DFT)
 
 $$
 X[k]=\sum_{n=0}^{N-1} x[n] e^{-j2\pi kn/N}
 $$
 
-● Convolution Theorem (Extremely Important in Medical Imaging)
+● Convolution Theorem(Extremely Important in Medical Imaging)
 
 $$
 \mathcal{F}\{f*g\} = \mathcal{F}\{f\}\cdot \mathcal{F}\{g\}
 $$
 
 Explanation:  
-**Convolution in the frequency domain is equivalent to multiplication**, which is the core of CT filtered backprojection (FBP) and MRI reconstruction.
+**Convolution in the frequency domain is equivalent to multiplication**, which is the core of CT filtered backprojection(FBP) and MRI reconstruction.
 
 ## 2.3 Noise Models
 
@@ -212,7 +212,7 @@ Common noise in medical imaging mainly comes from detectors, electronic noise, p
 
 ---
 
-** (1) Additive Gaussian Noise (Common in MRI / CT)**
+**(1) Additive Gaussian Noise(Common in MRI / CT)**
 
 $$
 y = x + \mathcal{N}(0,\sigma^2)
@@ -225,7 +225,7 @@ Applicable scenarios:
 
 ---
 
-** (2) Poisson Noise (PET / X-ray)**
+**(2) Poisson Noise(PET / X-ray)**
 
 PET and X-ray belong to **photon counting processes**, naturally satisfying the Poisson model:
 
@@ -235,15 +235,15 @@ $$
 
 Applications:
 
-- PET projection data (sinogram)
+- PET projection data(sinogram)
 - X-ray intensity acquisition
 - Noise modeling of CT projection data
 
 Poisson noise is particularly significant in low-dose CT and low-count PET.
 
-# 3. Key Formulas for CT (Computed Tomography)
+# 3. Key Formulas for CT(Computed Tomography)
 
-This section summarizes the most core mathematical formulas in CT imaging and reconstruction, including X-ray attenuation models, Radon transform, filtered backprojection (FBP), as well as CT image HU conversion and windowing processing. These formulas form the mathematical foundation of modern CT imaging technology.
+This section summarizes the most core mathematical formulas in CT imaging and reconstruction, including X-ray attenuation models, Radon transform, filtered backprojection(FBP), as well as CT image HU conversion and windowing processing. These formulas form the mathematical foundation of modern CT imaging technology.
 
 ---
 
@@ -253,7 +253,7 @@ When X-rays pass through tissue, they are absorbed and scattered. The attenuatio
 
 ---
 
-** (1) Lambert-Beer Law**
+**(1) Lambert-Beer Law**
 
 When an X-ray beam passes through a medium, the relationship between the intensity $I$ received by the detector and the incident intensity $I_0$ is:
 
@@ -270,7 +270,7 @@ Where:
 
 ---
 
-** (2) Projection Data (Log-transform)**
+**(2) Projection Data(Log-transform)**
 
 CT projections typically undergo logarithmic transformation to linearize the exponential attenuation:
 
@@ -290,11 +290,11 @@ This is the physical origin of the Radon transform.
 
 ## 3.2 Radon Transform
 
-The Radon transform describes the line integrals of an object at different angles and is the mathematical representation of CT projection data (sinogram).
+The Radon transform describes the line integrals of an object at different angles and is the mathematical representation of CT projection data(sinogram).
 
 ---
 
-** (1) Radon Transform Definition**
+**(1) Radon Transform Definition**
 
 The projection of a 2D object $\mu(x,y)$ at angle $\theta$ is written as:
 
@@ -307,8 +307,7 @@ $$
 After parameterizing the integration path:
 
 $$
-p(\theta, t)
-=
+p(\theta, t)=
 \int_{-\infty}^{+\infty}
 \mu(t\cos\theta - s\sin\theta, \;
     t\sin\theta + s\cos\theta)
@@ -323,7 +322,7 @@ Where:
 
 ---
 
-** (2) Radon Inverse Transform (Ideal Case)**
+**(2) Radon Inverse Transform(Ideal Case)**
 
 Theoretically, the object can be recovered through the Radon inverse transform:
 
@@ -331,17 +330,17 @@ $$
 \mu(x,y)=\mathcal{R}^{-1}\{p(\theta,t)\}
 $$
 
-Actual reconstruction must combine filtered backprojection (FBP).
+Actual reconstruction must combine filtered backprojection(FBP).
 
 ---
 
-## 3.3 Filtered Backprojection (FBP)
+## 3.3 Filtered Backprojection(FBP)
 
-FBP (Filtered Back Projection) is the classic CT reconstruction algorithm and one of the reconstruction frameworks commonly used in clinical practice today.
+FBP(Filtered Back Projection) is the classic CT reconstruction algorithm and one of the reconstruction frameworks commonly used in clinical practice today.
 
 ---
 
-** (1) Convolution Filtering (Filtering Step)**
+**(1) Convolution Filtering(Filtering Step)**
 
 Filter the projection $p(\theta,t)$ at each angle:
 
@@ -354,7 +353,7 @@ Where:
 
 - $h(t)$: Reconstruction filter, for example:
 
-  - **Ram-Lak** (ideal high-pass)
+  - **Ram-Lak**(ideal high-pass)
   - Shepp-Logan
   - Hanning, Cosine, etc.
 
@@ -368,15 +367,14 @@ The purpose of filtering is to compensate for the low-frequency enhancement caus
 
 ---
 
-** (2) Backprojection**
+**(2) Backprojection**
 
 Backproject all filtered projections at all angles into the image space:
 
 $$
-\mu(x,y)
-=
+\mu(x,y)=
 \int_0^{\pi}
-\tilde{p}(\theta,  \; x\cos\theta + y\sin\theta )
+\tilde{p}(\theta,  \; x\cos\theta + y\sin\theta)
 \; d\theta
 $$
 
@@ -387,11 +385,10 @@ Meaning:
 
 ---
 
-** (3) FBP Overall Formula**
+**(3) FBP Overall Formula**
 
 $$
-\mu(x,y)
-=
+\mu(x,y)=
 \int_0^{\pi}
 \left[
 p(\theta,t) * h(t)
@@ -401,13 +398,13 @@ $$
 
 ---
 
-## 3.4 CT Value (HU) Conversion Formula
+## 3.4 CT Value(HU) Conversion Formula
 
-CT images are usually measured in HU (Hounsfield Unit), used to quantify the tissue's X-ray attenuation capability.
+CT images are usually measured in HU(Hounsfield Unit), used to quantify the tissue's X-ray attenuation capability.
 
 ---
 
-** (1) HU Standardization Formula**
+**(1) HU Standardization Formula**
 
 $$
 \text{HU} = 1000 \cdot 
@@ -415,21 +412,20 @@ $$
 $$
 
 - $\mu$: Tissue attenuation coefficient
-- $\mu_{\text{water}}$: Water attenuation coefficient (reference)
+- $\mu_{\text{water}}$: Water attenuation coefficient(reference)
 - Water = 0 HU
 - Air = -1000 HU
 
 ---
 
-** (2) Linear Window Function (Windowing)**
+**(2) Linear Window Function(Windowing)**
 
 Windowing is required when displaying CT images:
 
 $$
-I_{\text{display}}
-=
+I_{\text{display}}=
 \text{clip}\left(
-\frac{HU - (WL - \frac{WW}{2})}{WW}
+\frac{HU -(WL - \frac{WW}{2})}{WW}
 ,\, 0,\, 1
 \right)
 $$
@@ -446,19 +442,19 @@ Examples:
 - Lung window: WL=-600, WW=1500
 - Bone window: WL=400, WW=2000
 
-# 4. Key Formulas for MRI (Magnetic Resonance Imaging)
+# 4. Key Formulas for MRI(Magnetic Resonance Imaging)
 
-The mathematical foundation of MRI (Magnetic Resonance Imaging) mainly includes the generation of nuclear magnetic resonance signals (Larmor precession and Bloch equations), tissue relaxation processes (T1, T2), and k-space Fourier encoding and reconstruction. This section presents the most core formulas in MRI imaging.
+The mathematical foundation of MRI(Magnetic Resonance Imaging) mainly includes the generation of nuclear magnetic resonance signals(Larmor precession and Bloch equations), tissue relaxation processes(T1, T2), and k-space Fourier encoding and reconstruction. This section presents the most core formulas in MRI imaging.
 
 ---
 
 ## 4.1 Pulse Sequence Basics
 
-MRI signals are determined by the behavior of nuclear magnetic moments under the action of magnetic fields and radio frequency pulses (RF pulse). The basic dynamics are described by Larmor frequency and Bloch equations.
+MRI signals are determined by the behavior of nuclear magnetic moments under the action of magnetic fields and radio frequency pulses(RF pulse). The basic dynamics are described by Larmor frequency and Bloch equations.
 
 ---
 
-** (1) Larmor Frequency Formula**
+**(1) Larmor Frequency Formula**
 
 The precession angular frequency of nuclear spins in a static magnetic field $B_0$ is:
 
@@ -469,21 +465,20 @@ $$
 Where:
 
 - $\omega_0$: Larmor frequency
-- $\gamma$: Gyromagnetic ratio (proton: $\gamma/2\pi \approx 42.58\text{ MHz/T}$)
+- $\gamma$: Gyromagnetic ratio(proton: $\gamma/2\pi \approx 42.58\text{ MHz/T}$)
 - $B_0$: Main magnetic field strength
 
-Note: High field strength (such as 3T) brings higher signal-to-noise ratio (SNR).
+Note: High field strength(such as 3T) brings higher signal-to-noise ratio(SNR).
 
 ---
 
-** (2) Bloch Equation (Simplified Form)**
+**(2) Bloch Equation(Simplified Form)**
 
-Describes the dynamic changes of the magnetization vector $\mathbf{M} = (M_x, M_y, M_z)$ in a magnetic field:
+Describes the dynamic changes of the magnetization vector $\mathbf{M} =(M_x, M_y, M_z)$ in a magnetic field:
 
 $$
-\frac{d\mathbf{M}}{dt}
-=
-\gamma (\mathbf{M} \times \mathbf{B})
+\frac{d\mathbf{M}}{dt}=
+\gamma(\mathbf{M} \times \mathbf{B})
 -\frac{M_x \hat{i} + M_y \hat{j}}{T_2}
 -\frac{(M_z - M_0)\hat{k}}{T_1}
 $$
@@ -506,7 +501,7 @@ The process of tissue returning to equilibrium after RF pulse is described by tw
 
 ---
 
-** (1) T1 Recovery**
+**(1) T1 Recovery**
 
 $$
 M_z(t) = M_0 \left(1 - e^{-t/T_1}\right)
@@ -520,7 +515,7 @@ Meaning:
 
 ---
 
-** (2) T2 Decay**
+**(2) T2 Decay**
 
 $$
 M_{xy}(t) = M_0 e^{-t/T_2}
@@ -534,9 +529,9 @@ Note:
 
 ---
 
-** (3) Proton Density (PD) Signal Expression**
+**(3) Proton Density(PD) Signal Expression**
 
-When not strongly dependent on T1/T2, the signal is mainly determined by proton density (PD):
+When not strongly dependent on T1/T2, the signal is mainly determined by proton density(PD):
 
 $$
 S_{\text{PD}} \propto \rho \left(1 - e^{-TR/T_1}\right) e^{-TE/T_2}
@@ -557,20 +552,19 @@ $$
 
 ## 4.3 k-space Sampling and Reconstruction
 
-MRI data is first sampled in **k-space (frequency domain)**, rather than directly obtaining images. k-space sampling is directly related to the 2D Fourier transform.
+MRI data is first sampled in **k-space(frequency domain)**, rather than directly obtaining images. k-space sampling is directly related to the 2D Fourier transform.
 
 ---
 
-** (1) MRI Signal Equation (2D Fourier Encoding)**
+**(1) MRI Signal Equation(2D Fourier Encoding)**
 
 The sampling signal of the object magnetization distribution $\rho(x,y)$ under the action of frequency encoding and phase encoding gradients is:
 
 $$
-S(k_x, k_y)
-=
+S(k_x, k_y)=
 \iint
 \rho(x, y)
-\, e^{-j 2\pi (k_x x + k_y y)}
+\, e^{-j 2\pi(k_x x + k_y y)}
 \, dx\, dy
 $$
 
@@ -584,16 +578,15 @@ This is the standard form of **2D Fourier Transform**.
 
 ---
 
-** (2) Inverse Fourier Reconstruction**
+**(2) Inverse Fourier Reconstruction**
 
 Image recovery is achieved by performing inverse Fourier transform on k-space:
 
 $$
-\rho(x,y)
-=
+\rho(x,y)=
 \iint
 S(k_x, k_y)
-\, e^{j 2\pi (k_x x + k_y y)}
+\, e^{j 2\pi(k_x x + k_y y)}
 \, dk_x \, dk_y
 $$
 
@@ -603,7 +596,7 @@ $$
 \rho = \mathcal{F}^{-1}\{ S \}
 $$
 
-Clinical MRI equipment uses Fast Fourier Transform (FFT).
+Clinical MRI equipment uses Fast Fourier Transform(FFT).
 
 # 5. Ultrasound Imaging Key Formulas
 
@@ -613,11 +606,11 @@ Ultrasound imaging is based on the propagation, reflection, and scattering of me
 
 ## 5.1 Basic Relationships of Sound Wave Propagation
 
-Ultrasound is essentially longitudinal waves (pressure waves). When propagating in tissues, there are basic physical relationships between their velocity, frequency, and wavelength.
+Ultrasound is essentially longitudinal waves(pressure waves). When propagating in tissues, there are basic physical relationships between their velocity, frequency, and wavelength.
 
 ---
 
-** (1) Wave Velocity, Frequency, and Wavelength**
+**(1) Wave Velocity, Frequency, and Wavelength**
 
 The relationship between sound velocity $c$, frequency $f$, and wavelength $\lambda$ is:
 
@@ -627,20 +620,20 @@ $$
 
 Typical tissue sound velocities:
 
-|Tissue|Sound Velocity (m/s)|
+|Tissue|Sound Velocity(m/s)|
 | --------------| ----------------|
 |Fat|~1450|
 |Muscle|~1580|
-|Soft tissue average|**1540** (commonly used clinical value)|
+|Soft tissue average|**1540**(commonly used clinical value)|
 
 ---
 
-** (2) Sound Pressure Wave Expression (1D)**
+**(2) Sound Pressure Wave Expression(1D)**
 
 Propagating sound waves can be expressed as:
 
 $$
-p(x,t) = p_0 \cos (2\pi f t - kx)
+p(x,t) = p_0 \cos(2\pi f t - kx)
 $$
 
 Where:
@@ -656,7 +649,7 @@ Ultrasound image brightness mainly depends on interface reflection and tissue at
 
 ---
 
-** (1) Tissue Attenuation Model**
+**(1) Tissue Attenuation Model**
 
 After propagating a distance $d$, the amplitude of the sound wave attenuates to:
 
@@ -664,7 +657,7 @@ $$
 A(d) = A_0 e^{-\alpha d}
 $$
 
-Or expressed in dB (more common):
+Or expressed in dB(more common):
 
 $$
 A_{\mathrm{dB}}(d) = A_{\mathrm{dB}}(0) - \alpha_{\mathrm{dB}} d
@@ -679,7 +672,7 @@ Attenuation increases with frequency, so higher frequencies provide better resol
 
 ---
 
-** (2) Reflection Coefficient (Acoustic Impedance)**
+**(2) Reflection Coefficient(Acoustic Impedance)**
 
 The reflection intensity at interfaces of different tissues is determined by acoustic impedance:
 
@@ -700,7 +693,7 @@ $$
 Where:
 
 - $Z_1, Z_2$: Acoustic impedance of two tissues
-- $R$: Reflection intensity ratio (0~1)
+- $R$: Reflection intensity ratio(0~1)
 
 This is the most fundamental source of B-mode imaging brightness.
 
@@ -708,11 +701,11 @@ This is the most fundamental source of B-mode imaging brightness.
 
 ## 5.3 B-mode Imaging Mathematics
 
-B-mode (Brightness mode) is the most common ultrasound imaging method, involving echo envelope extraction and log compression.
+B-mode(Brightness mode) is the most common ultrasound imaging method, involving echo envelope extraction and log compression.
 
 ---
 
-** (1) Envelope Detection (Hilbert Transform)**
+**(1) Envelope Detection(Hilbert Transform)**
 
 The received signal is typically a radio frequency signal $x(t)$, from which the envelope needs to be extracted:
 
@@ -723,19 +716,18 @@ $$
 Where:
 
 - $\hat{x}(t)$: Hilbert transform of $x(t)$
-- $A(t)$: Envelope (representing intensity)
+- $A(t)$: Envelope(representing intensity)
 
 The envelope represents the intensity of interface reflections and is the core of B-mode grayscale images.
 
 ---
 
-** (2) B-mode Log Compression**
+**(2) B-mode Log Compression**
 
-The dynamic range of the original RF envelope is very large (>60 dB) and needs to be compressed to a displayable range:
+The dynamic range of the original RF envelope is very large(>60 dB) and needs to be compressed to a displayable range:
 
 $$
-I_{\text{display}}
-=
+I_{\text{display}}=
 \log \left( 1 + A(t) \right)
 $$
 
@@ -753,7 +745,7 @@ Log compression can:
 
 ---
 
-** (3) Scanline to Image**
+**(3) Scanline to Image**
 
 The final B-mode image is composed of multiple A-scans.
 
@@ -763,11 +755,11 @@ $$
 I(x,y) = \text{LogCompress}\left( A(t) \right)
 $$
 
-Where $x$ is determined by the scanning angle and $y$ is the depth (propagation time).
+Where $x$ is determined by the scanning angle and $y$ is the depth(propagation time).
 
 # 6. PET / SPECT Imaging Key Formulas
 
-PET (Positron Emission Tomography) and SPECT (Single Photon Emission Computed Tomography) are based on gamma photons generated by radioactive nuclide decay for imaging. Their mathematical essence includes radioactive decay models, Poisson statistical forward models, and iterative reconstruction (MLEM / OSEM). This section presents the commonly used core formulas for PET/SPECT.
+PET(Positron Emission Tomography) and SPECT(Single Photon Emission Computed Tomography) are based on gamma photons generated by radioactive nuclide decay for imaging. Their mathematical essence includes radioactive decay models, Poisson statistical forward models, and iterative reconstruction(MLEM / OSEM). This section presents the commonly used core formulas for PET/SPECT.
 
 ---
 
@@ -777,7 +769,7 @@ The signal source of PET/SPECT is radioactive nuclides, whose tracer activity fo
 
 ---
 
-** (1) Radioactive Decay Formula**
+**(1) Radioactive Decay Formula**
 
 $$
 N(t) = N_0 e^{-\lambda t}
@@ -797,15 +789,15 @@ $$
 
 ---
 
-** (2) Activity**
+**(2) Activity**
 
-The decay rate (number of decays per second) is:
+The decay rate(number of decays per second) is:
 
 $$
 A(t) = \lambda N(t)
 $$
 
-Unit is becquerel (Bq).
+Unit is becquerel(Bq).
 
 ---
 
@@ -815,7 +807,7 @@ The projection data detected by PET/SPECT is essentially a statistical sampling 
 
 ---
 
-** (1) Poisson Statistical Model**
+**(1) Poisson Statistical Model**
 
 The counts in detector bin $i$ follow a Poisson distribution:
 
@@ -825,12 +817,12 @@ $$
 
 Where:
 
-- $y_i$: Actual observed count (a pixel in the sinogram)
+- $y_i$: Actual observed count(a pixel in the sinogram)
 - $\lambda_i$: Expected count
 
 ---
 
-** (2) Projection Data Formation Equation**
+**(2) Projection Data Formation Equation**
 
 The forward projection of PET can be expressed as:
 
@@ -840,7 +832,7 @@ $$
 
 Where:
 
-- $x_j$: Radioactivity at pixel $j$ (to be reconstructed)
+- $x_j$: Radioactivity at pixel $j$(to be reconstructed)
 - $a_{ij}$: System matrix
 
   - Includes geometric factors, attenuation, scattering, detection efficiency
@@ -856,13 +848,13 @@ This is the foundation of PET reconstruction.
 
 ---
 
-## 6.3 PET/SPECT Reconstruction (MLEM / OSEM)
+## 6.3 PET/SPECT Reconstruction(MLEM / OSEM)
 
-PET/SPECT mostly uses statistical **MLEM or OSEM iterative reconstruction**, derived from maximum likelihood estimation (MLE).
+PET/SPECT mostly uses statistical **MLEM or OSEM iterative reconstruction**, derived from maximum likelihood estimation(MLE).
 
 ---
 
-** (1) MLE (Maximum Likelihood Estimation)**
+**(1) MLE(Maximum Likelihood Estimation)**
 
 The likelihood function of observed data $y_i$:
 
@@ -876,8 +868,7 @@ Where $\lambda_i = \sum_j a_{ij} x_j$.
 Log-likelihood:
 
 $$
-\log L(\mathbf{x}) 
-= 
+\log L(\mathbf{x}) = 
 \sum_i \left[
 y_i \ln \lambda_i - \lambda_i
 \right] + C
@@ -892,13 +883,12 @@ $$
 
 ---
 
-** (2) MLEM (Expectation–Maximization) Update Formula**
+**(2) MLEM(Expectation–Maximization) Update Formula**
 
 The classic MLEM update is:
 
 $$
-x_j^{(k+1)}
-=
+x_j^{(k+1)}=
 x_j^{(k)}
 \frac
 {\sum_i a_{ij} \frac{y_i}{\sum_m a_{im}x_m^{(k)}}}
@@ -915,15 +905,14 @@ MLEM has good convergence but is slow.
 
 ---
 
-** (3) OSEM (Ordered Subsets Expectation Maximization)**
+**(3) OSEM(Ordered Subsets Expectation Maximization)**
 
 OSEM divides the sinogram into multiple subsets, using only partial projections for each update to improve speed.
 
 OSEM update form:
 
 $$
-x_j^{(k+1)}
-=
+x_j^{(k+1)}=
 x_j^{(k)}
 \frac
 {\sum_{i \in S_k} a_{ij} \frac{y_i}{\sum_m a_{im}x_m^{(k)}}}
@@ -932,22 +921,22 @@ $$
 
 Where $S_k$ is the k-th subset.
 
-- Speeds up reconstruction (approximately S times faster than MLEM)
+- Speeds up reconstruction(approximately S times faster than MLEM)
 - Commonly used in clinical PET/SPECT reconstruction
 
 # 7. X-ray / DR Imaging Key Formulas
 
-The core of X-ray / DR (Digital Radiography) imaging comes from the attenuation of photons passing through tissues and detector response. Its physical model is usually composed of **Lambert-Beer law + line integral projection model + detector gain correction**. This section summarizes the most important formulas in DR imaging.
+The core of X-ray / DR(Digital Radiography) imaging comes from the attenuation of photons passing through tissues and detector response. Its physical model is usually composed of **Lambert-Beer law + line integral projection model + detector gain correction**. This section summarizes the most important formulas in DR imaging.
 
 ---
 
-## 7.1 Projection Model (Line Integral)
+## 7.1 Projection Model(Line Integral)
 
-In DR (projection radiography), X-rays pass through the object from a single direction, and the attenuation along the penetration path constitutes the pixel values of the 2D image.
+In DR(projection radiography), X-rays pass through the object from a single direction, and the attenuation along the penetration path constitutes the pixel values of the 2D image.
 
 ---
 
-** (1) Photon Attenuation Model (Lambert-Beer)**
+**(1) Photon Attenuation Model(Lambert-Beer)**
 
 For incident intensity $I_0$, the transmitted intensity $I$ is:
 
@@ -965,7 +954,7 @@ Where:
 
 ---
 
-** (2) Projection (Line Integral) Model**
+**(2) Projection(Line Integral) Model**
 
 Define the projection:
 
@@ -987,14 +976,14 @@ $$
 
 Meaning:
 
-- DR is a single-angle special case of Radon transform (CT is multi-angle)
+- DR is a single-angle special case of Radon transform(CT is multi-angle)
 - p reflects the overall attenuation of X-rays, determining imaging brightness
 
 ---
 
-** (3) Brightness and Attenuation Relationship (Direct Representation)**
+**(3) Brightness and Attenuation Relationship(Direct Representation)**
 
-Brightness (transmittance) is usually negatively correlated with attenuation:
+Brightness(transmittance) is usually negatively correlated with attenuation:
 
 $$
 \text{Brightness}(x,y) \propto e^{-\mu(x,y) d}
@@ -1010,31 +999,29 @@ Real detectors have non-uniformity, dark current, and gain deviation, so DR imag
 
 ---
 
-** (1) Detector Response Model**
+**(1) Detector Response Model**
 
 The original DR image can be expressed as:
 
 $$
-I_{\text{raw}}
-=
+I_{\text{raw}}=
 G \cdot I_{\text{signal}} + D
 $$
 
 Where:
 
-- $G$: Pixel gain (gain), varies with pixels
-- $D$: Dark current (dark field)
+- $G$: Pixel gain(gain), varies with pixels
+- $D$: Dark current(dark field)
 - $I_{\text{signal}}$: Ideal signal
 
 ---
 
-** (2) Flat-field Correction**
+**(2) Flat-field Correction**
 
 The formula for flat-field correction is:
 
 $$
-I_{\text{corr}}
-=
+I_{\text{corr}}=
 \frac{ I_{\text{raw}} - I_{\text{dark}} }
      { I_{\text{flat}} - I_{\text{dark}} }
 $$
@@ -1047,13 +1034,13 @@ Where:
 
 Meaning:
 
-- Correct gain non-uniformity (pixel gain variation)
+- Correct gain non-uniformity(pixel gain variation)
 - Correct dark current bias
 - Restore correct ray transmission information
 
 ---
 
-** (3) Linear Normalization (for Visualization)**
+**(3) Linear Normalization(for Visualization)**
 
 Corrected images are often normalized:
 
@@ -1080,7 +1067,7 @@ Standardization is a key step to improve image comparability and model robustnes
 
 ---
 
-** (1) Min-Max Normalization**
+**(1) Min-Max Normalization**
 
 Linearly map values to $[0,1]$:
 
@@ -1088,11 +1075,11 @@ $$
 x' = \frac{x - x_{\min}}{x_{\max} - x_{\min}}
 $$
 
-Suitable for grayscale normalization, window width mapping (such as CT images).
+Suitable for grayscale normalization, window width mapping(such as CT images).
 
 ---
 
-** (2) Z-score Standardization**
+**(2) Z-score Standardization**
 
 Commonly used for input standardization of deep learning models:
 
@@ -1109,11 +1096,11 @@ Makes data satisfy zero mean and unit variance.
 
 ---
 
-** (3) Histogram Equalization**
+**(3) Histogram Equalization**
 
 Enhances contrast by making the grayscale distribution more uniform.
 
-CDF (Cumulative Distribution Function) is:
+CDF(Cumulative Distribution Function) is:
 
 $$
 \text{CDF}(x)=\sum_{i=0}^{x} \frac{h(i)}{N}
@@ -1122,14 +1109,14 @@ $$
 Equalized pixels:
 
 $$
-x' = (L-1) \cdot \text{CDF}(x)
+x' =(L-1) \cdot \text{CDF}(x)
 $$
 
 Where:
 
 - $h(i)$: Frequency of grayscale i
 - $N$: Total number of pixels
-- $L$: Number of grayscale levels (usually 256)
+- $L$: Number of grayscale levels(usually 256)
 
 Suitable for DR, ultrasound, and some MRI scenarios.
 
@@ -1141,7 +1128,7 @@ Image filtering is used for smoothing, denoising, and edge enhancement, and is a
 
 ---
 
-** (1) Gaussian Filter**
+**(1) Gaussian Filter**
 
 1D Gaussian kernel:
 
@@ -1163,11 +1150,11 @@ Functions:
 
 - Smooth images
 - Reduce high-frequency noise
-- Commonly used for denoising preprocessing (such as CT, X-ray, Ultrasound)
+- Commonly used for denoising preprocessing(such as CT, X-ray, Ultrasound)
 
 ---
 
-** (2) Sobel Edge Operator**
+**(2) Sobel Edge Operator**
 
 Used to detect horizontal or vertical edges.
 
@@ -1196,14 +1183,14 @@ $$
 Gradient intensity:
 
 $$
-|\nabla I| = \sqrt{ (G_x * I)^2 + (G_y * I)^2 }
+|\nabla I| = \sqrt{(G_x * I)^2 +(G_y * I)^2 }
 $$
 
 Suitable for edge detection and morphological analysis.
 
 ---
 
-** (3) Laplacian Edge Enhancement**
+**(3) Laplacian Edge Enhancement**
 
 Second-order derivative operator:
 
@@ -1234,9 +1221,9 @@ Medical image alignment is often based on affine transformations and spatial int
 
 ---
 
-** (1) Affine Transformation Matrix**
+**(1) Affine Transformation Matrix**
 
-3D affine transformation (commonly used for CT/MRI registration):
+3D affine transformation(commonly used for CT/MRI registration):
 
 $$
 \mathbf{x}' = \mathbf{A}\mathbf{x} + \mathbf{b}
@@ -1266,21 +1253,20 @@ Where:
 
 Used for:
 
-- Multimodal registration (MRI ↔ CT)
+- Multimodal registration(MRI ↔ CT)
 - Image alignment
-- Data standardization (e.g., unified voxel spacing)
+- Data standardization(e.g., unified voxel spacing)
 
 ---
 
-** (2) Trilinear Interpolation**
+**(2) Trilinear Interpolation**
 
 The most commonly used method for resampling 3D volumetric data.
 
 General formula for trilinear interpolation:
 
 $$
-f(x,y,z)
-=
+f(x,y,z)=
 \sum_{i=0}^1\sum_{j=0}^1\sum_{k=0}^1
 f(i,j,k)
 (1-|x-i|)
@@ -1299,31 +1285,30 @@ Suitable for:
 - CT/MRI spacing normalization
 - Resample steps in spatial transformation
 
-# 9. Key Formulas in Deep Learning (Commonly Used in Medical Imaging)
+# 9. Key Formulas in Deep Learning(Commonly Used in Medical Imaging)
 
 Deep learning has been widely applied to segmentation, classification, detection, and reconstruction tasks in medical imaging. This section summarizes the most commonly used convolution formulas, loss functions, and evaluation metrics in medical imaging tasks, providing a mathematical foundation for understanding subsequent algorithms.
 
 ---
 
-## 9.1 Convolutional Layers (2D / 3D)
+## 9.1 Convolutional Layers(2D / 3D)
 
-Convolution is the most important operation of CNN in medical imaging (e.g., 2D MRI slices, 3D CT volumetric data, ultrasound sequences, etc.).
+Convolution is the most important operation of CNN in medical imaging(e.g., 2D MRI slices, 3D CT volumetric data, ultrasound sequences, etc.).
 
 ---
 
-** (1) Convolution Operation Formula**
+**(1) Convolution Operation Formula**
 
-● 2D Convolution (Image)
+● 2D Convolution(Image)
 
 $$
 y(i,j) = \sum_m \sum_n x(i-m, j-n)\, k(m,n)
 $$
 
-● 3D Convolution (Volumetric Data)
+● 3D Convolution(Volumetric Data)
 
 $$
-y(i,j,k) 
-= 
+y(i,j,k) = 
 \sum_{u} \sum_{v} \sum_{w}
 x(i-u, j-v, k-w)\, k(u,v,w)
 $$
@@ -1332,7 +1317,7 @@ $$
 
 ---
 
-** (2) Convolution Output Size Calculation Formula**
+**(2) Convolution Output Size Calculation Formula**
 
 ● 2D Output Size
 
@@ -1358,7 +1343,7 @@ Parameter description:
 - $K$: Kernel size
 - $S$: Stride
 - $P$: Padding
-- Input/output dimensions are used for CNN structure design (UNet, VNet, etc.)
+- Input/output dimensions are used for CNN structure design(UNet, VNet, etc.)
 
 ---
 
@@ -1368,7 +1353,7 @@ Medical imaging tasks often involve class imbalance, so Dice Loss and Focal Loss
 
 ---
 
-** (1) Dice Loss (Commonly Used for Segmentation)**
+**(1) Dice Loss(Commonly Used for Segmentation)**
 
 Dice coefficient:
 
@@ -1383,69 +1368,66 @@ $$
 \mathcal{L}_{Dice} = 1 - \text{Dice}
 $$
 
-Used for segmentation tasks (especially organs, lesions, small targets).
+Used for segmentation tasks(especially organs, lesions, small targets).
 
 ---
 
-** (2) Cross-Entropy Loss (Foundation for Classification/Segmentation)**
+**(2) Cross-Entropy Loss(Foundation for Classification/Segmentation)**
 
 ● Binary Cross-Entropy
 
 $$
-\mathcal{L}_{CE}
-=
+\mathcal{L}_{CE}=
 - \left[ 
-y \log(\hat{y}) + (1-y)\log(1-\hat{y})
+y \log(\hat{y}) +(1-y)\log(1-\hat{y})
 \right]
 $$
 
 ● Multi-class Cross-Entropy
 
 $$
-\mathcal{L}_{CE}
-=
+\mathcal{L}_{CE}=
 -\sum_{c=1}^{C}
 y_c \log(\hat{y}_c)
 $$
 
 ---
 
-** (3) Focal Loss (Solving Class Imbalance)**
+**(3) Focal Loss(Solving Class Imbalance)**
 
 Focal Loss suppresses easy samples and highlights difficult samples:
 
 $$
-\mathcal{L}_{Focal}
-=
+\mathcal{L}_{Focal}=
 -(1-\hat{y})^\gamma \, y\log(\hat{y})
 $$
 
 Where:
 
-- $\gamma$: Adjusts the weight of difficult samples (typical values 1–3)
+- $\gamma$: Adjusts the weight of difficult samples(typical values 1–3)
 - Commonly used in class-imbalanced tasks such as lung nodule detection and tumor detection
 
 ---
 
-## 9.3 Evaluation Metrics (Segmentation & Classification Metrics)
+## 9.3 Evaluation Metrics(Segmentation & Classification Metrics)
 
 Evaluation metrics reflect the performance of models in medical imaging tasks, especially critical in lesion segmentation, organ segmentation, and pathology classification.
 
 ---
 
-** (1) Dice Coefficient**
+**(1) Dice Coefficient**
 
 $$
 \text{Dice} =
 \frac{2|A \cap B|}{|A|+|B|}
 $$
 
-- 0 (poor) → 1 (perfect)
+- 0(poor) → 1(perfect)
 - Commonly used for CT/MRI organ/lesion segmentation evaluation
 
 ---
 
-** (2) IoU (Intersection over Union)**
+**(2) IoU(Intersection over Union)**
 
 $$
 \text{IoU}=
@@ -1460,7 +1442,7 @@ $$
 
 ---
 
-** (3) Sensitivity**
+**(3) Sensitivity**
 
 $$
 \text{Sensitivity}=
@@ -1471,7 +1453,7 @@ Measures the ability to "detect lesions".
 
 ---
 
-** (4) Specificity**
+**(4) Specificity**
 
 $$
 \text{Specificity}=
@@ -1481,13 +1463,13 @@ $$
 Measures the ability to "avoid false positives".
 Meaning:
 
-- Correct gain non-uniformity (pixel gain variation)
+- Correct gain non-uniformity(pixel gain variation)
 - Correct dark current bias
 - Restore correct ray transmission information
 
 ---
 
-** (3) Linear Normalization (for Visualization)**
+**(3) Linear Normalization(for Visualization)**
 
 Corrected images are often normalized:
 
