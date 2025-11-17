@@ -27,14 +27,18 @@ Geometric relationships in medical imaging primarily involve the mapping of **pi
 Imaging files (such as DICOM, NIfTI) typically provide a 4×4 spatial transformation matrix to convert voxel coordinates $(i, j, k)$ to physical coordinates $(x, y, z)$:
 
 $$
-\begin{bmatrix}
-x \\ y \\ z \\ 1
-\end{bmatrix}
-=
-\mathbf{M}_{\text{DICOM}}
-\begin{bmatrix}
-i \\ j \\ k \\ 1
-\end{bmatrix}
+\left[\begin{array}{c}
+x \\
+y \\
+z \\
+1
+\end{array}\right]=
+\mathbf{M}_{\text {DICOM }}\left[\begin{array}{c}
+i \\
+j \\
+k \\
+1
+\end{array}\right]
 $$
 
 - $\mathbf{M}_{\text{DICOM}}$ contains:
@@ -49,10 +53,10 @@ $$
 
 $$
 \mathbf{M}_{\text{DICOM}}=
-\begin{bmatrix}
+\left[\begin{array}{cc}
 \mathbf{R} \cdot \text{diag}(\Delta x,\Delta y,\Delta z) & \mathbf{T} \\
 0 & 1
-\end{bmatrix}
+\end{array}\right]
 $$
 
 Where:
@@ -69,22 +73,22 @@ Where:
 
 $$
 \mathbf{S} =
-\begin{bmatrix}
+\left[\begin{array}{ccc}
 s_x & 0 & 0 \\
 0 & s_y & 0 \\
 0 & 0 & s_z
-\end{bmatrix}
+\end{array}\right]
 $$
 
 ● Rotation (using z-axis as example)
 
 $$
 \mathbf{R}_z(\theta)=
-\begin{bmatrix}
+\left[\begin{array}{ccc}
 \cos\theta & -\sin\theta & 0\\
 \sin\theta & \cos\theta  & 0\\
 0 & 0 & 1
-\end{bmatrix}
+\end{array}\right]
 $$
 
 ● Affine Transform
@@ -96,17 +100,18 @@ $$
 Expressed in homogeneous coordinates as:
 
 $$
-\begin{bmatrix}
-\mathbf{x}' \\ 1
-\end{bmatrix}
-=
-\begin{bmatrix}
+\left[\begin{array}{c}
+\mathbf{x}' \\
+1
+\end{array}\right]=
+\left[\begin{array}{cc}
 \mathbf{A} & \mathbf{b}\\
 0 & 1
-\end{bmatrix}
-\begin{bmatrix}
-\mathbf{x} \\ 1
-\end{bmatrix}
+\end{array}\right]
+\left[\begin{array}{c}
+\mathbf{x} \\
+1
+\end{array}\right]
 $$
 
 Affine transformations are widely used in image registration, resampling, and multimodal alignment.
@@ -1170,22 +1175,22 @@ Sobel-x:
 
 $$
 G_x =
-\begin{bmatrix}
+\left[\begin{array}{ccc}
 -1 & 0 & 1\\
 -2 & 0 & 2\\
 -1 & 0 & 1
-\end{bmatrix}
+\end{array}\right]
 $$
 
 Sobel-y:
 
 $$
 G_y =
-\begin{bmatrix}
+\left[\begin{array}{ccc}
 -1 & -2 & -1\\
 0 & 0 & 0\\
 1 & 2 & 1
-\end{bmatrix}
+\end{array}\right]
 $$
 
 Gradient intensity:
@@ -1212,11 +1217,11 @@ $$
 Typical discrete template:
 
 $$
-\begin{bmatrix}
+\left[\begin{array}{ccc}
 0 & -1 & 0\\
 -1 & 4 & -1\\
 0 & -1 & 0
-\end{bmatrix}
+\end{array}\right]
 $$
 
 Can be used for sharpening or edge enhancement.
@@ -1240,17 +1245,18 @@ $$
 Homogeneous form:
 
 $$
-\begin{bmatrix}
-\mathbf{x}' \\ 1
-\end{bmatrix}
-=
-\begin{bmatrix}
+\left[\begin{array}{c}
+\mathbf{x}' \\
+1
+\end{array}\right]=
+\left[\begin{array}{cc}
 \mathbf{A} & \mathbf{b}\\
 0 & 1
-\end{bmatrix}
-\begin{bmatrix}
-\mathbf{x} \\ 1
-\end{bmatrix}
+\end{array}\right]
+\left[\begin{array}{c}
+\mathbf{x} \\
+1
+\end{array}\right]
 $$
 
 Where:

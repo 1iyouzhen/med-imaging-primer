@@ -27,14 +27,18 @@
 影像文件(如 DICOM、NIfTI)通常提供一个 4×4 的空间变换矩阵，用于将体素坐标 $(i, j, k)$ 转换为物理坐标 $(x, y, z)$：
 
 $$
-\begin{bmatrix}
-x \\ y \\ z \\ 1
-\end{bmatrix}
-=
-\mathbf{M}_{\text{DICOM}}
-\begin{bmatrix}
-i \\ j \\ k \\ 1
-\end{bmatrix}
+\left[\begin{array}{c}
+x \\
+y \\
+z \\
+1
+\end{array}\right]=
+\mathbf{M}_{\text {DICOM }}\left[\begin{array}{c}
+i \\
+j \\
+k \\
+1
+\end{array}\right]
 $$
 
 - $\mathbf{M}_{\text{DICOM}}$ 包含：
@@ -49,10 +53,10 @@ $$
 
 $$
 \mathbf{M}_{\text{DICOM}}=
-\begin{bmatrix}
+\left[\begin{array}{cc}
 \mathbf{R} \cdot \text{diag}(\Delta x,\Delta y,\Delta z) & \mathbf{T} \\
 0 & 1
-\end{bmatrix}
+\end{array}\right]
 $$
 
 其中：
@@ -69,22 +73,22 @@ $$
 
 $$
 \mathbf{S} =
-\begin{bmatrix}
+\left[\begin{array}{ccc}
 s_x & 0 & 0 \\
 0 & s_y & 0 \\
 0 & 0 & s_z
-\end{bmatrix}
+\end{array}\right]
 $$
 
 ● 旋转(Rotation，以 z 轴为例)
 
 $$
 \mathbf{R}_z(\theta)=
-\begin{bmatrix}
+\left[\begin{array}{ccc}
 \cos\theta & -\sin\theta & 0\\
 \sin\theta & \cos\theta  & 0\\
 0 & 0 & 1
-\end{bmatrix}
+\end{array}\right]
 $$
 
 ● 仿射变换(Affine Transform)
@@ -96,17 +100,18 @@ $$
 在齐次坐标中表达为：
 
 $$
-\begin{bmatrix}
-\mathbf{x}' \\ 1
-\end{bmatrix}
-=
-\begin{bmatrix}
+\left[\begin{array}{c}
+\mathbf{x}' \\
+1
+\end{array}\right]=
+\left[\begin{array}{cc}
 \mathbf{A} & \mathbf{b}\\
 0 & 1
-\end{bmatrix}
-\begin{bmatrix}
-\mathbf{x} \\ 1
-\end{bmatrix}
+\end{array}\right]
+\left[\begin{array}{c}
+\mathbf{x} \\
+1
+\end{array}\right]
 $$
 
 仿射变换广泛用于图像配准、重采样和多模态对齐。
@@ -1170,22 +1175,22 @@ Sobel-x：
 
 $$
 G_x =
-\begin{bmatrix}
+\left[\begin{array}{ccc}
 -1 & 0 & 1\\
 -2 & 0 & 2\\
 -1 & 0 & 1
-\end{bmatrix}
+\end{array}\right]
 $$
 
 Sobel-y：
 
 $$
 G_y =
-\begin{bmatrix}
+\left[\begin{array}{ccc}
 -1 & -2 & -1\\
 0 & 0 & 0\\
 1 & 2 & 1
-\end{bmatrix}
+\end{array}\right]
 $$
 
 梯度强度：
@@ -1212,11 +1217,11 @@ $$
 典型离散模板：
 
 $$
-\begin{bmatrix}
+\left[\begin{array}{ccc}
 0 & -1 & 0\\
 -1 & 4 & -1\\
 0 & -1 & 0
-\end{bmatrix}
+\end{array}\right]
 $$
 
 可用于锐化或边缘增强。
@@ -1240,17 +1245,18 @@ $$
 齐次形式：
 
 $$
-\begin{bmatrix}
-\mathbf{x}' \\ 1
-\end{bmatrix}
-=
-\begin{bmatrix}
+\left[\begin{array}{c}
+\mathbf{x}' \\
+1
+\end{array}\right]=
+\left[\begin{array}{cc}
 \mathbf{A} & \mathbf{b}\\
 0 & 1
-\end{bmatrix}
-\begin{bmatrix}
-\mathbf{x} \\ 1
-\end{bmatrix}
+\end{array}\right]
+\left[\begin{array}{c}
+\mathbf{x} \\
+1
+\end{array}\right]
 $$
 
 其中：
