@@ -359,7 +359,7 @@ $$
 因为 $(S^H S)^{-1}$ 可能条件数大、 $S$ 通道敏感度接近\重叠多，解算后噪声可能被放大，定义g-factor来量化噪声放大系数简单地说，重建后某像素噪声标准差 $σ_recon$ 与理论全采样标准差 $σ_full$ 比值即为 $g$ ：
 
 $$
-\sigma_{\rm recon}(x,y) = g(x,y) ,\frac{1}{\sqrt{R}}, \sigma_{\rm full}(x,y)
+\sigma_{\rm recon}(x,y) = g(x,y)\frac{1}{\sqrt{R}}\sigma_{\rm full}(x,y)
 $$
 
 其中 $R$ 为加速因子。 $g >1$ 表示噪声被放大，相关文献指出在SENSE重建中，噪声分布通常是空间依赖的（非平稳）。 
@@ -382,7 +382,7 @@ GRAPPA属于k-空间域重建方法。其基本流程如下：
 2. 在k-空间域，用已采ACS线估计重建系数w ：
 
 $$
-s_i(k_x, k_y) = \sum_{j, \Delta k_x,\Delta k_y} w_{ij}(\Delta k_x,\Delta k_y); s_j(k_x + \Delta k_x,; k_y + \Delta k_y)
+s_i(k_x, k_y) = \sum_{j, \Delta k_x,\Delta k_y} w_{ij}(\Delta k_x,\Delta k_y)s_j(k_x + \Delta k_x,; k_y + \Delta k_y)
 $$
 
 其中 $i$ 是目标线圈， $j$ 是参考线圈，$w_{ij}$ 是重建系数， $Δk$ 是邻域偏移。
