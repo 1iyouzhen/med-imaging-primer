@@ -382,7 +382,7 @@ GRAPPA属于k-空间域重建方法。其基本流程如下：
 2. 在k-空间域，用已采ACS线估计重建系数w ：
 
 $$
-s_i(k_x, k_y) = \sum_{j, \Delta k_x,\Delta k_y} w_{ij}(\Delta k_x,\Delta k_y)s_j(k_x + \Delta k_x,; k_y + \Delta k_y)
+s_i(k_x, k_y) = \sum_{j, \Delta k_x,\Delta k_y} w_{ij}(\Delta k_x,\Delta k_y)s_j(k_x + \Delta k_x,k_y + \Delta k_y)
 $$
 
 其中 $i$ 是目标线圈， $j$ 是参考线圈，$w_{ij}$ 是重建系数， $Δk$ 是邻域偏移。
@@ -485,15 +485,15 @@ graph LR
 假设在时间 $t₀$  到 $t₁$  之间采集navigator数据 $N(t)$ . 通过 $N(t)$ 可估计物体位移 $Δr(t)$ . 则对于实际采集k-空间数据 $s(k, t) → s_corrected(k, t)$ 可做相位补偿：
 
 $$
-s_{\rm corr}(k, t) = s(k, t) ; e^{-i,2\pi, k \cdot \Delta r(t)}
+s_{\rm corr}(k, t) = s(k, t)e^{-i2\pi k \cdot \Delta r(t)}
 $$
 
 这里  $k≡(k_x, k_y, k_z)$  是该采样点的频率矢量， $Δr(t)$ 是物体位移估计，这样做即把运动引起的相位\位置漂移反向补偿。
 
 **适用场景**
 
-1.对于呼吸\心跳引起的周期性器官运动，如肝脏、腹部扫描。
-2.对于头部轻微移动。
+1.对于呼吸\心跳引起的周期性器官运动，如肝脏、腹部扫描；
+2.对于头部轻微移动；
 3.适合实时或近实时校正策略。
 
 ### 4.2.2 数据重排序\重采样
@@ -514,13 +514,13 @@ $$
 然后：
 
 $$
-I_{\rm corr}(x) = \iint \tilde s(k)e^{+i,2\pi,k\cdot x},dk
+I_{\rm corr}(x) = \iint \tilde s(k)e^{+i2\pi k\cdot x}dk
 $$
 
 适用场景：
 
-1.回顾性校正，当无实时导航设备或扫描已完成。
-2.非周期性／不可预测运动（如儿童扫描时突然移动）。
+1.回顾性校正，当无实时导航设备或扫描已完成；
+2.非周期性／不可预测运动（如儿童扫描时突然移动）；
 3.与深度学习校正方法结合（见下节扩展）。
 
 ### 4.2.3 AI深度学习方法
